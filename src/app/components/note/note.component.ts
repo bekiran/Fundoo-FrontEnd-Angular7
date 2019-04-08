@@ -17,6 +17,8 @@ export class NoteComponent implements OnInit {
   view
   layout
   unpinned = [];
+  pin: 'pin';
+  unpin: 'unpin';
   // note='note'
   ngOnInit() {
     this.getCards();
@@ -37,8 +39,11 @@ export class NoteComponent implements OnInit {
      var data1=data['data'];
      this.cards=[];
       for(let i=0;i<data1.length;i++){
-        if(!data1[i].archive && !data1[i].trash){
+        if(!data1[i].archive && !data1[i].trash && data1[i].pinned){
           this.cards.push(data1[i])
+        }
+        else if(!data1[i].archive && !data1[i].trash && !data1[i].pinned){
+          this.allcards.push(data1[i])
         }
       }
       this.cards = this.cards.reverse();
@@ -52,13 +57,25 @@ export class NoteComponent implements OnInit {
     this.ngOnInit();
   }
   getPinCard($event) {
-    let ind = this.unpinned.indexOf($event)
-    this.unpinned.splice(ind, 1);
-    this.allcards.splice(0, 0, $event)
-  }
-  getUnpinCard($event) {
     let ind = this.allcards.indexOf($event)
     this.allcards.splice(ind, 1);
-    this.unpinned.splice(0, 0, $event)
+    this.cards.splice(0, 0, $event)
+  }
+  getUnpinCard($event) {
+    let ind = this.cards.indexOf($event)
+    this.cards.splice(ind, 1);
+    this.allcards.splice(0, 0, $event)
+  }
+  dialogResult($event) {
+    if ($event.isPined) {
+      let ind = this.unpinned.indexOf($event)
+      this.unpinned.splice(ind, 1);
+      this.allcards.splice(0, 0, $event)
+    }
+    else {
+      let ind = this.allcards.indexOf($event)
+      this.allcards.splice(ind, 1);
+      this.unpinned.splice(0, 0, $event)
+    }
   }
 }

@@ -6,8 +6,15 @@ import { forEach } from "@angular/router/src/utils/collection";
 import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material';
 import{UpdatenoteComponent} from '../updatenote/updatenote.component'
 import {NoteServiceService} from '../../service/noteService/note-service.service'
+export interface DialogData {
+  array: [];
+  cardid: any;
+  cond: any;
+  flag:boolean;
+}
 
 export interface DialogData {
+  model: any;
   array: [];
   cond: any;
   flag1:true;
@@ -35,18 +42,17 @@ export class DisplaynoteComponent implements OnInit {
   @Output() color = new EventEmitter();
   @Output() emitPinnedCard = new EventEmitter();
   @Output() emitUnPinnedCard = new EventEmitter();
+  @Output() dialogResult = new EventEmitter();
+  @Output() emitMainNote = new EventEmitter();
   @Input() pin;
   flag1= true;
   // displaymode:boolean=true
 
   constructor(public http: HttpService,public dialog: MatDialog, private noteService: NoteServiceService) {}
 
-  ngOnInit() {
-  //   this.noteService.MessageView.subscribe(response=>{
-  //     this.displaymode=response;
-  //     console.log(this.displaymode,"displaymode")
-  // })
-  }
+  ngOnInit() {}
+
+
   colorsEdit(color) {
     console.log("Came to emmiter", color);
     this.color.emit(color);
@@ -98,6 +104,7 @@ export class DisplaynoteComponent implements OnInit {
   }
 
   doPinned(card){
+    console.log("dopinned")
     this.noteService.doPin({
       "pinned": true,
       "noteID": [card._id]
@@ -112,9 +119,11 @@ export class DisplaynoteComponent implements OnInit {
     "pinned": false,
     "noteID": [card._id]
   }).subscribe(data=>{
+    console.log(data,"unpin")
     console.log(card.pinned=false,'do unpin card')
     this.emitUnPinnedCard.emit(card)},err=>
     console.log(err))
    
 }
+
 }

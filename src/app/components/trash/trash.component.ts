@@ -12,6 +12,7 @@ export class TrashComponent implements OnInit {
   constructor(private noteService: NoteServiceService, public http: HttpService) {}
 
   more='trash';
+  trash='trash'
   deletedcards = [];
   card = [];
   cards = [];

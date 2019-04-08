@@ -1,108 +1,110 @@
-<div *ngFor='let array of cards' fxLayout="row wrap"
-fxLayoutAlign="center center"
-fxLayout.xs="row">
-
-    <mat-card [style.backgroundColor]='array.color'
-    fxFlex.xs = "100"
-      fxLayout="column"
-      class="matcard"
-      fxFlex="45"
-      fxFlexOffset.xl="10"
-      
-    >
-      <div
-        fxFlex="55"
-        fxFlexOffset.xl="20"
-        fxFlex.xs="97"
-        fxLayout="row"
-        fxLayoutAlign="start center"
-      >
-
-      <!-- start -->
-
-      <div fxLayout="column" fxFlex='100'>
-
-          <div fxLayout='row' fxLayoutAlign="space-between start" >
-            <div fxFlex='85' fxLayout='row wrap' fxFlex='90' fxFlexOffset.xl="20" fxFlex.xs="97" (click)="openDialog(array,cond,array.id)">
-              <mat-card-title matTextareaAutosize class="title">{{array.title}}
-              </mat-card-title>
-            </div>
-            <div *ngIf="cond!='trash'" id="pin" fxFlex='15'>
-              <button mat-icon-button color="basic">
-                <div class="barpin" *ngIf=array.isPined>
-  
-                  <img src="../../../assets/image/pinbar.svg" (click)='doUnPinned(array)' />
-  
-                </div>
-                <div class="barpin" *ngIf=!array.isPined>
-  
-                  <img src="../../../assets/image/unpinbar.svg" (click)='doPinned(array)' />
-                </div>
-              </button>
-            </div>
-          </div>
-          <div>
-            <div fxLayout='center center' (click)="openDialog(array,cond,array.id)">
-              <mat-card-title matTextareaAutosize  class="discp" fxLayout="row wrap">{{array.description}}</mat-card-title>
-            </div>
-          </div>
-        </div>
-
-        <!-- old -->
-
-      <!-- <div fxFlex="90"
+<div
+  *ngFor="let array of cards"
+  fxLayout="row wrap"
+  fxLayoutAlign="center center"
+  fxLayout.xs="column"
+>
+  <mat-card
+    [style.backgroundColor]="array.color"
+    fxFlex.xs="100"
+    fxLayout="column"
+    class="matcard"
+    fxFlex="45"
+    fxFlexOffset.xl="10"
+  >
+    <div
+      fxFlex="55"
       fxFlexOffset.xl="20"
       fxFlex.xs="97"
       fxLayout="row"
       fxLayoutAlign="start center"
-      (click)="openDialog()">
-      
-        <div fxLayout="column">
-          <div class="title">
-            {{array.title}}
+    >
+      <div fxLayout="column" fxFlex="100">
+        <div fxLayout="row" fxLayoutAlign="space-between start" fxFlex="100">
+          <div
+            fxFlex="85"
+            fxLayout="row wrap"
+            fxFlex="90"
+            fxFlexOffset.xl="20"
+            fxFlex.xs="97"
+            (click)="openDialog(array, cond, array.id)"
+          >
+            <mat-card-title matTextareaAutosize class="title"
+              >{{ array.title }}
+            </mat-card-title>
           </div>
-  
-          <div class="discp" contenteditable="true" >
-            {{array.description}}
+
+          <!-- Pin & Unpin -->
+          <div *ngIf="cond != 'trash'" id="pin" fxFlex="15">
+            <button mat-icon-button color="basic">
+              <div class="barpin" *ngIf="array.pinned">
+                <img
+                  src="../../../assets/image/pinbar.svg"
+                  (click)="doUnPinned(array)"
+                />
+              </div>
+              <div class="barpin" *ngIf="!array.pinned">
+                <img
+                  src="../../../assets/image/unpinbar.svg"
+                  (click)="doPinned(array)"
+                />
+              </div>
+            </button>
+          </div>
+
+        </div>
+        <div>
+          <div
+            fxLayout="center center"
+            (click)="openDialog(array, cond, array.id)"
+          >
+            <mat-card-title
+              matTextareaAutosize
+              class="discp"
+              fxLayout="row wrap"
+              >{{ array.description }}</mat-card-title
+            >
           </div>
         </div>
-      </div> -->
+      </div>
     </div>
-
-
-    <!-- end -->
-
 
     <div>
       <mat-chip>
-          <mat-icon matChipRemove *ngIf="removable">cancel</mat-icon>
+        <mat-icon matChipRemove *ngIf="removable">cancel</mat-icon>
       </mat-chip>
     </div>
 
-    <div fxFlex="100" *ngIf="more=='trash'" fxLayoutAlign="start center">
-        <button
-          mat-icon-button
-          [matMenuTriggerFor]="menu"
-          colour="basic"
-          matTooltip="more"
-        >
-          <img id="img" src="../../../assets//image/outline-more_vert-24px.svg" />
+    <div fxFlex="100" *ngIf="more == 'trash'" fxLayoutAlign="start center">
+      <button
+        mat-icon-button
+        [matMenuTriggerFor]="menu"
+        colour="basic"
+        matTooltip="more"
+      >
+        <img id="img" src="../../../assets//image/outline-more_vert-24px.svg" />
+      </button>
+      <mat-menu #menu="matMenu">
+        <button mat-menu-item (click)="deleteForever(array)">
+          Delete forever
         </button>
-        <mat-menu #menu="matMenu">
-          <button mat-menu-item (click)="deleteForever(array)">
-            Delete forever
-          </button>
-          <button mat-menu-item (click)="restore(array)">Restore</button>
-        </mat-menu>
-      </div>
-    
+        <button mat-menu-item (click)="restore(array)">Restore</button>
+      </mat-menu>
+    </div>
 
-
-      <!-- TO IMPORT ICONS FROM ICONLIST -->
-      <div fxFlex="100" *ngIf="more!='trash'">
-        <app-iconlist class="icon" fxFlex="50" fxFlex.xs="90" [card]="array" [more]="archived" (archivedCard)="archive($event)" (unarchiveCard)="unarchived($event)" (deletecard)="archive(array)" [type]=type></app-iconlist>
-      </div>
-    </mat-card>
-  
-  </div>
-  
+    <!-- TO IMPORT ICONS FROM ICONLIST -->
+    <div fxFlex="100" *ngIf="more != 'trash'">
+      <app-iconlist
+        class="icon"
+        fxFlex="50"
+        fxFlex.xs="90"
+        [card]="array"
+        [more]="archived"
+        (archivedCard)="archive($event)"
+        (unarchiveCard)="unarchived($event)"
+        (deletecard)="archive(array)"
+        [type]="type"
+      ></app-iconlist>
+    </div>
+  </mat-card>
+</div>
