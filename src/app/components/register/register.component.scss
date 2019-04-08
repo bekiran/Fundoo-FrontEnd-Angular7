@@ -1,0 +1,128 @@
+//import scss file
+@import "../../scss/colour.scss";
+
+
+.card{
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 4%;
+    margin-bottom: 3%;
+    width: 50%;
+    box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.459); 
+    border-radius: 2%;
+    height: 100%
+}
+
+.fundoo{
+    margin-left: 03%;
+    font-family: sans-serif
+}
+.f{
+    color: $blue;
+    font-weight: bold;
+    font-family: sans-serif;
+    text-align: center
+  }
+  .u{
+    color: $red ;
+    font-weight: bold;
+    font-family: sans-serif;
+    text-align: center
+    
+  }
+  .n{
+    color: $yellow;
+    font-weight: bold;
+    font-family: sans-serif;
+    text-align: center
+  
+  }
+  .d{
+    color: $blue;
+    font-weight: bold;
+    font-family: sans-serif;
+    text-align: center
+  
+  }
+  .o{
+    color: $green;
+    font-weight: bold;
+    font-family: sans-serif;
+    text-align: center
+  
+  }
+  .oo{
+    color: $red ;
+    font-weight: bold;
+    font-family: sans-serif;
+    text-align: center
+  }
+
+  #firstname{
+    width: 45%
+  }
+
+  #lastname{
+    width: 45%
+  }
+  .email{
+    padding: -20% 45%
+  }
+  .password{
+    width: 45%
+  }
+  .confirm{
+    width: 45%
+  }
+  .acc-type{
+    width: 30%;
+    margin-top: 4%;
+    margin-left: 5%
+  }
+  .signup-in{
+    display: flex;
+    // justify-content: space-between;
+  
+  }
+  // .acc{
+  //     font-family: sans-serif;
+  //     font-weight: bold;
+  // }
+  // .acc1{
+  //     font-family: sans-serif;
+  // }
+  
+
+#suffix{
+    margin-left: 0%;
+    margin-top: 5%
+}
+#signbutton{
+    margin-left: 35%;
+    width: 20%;
+    height: -100%;
+    background-color: $lblue;
+
+}
+.sinin-link{
+  color: $lblue;
+  margin-left: 5%
+}
+// #atype{
+//     // margin-top: -230%
+// }
+#secleted{
+    margin-left: 5%;
+    color: $lblue;
+    font-family: sans-serif
+}
+#psec{
+    margin-left: 12%;
+    font-family: sans-serif;
+    color: #7B1FA2;
+}
+.login{
+    color: $lblue;
+    margin-left: 5%;
+
+}

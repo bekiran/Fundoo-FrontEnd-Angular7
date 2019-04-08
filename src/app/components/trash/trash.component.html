@@ -1,0 +1,6 @@
+<div fxLayoutAlign='center center' fxLayout='row'>
+        <h4>Notes in Trash are deleted after 7 days.</h4>
+          <button fxFlexOffset="5" class="emt-trash" fxLayoutAlign='center center'  mat-button (click)="emptybin()">Empty Trash</button>
+          </div>
+
+<app-displaynote [cards]="deletedcards"  fxLayoutGap='2%' [more]='more' fxLayout="{{layout}}" fxLayoutAlign="center center"  ></app-displaynote>

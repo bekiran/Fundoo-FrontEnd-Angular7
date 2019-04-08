@@ -1,0 +1,151 @@
+<html>
+  <!-- remaind me button -->
+  <div fxLayoutAlign="space-between end" fxLayout="row" fxFlex="60" >
+    <button
+      id="Remaind"
+      matTooltip="Remind me"
+      mat-icon-button
+      [matMenuTriggerFor]="remindme"
+    >
+      <mat-icon>
+        <img src="../../../assets/image/outline-notification_important-24px.svg"
+      /></mat-icon>
+    </button>
+
+    <mat-menu #remindme="matMenu" class="matmenu">
+      <div class="remaindMenu">
+          <app-reminder></app-reminder>
+        <!-- <mat-nav-list>
+          <mat-list role="List">
+            <mat-list-item role="listitem">
+              <p>Reminder :</p>
+            </mat-list-item>
+
+            <mat-list-item>
+              <p>Later Today  <span id="later">8:00 PM</span></p>
+            </mat-list-item>
+
+            <mat-list-item>
+              <p>Tomorrow  <span id="tom">8:00 AM</span></p>
+            </mat-list-item>
+
+            <mat-list-item>
+              <p>Next week  <span id="nextweek">Mon,8:00AM</span></p>
+            </mat-list-item>
+
+            <mat-list-item>
+              <button mat-menu-item [matMenuTriggerFor]="menu6">
+                <mat-icon>
+                  <img src="../../../assets/image/outline-schedule-24px.svg">
+                </mat-icon>Pick date & time
+            </button>
+            </mat-list-item>
+
+            <div>
+              <mat-menu #menu6="matMenu">
+                <mat-nav-list>
+                  <mat-list>
+                      <div class="pickdate">
+                          <mat-list-item id="pickAdjust">
+                            <span>Pick date and Time </span>
+                          </mat-list-item>
+                        </div>
+                  </mat-list>
+                </mat-nav-list>
+              </mat-menu>
+            </div>
+
+          </mat-list>
+        </mat-nav-list> -->
+      </div>
+    </mat-menu>
+
+    <!-- Collaborator icon -->
+    <button id="coll" mat-icon-button matTooltip="Collaborator">
+      <img id="img" src="../../../assets/image/outline-person_add-24px.svg" />
+    </button>
+
+    <!-- color button -->
+    <button
+    id="col"
+      mat-icon-button
+      matTooltip="Change color"
+      [matMenuTriggerFor]="colorlist"
+    >
+      <img id="img" src="../../../assets/image/outline-color_lens-24px.svg" />
+    </button>
+
+    <mat-menu #colorlist="matMenu" [overlapTrigger]="false">
+      <ng-template matMenuContent>
+        <div class="buttons">
+          <div
+            fxLayout="row"
+            fxLayoutGap="10px"
+            style="margin-top: 3px"
+            *ngFor="let colors of colorArray"
+          >
+            <div *ngFor="let color of colors">
+              <button
+                class="colors"
+                [ngStyle]="{ 'background-color': color.color }"
+                (click)="colorsEdit(color.color,card)"
+                matTooltip="{{ color.name }}"
+                mat-mini-fab
+              ></button>
+            </div>
+          </div>
+        </div>
+      </ng-template>
+    </mat-menu> 
+
+    <!-- add image button -->
+    <div>
+      <!-- <input type="file" > -->
+    <button id="img" mat-icon-button matTooltip="Add image">
+      <img id="img" (change)="onFileSelected($event)" src="../../../assets/image/outline-image-24px.svg" />
+    </button>
+  </div>
+
+    <!-- archive button -->
+    <div>
+      <button id="arc" *ngIf="more !='archive'" mat-icon-button matTooltip="Archive" >
+        <img
+          src="../../../assets/image/outline-archive-24px.svg"
+          (click)="doArchive(card)"
+        />
+      </button>
+      <button id="unarc"  *ngIf="more == 'archive'" mat-icon-button matTooltip="unarchive" >
+        <img
+          src="../../../assets/image/outline-unarchive-24px.svg" (click)="doUnArchive(card)"
+        />
+      </button>
+    </div>
+
+    <!-- more menu button -->
+    <button id="menu"  mat-icon-button [matMenuTriggerFor]="menu" colour="basic" matTooltip="more">
+      <img id="img" src="../../../assets/image/outline-more_vert-24px.svg" />
+    </button>
+    <mat-menu #menu="matMenu">
+      <div *ngIf="type=='note'">
+        <button mat-menu-item  (click)="$event.stopPropagation()">add label</button>
+        <button mat-menu-item >show tick boxes</button></div>
+        
+      <div *ngIf="type!='note'">
+        <button mat-menu-item (click)="deleteNote(card)">Delete Note</button>
+        <button mat-menu-item  (click)="$event.stopPropagation()">add label</button>
+        <div *ngIf='flag4==true'>
+          <button mat-menu-item (click)='checklist(card)' (click)='HideTick()'>show tick boxes</button>
+        </div>
+        <div *ngIf='flag4==false'>
+          <button mat-menu-item (click)='checklist(card)'>Hide tick boxes</button>
+        </div>
+        <button mat-menu-item>copy to google docs</button>
+      </div>
+    </mat-menu> 
+  </div>
+
+
+
+</html>
+
+

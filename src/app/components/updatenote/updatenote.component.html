@@ -1,0 +1,39 @@
+<div fxFlex='100' class="main">
+  <div style="margin: 20px">
+    <div fxFlex="100" fxLayoutAlign='space-between start' fxLayout='row'>
+
+      <div>
+        <input matInput [(ngModel)]="data.array.title" placeholder="Edit title...">
+      </div>
+      <div (click)='openSnackBar()'>{{array.title}}></div>
+    </div>
+    <div >
+        <div class="barpin" *ngIf="flag1==true" >
+
+          <img src="../../../assets/image/pinbar.svg" />
+
+        </div>
+        <div class="barpin" >
+
+          <img src="../../../assets/image/unpinbar.svg" />
+        </div>
+      </div>
+
+  </div>
+  <div style="margin:20px">
+      <div >
+        <div ><input matInput [(ngModel)]="data.array.description" placeholder="Edit description..."></div>
+        <div  (click)='openSnackBar()'>{{array.description}}</div>
+      </div>
+      <div >
+        <div>
+          <!-- <mat-checkbox><input class='desc' matInput [(ngModel)]="array.description" placeholder="add description here"></mat-checkbox> -->
+          <!-- <img src='../../../assets/image/outline-check_box-24px.svg' matInput [(ngModel)]='data.array.noteCheckLists'  > -->
+        </div>
+      </div>
+    </div>
+  <div fxFlex="50" >
+      <app-iconlist></app-iconlist>
+  </div>
+
+</div>
