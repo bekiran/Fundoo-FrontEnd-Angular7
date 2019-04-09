@@ -3,8 +3,10 @@
  
 <app-take-note (addingNote)="recievemessage($event)"></app-take-note>
 
-<div class="pinned" >PINNED</div>
+<div class="pinned"  >PINNED</div>
 <app-displaynote [cards]="cards"   fxLayout="{{layout}}" fxLayout="row wrap" fxLayoutAlign="center none" (emitPinnedCard)="getPinCard($event)"  (emitUnPinnedCard)='getUnpinCard($event)'></app-displaynote>
 
 <div class="others">OTHERS</div>
 <app-displaynote [cards]="allcards"   fxLayout="{{layout}}" fxLayout="row wrap" fxLayoutAlign="center none" (emitPinnedCard)="getPinCard($event)" ></app-displaynote>
+
+<!-- *ngIf="pinArray.length >0" -->

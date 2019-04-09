@@ -1,7 +1,7 @@
 <div *ngIf="reminderShow" fxFlex="100">
   <div *ngFor="let remind of remindList">
     <div fxLayoutAlign="space-between center">
-      <button mat-menu-item>
+      <button mat-menu-item (click)="reminder(remind.dayCount,remind.timeCount)">
         <div fxLayout="row" fxLayoutAlign="space-between center">
           <div>
             {{ remind.day }}
@@ -14,10 +14,10 @@
     </div>
   </div>
   <div>
-    <button overlapTrigger="true" (click)=$event.stopPropagation() (click)="reminderShow=false" mat-menu-item>
+    <button overlapTrigger="true" (click)="toggle" (click)=$event.stopPropagation() (click)="reminderShow=false" mat-menu-item>
       <div fxLayout="row">
-        <div fxLayoutAlign="space-between center" >
-          <img src="../../../assets/image/outline-schedule-24px.svg" alt="" />
+        <div fxLayoutAlign="space-around center" (click)=$event.stopPropagation() >
+          <img src="../../../assets/image/outline-schedule-24px.svg" />
         </div>
         <div fxFlexOffset="8">Pick date & time</div>
       </div>
@@ -70,7 +70,7 @@
       <div fxLayout="row">
         <div fxLayout="row"></div>
         <div>
-          <button fxLayout="column" fxLayoutAlign="end end" >save</button>
+          <button fxLayout="column" fxLayoutAlign="end end" (click)="saveReminder()"  mat-menu-item>Save</button>
         </div>
 
       </div>

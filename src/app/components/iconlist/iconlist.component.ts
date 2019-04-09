@@ -26,6 +26,7 @@ export class IconlistComponent implements OnInit {
   flag4 = true;
   display=false;
   allcards:any;
+  
 
   /***************************************************************
    * List of colors that can be applied to card taken in an array

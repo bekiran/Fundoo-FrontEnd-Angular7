@@ -28,6 +28,9 @@ export class NoteServiceService {
   updateColor(data){
     return this.http.put('updateColor',data)
   }
+  addRemainder(data){
+    return this.http.put('reminder',data)
+  }
 
   doPin(data){
     return this.http.put('isPinned',data)

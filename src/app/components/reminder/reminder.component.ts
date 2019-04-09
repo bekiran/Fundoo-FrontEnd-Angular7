@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import {NoteServiceService} from '../../../app/service/noteService/note-service.service';
 import { from } from 'rxjs';
 @Component({
@@ -7,11 +7,15 @@ import { from } from 'rxjs';
   styleUrls: ['./reminder.component.scss']
 })
 export class ReminderComponent implements OnInit {
+
   dayCount=0;
+  @Input() card;
   reminderShow : boolean = true;
-  changed : boolean;
+  changed =true;
   todaydate: Date = new Date();
   checker : Date = new Date();
+  currentDate = new Date();
+  model
 
   remindList = [
     { day: 'today', time: '8:00 PM', dayCount:0, timeCount: 20},
@@ -32,5 +36,40 @@ export class ReminderComponent implements OnInit {
   toggle(){
     this.reminderShow = !this.reminderShow;
   }
+  reminder(dayCount, timeCount) {
+    console.log(dayCount,timeCount,"yyyyyyyy")
+    this.changed = true;
+    this.model={
+      "noteID":[this.card._id],
+      "reminder": new Date(this.currentDate.getFullYear(), this.currentDate.getMonth(),
+      (this.currentDate.getDate() + dayCount), timeCount, 0, 0, 0)
+  }
+  console.log(this.model,"model....")
+  if(this.card._id==undefined){
+    this.card.reminder= this.model.reminder;
+  } else {
+    this.saveReminder();
+  }
+}
+
+saveReminder(){
+  console.log('save reminder run',this.changed,'    ',this.card._id);
+  
+  if(this.changed){
+    console.log(this.model.reminder, "model");
+    if(this.card._id==undefined) {
+      this.card.reminder =this.model.reminder;
+    } else {
+      console.log('api call');
+      
+      this.notes.addRemainder(this.model).subscribe(response => {
+        console.log(response,"response");
+        this.card.reminder = this.model.reminder;
+        
+      })
+    }
+    
+  }
+}
 
 }
