@@ -72,12 +72,26 @@
 <!-- reminder -->
 
     <div  fxLayout="row" fxLayout="row wrap">
-        <mat-chip-list >
-          <div>
-            <mat-chip>{{array.reminder}}
-              <mat-icon matChipRemove *ngIf="removable">cancel</mat-icon>
+        <mat-chip-list class="chip">
+
+          <div *ngIf="(todaydate | date: 'shortDate') == (array.reminder | date: 'shortDate') && (array.reminder!='')">
+            <mat-chip >Today {{array.reminder | date:'shortTime'}}
+              <mat-icon matChipRemove (click)="removeReminder(array)">cancel</mat-icon>
             </mat-chip>
           </div>
+
+          <div *ngIf="(tomorrow | date: 'shortDate') == (array.reminder | date: 'shortDate') && (array.reminder!='')">
+              <mat-chip>Tomorrow {{array.reminder | date:'shortTime'}}
+                <mat-icon matChipRemove (click)="removeReminder(array)">cancel</mat-icon>
+              </mat-chip>
+            </div>
+
+            <div *ngIf="(tomorrow | date: 'shortDate') != (array.reminder | date: 'shortDate') && (todaydate | date: 'shortDate') != (array.reminder | date: 'shortDate') && (array.reminder!='') ">
+                <mat-chip>{{array.reminder | date:'medium'}}
+                  <mat-icon matChipRemove (click)="removeReminder(array)">cancel</mat-icon>
+                </mat-chip>
+              </div>
+  
         </mat-chip-list>
     </div>
 

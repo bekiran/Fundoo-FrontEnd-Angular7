@@ -31,6 +31,8 @@ import { TrashComponent } from './components/trash/trash.component';
 import { RemindersComponent } from './components/reminders/reminders.component';
 import { NoteDialogComponent } from './components/note-dialog/note-dialog.component';
 import { ReminderComponent } from './components/reminder/reminder.component';
+import { SearchPipe } from './pipe/search/search.pipe';
+import { LabelPipe } from './pipe/label/label.pipe';
 
 // import { GridModule } from 'angular-switchable-grid';
 
@@ -54,6 +56,8 @@ import { ReminderComponent } from './components/reminder/reminder.component';
     RemindersComponent,
     NoteDialogComponent,
     ReminderComponent,
+    SearchPipe,
+    LabelPipe,
   ],
   imports: [
     BrowserModule,

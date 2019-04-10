@@ -8,8 +8,9 @@ import { from } from 'rxjs';
 })
 export class ReminderComponent implements OnInit {
 
-  dayCount=0;
   @Input() card;
+
+  dayCount=0;
   reminderShow : boolean = true;
   changed =true;
   todaydate: Date = new Date();
@@ -37,7 +38,7 @@ export class ReminderComponent implements OnInit {
     this.reminderShow = !this.reminderShow;
   }
   reminder(dayCount, timeCount) {
-    console.log(dayCount,timeCount,"yyyyyyyy")
+    console.log(dayCount,timeCount,"==>daycount,timeCount")
     this.changed = true;
     this.model={
       "noteID":[this.card._id],
@@ -52,13 +53,23 @@ export class ReminderComponent implements OnInit {
   }
 }
 
+customreminder(timeCount){
+  this.changed = true;
+  this.checker.setHours(timeCount, 0, 0);
+  this.model ={
+    "noteID":[this.card._id],
+    "reminder": this.checker
+  }
+}
+
+
 saveReminder(){
   console.log('save reminder run',this.changed,'    ',this.card._id);
   
   if(this.changed){
-    console.log(this.model.reminder, "model");
+    // console.log(this.model.reminder, "model");
     if(this.card._id==undefined) {
-      this.card.reminder =this.model.reminder;
+      // this.card.reminder =this.model.reminder;
     } else {
       console.log('api call');
       
@@ -71,5 +82,14 @@ saveReminder(){
     
   }
 }
+// customreminder(timeCount){
+//   this.changed = true;
+//   this.checker = setHours(timeCount, 0, 0);
+//   this.model ={
+//     "noteID":[this.card._id],
+//     "reminder": this.checker
+//   }
+// }
+
 
 }

@@ -43,6 +43,9 @@ export class DisplaynoteComponent implements OnInit {
   @Output() emitMainNote = new EventEmitter();
   @Input() pin;
   flag1 = true;
+  todaydate = new Date();
+  tomorrow  = new Date(this.todaydate.getFullYear(), this.todaydate.getMonth(),
+  (this.todaydate.getDate() + 1), 0, 0, 0, 0);
   // displaymode:boolean=true
 
   constructor(
@@ -143,5 +146,21 @@ export class DisplaynoteComponent implements OnInit {
         },
         err => console.log(err)
       );
+  }
+
+  removeReminder(array) {
+    console.log(array,"bgcdvzjh");
+
+    var model= { "noteID": [array._id],
+    "reminder":"" }
+    console.log(model,"model")
+  
+      this.noteService.removeRemainder( model).subscribe(data => {
+        console.log(data),
+        array.reminder="";
+        // let ind = this.cards.indexOf(array);
+        // array.reminder.splice(ind, 1)
+      })
+   
   }
 }

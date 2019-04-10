@@ -31,6 +31,9 @@ export class NoteServiceService {
   addRemainder(data){
     return this.http.put('reminder',data)
   }
+  // setHours(data){
+  //   return this.http.put('reminde',data)
+  // }
 
   doPin(data){
     return this.http.put('isPinned',data)
@@ -51,5 +54,8 @@ export class NoteServiceService {
       this.subject.next({data:"column"});
       this.result = true;
     }
-  } 
+  }
+  removeRemainder(data){
+    return this.http.put('reminder',data)
+  }
 }
