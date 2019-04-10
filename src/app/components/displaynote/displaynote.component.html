@@ -69,11 +69,19 @@
       </div>
     </div>
 
-    <div>
-      <mat-chip>
-        <mat-icon matChipRemove *ngIf="removable">cancel</mat-icon>
-      </mat-chip>
+<!-- reminder -->
+
+    <div  fxLayout="row" fxLayout="row wrap">
+        <mat-chip-list >
+          <div>
+            <mat-chip>{{array.reminder}}
+              <mat-icon matChipRemove *ngIf="removable">cancel</mat-icon>
+            </mat-chip>
+          </div>
+        </mat-chip-list>
     </div>
+
+    <!-- more menu icon button -->
 
     <div fxFlex="100" *ngIf="more == 'trash'" fxLayoutAlign="start center">
       <button
@@ -93,6 +101,7 @@
     </div>
 
     <!-- TO IMPORT ICONS FROM ICONLIST -->
+
     <div fxFlex="100" *ngIf="more != 'trash'">
       <app-iconlist
         class="icon"
