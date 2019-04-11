@@ -69,7 +69,7 @@ saveReminder(){
   if(this.changed){
     // console.log(this.model.reminder, "model");
     if(this.card._id==undefined) {
-      // this.card.reminder =this.model.reminder;
+      this.card.reminder =this.model.reminder;
     } else {
       console.log('api call');
       
