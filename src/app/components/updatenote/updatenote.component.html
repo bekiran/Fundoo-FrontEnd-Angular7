@@ -5,12 +5,12 @@
         <div *ngIf="data.cond!='trash'"><input matInput [(ngModel)]="data.array.title" placeholder="add title here"></div>
         <div *ngIf="data.cond=='trash'" (click)='openSnackBar()'>{{data.array.title}}</div>
     <div >
-        <div class="barpin" *ngIf="flag1==true" >
-          <img src="../../../assets/image/pinbar.svg" (click)='doUnPin(data.array)'/>
+        <div class="barpin" *ngIf="flag1 == true" >
+          <img src="../../../assets/image/pinbar.svg" (click)='doUnPin(data.array.pinned)'/>
         </div>
-        <!-- <div class="barpin"  >
-          <img src="../../../assets/image/unpinbar.svg" (click)='doPin(data.array)'/>
-        </div> -->
+        <div class="barpin"  *ngIf="flag1 != true">
+          <img src="../../../assets/image/unpinbar.svg" (click)='doPin(data.array.pinned)'/>
+        </div>
       </div>
     </div>
   </div>

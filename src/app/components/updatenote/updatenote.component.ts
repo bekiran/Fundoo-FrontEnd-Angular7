@@ -14,13 +14,12 @@ export class UpdatenoteComponent implements OnInit {
   flag1=true
   show=false;
   flag:boolean=false;
-  cardid:string;
+  todaydate = new Date;
 
 
   constructor(public dialogRef: MatDialogRef<UpdatenoteComponent>,
     @Inject(MAT_DIALOG_DATA) public data: DialogData, public noteService : NoteServiceService, 
     private snackBar: MatSnackBar, public dialog: MatDialog) {
-      console.log(this.cardid=data['cardid'],"in dialog")
     
     console.log(this.flag=data['flag']);
      }
@@ -33,7 +32,7 @@ export class UpdatenoteComponent implements OnInit {
       "pinned": true,
       "noteID": [card._id]
     }).subscribe(data=>{
-      console.log(card.isPined=true,'cardddddddddddd')
+      console.log(card.isPined=true,'card pinned')
       console.log(data,"resp dopin")},err=>
       console.log(err)) 
   
@@ -43,8 +42,7 @@ export class UpdatenoteComponent implements OnInit {
         "pinned": false,
         "noteID": [card._id]
       }).subscribe(data=>{
-        console.log(card.isPined=false,'do unpin cardddddddddddd')},err=>
+        console.log(card.isPined=false,'do unpin card')},err=>
         console.log(err))
-       
   }
 }

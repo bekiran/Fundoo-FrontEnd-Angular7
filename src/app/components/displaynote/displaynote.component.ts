@@ -6,6 +6,7 @@ import { forEach } from "@angular/router/src/utils/collection";
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from "@angular/material";
 import { UpdatenoteComponent } from "../updatenote/updatenote.component";
 import { NoteServiceService } from "../../service/noteService/note-service.service";
+import { Message } from '@angular/compiler/src/i18n/i18n_ast';
 export interface DialogData {
   array: [];
   cardid: any;
@@ -35,13 +36,14 @@ export class DisplaynoteComponent implements OnInit {
   @Input() type;
   @Input() archived;
   @Input() card: [];
-
   @Output() color = new EventEmitter();
   @Output() emitPinnedCard = new EventEmitter();
   @Output() emitUnPinnedCard = new EventEmitter();
   @Output() dialogResult = new EventEmitter();
   @Output() emitMainNote = new EventEmitter();
   @Input() pin;
+
+  model
   flag1 = true;
   todaydate = new Date();
   tomorrow  = new Date(this.todaydate.getFullYear(), this.todaydate.getMonth(),
@@ -68,12 +70,40 @@ export class DisplaynoteComponent implements OnInit {
   unarchived($event) {
     this.archive($event);
   }
-  openDialog() {
+  openDialog(array) {
     const dialogRef = this.dialog.open(UpdatenoteComponent, {
-      width: "450px",
-      height: "150px",
-      data: {}
+      width: "600px",
+      // height: "130px",
+      data: {array}
     });
+
+    dialogRef.afterClosed().subscribe(result => {
+    
+      console.log(result['array'], 'from dialog box');
+      
+      this.emitMainNote.emit(result['array']);
+      if(this.doPinned!=result['array'].isPined){
+      this.dialogResult.emit(result['array']);
+      }
+      this.model = {
+        noteID: result['array']._id,
+        title: result['array'].title,
+        description: result['array'].description,
+      }
+      console.log(this.model, "modelll of update")
+      this.noteService.updatenote(
+        this.model).subscribe(message => {
+          console.log(message)
+        })
+
+
+        this.noteService.updatedescription(
+          this.model).subscribe(Message => {
+            console.log(Message);
+            
+          })
+      });
+
   }
 
   restore(card) {

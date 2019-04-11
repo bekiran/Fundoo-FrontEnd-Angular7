@@ -58,4 +58,11 @@ export class NoteServiceService {
   removeRemainder(data){
     return this.http.put('reminder',data)
   }
+  updatenote(data){
+    return this.http.put('editTitle',data)
+
+  }
+  updatedescription(data){
+    return this.http.put('editDescription',data)
+  }
 }

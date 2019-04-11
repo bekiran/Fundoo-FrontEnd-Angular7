@@ -1,55 +1,52 @@
-.card{
-    height: 15%;
+.card {
+  height: 15%;
 }
-.mat-card mat-card-title{
-    font-size: 5mm;
-    font-family: 'Times New Roman';
-    
+.mat-card mat-card-title {
+  font-size: 5mm;
+  font-family: "Times New Roman";
 }
-.matcard{
-   
-    border-radius: 2%;
-    margin-top: 5%;
-    margin-bottom: 5%;
-    min-width: 260px;
-    margin-left: auto;
-    margin-right: auto
+.matcard {
+  border-radius: 2%;
+  margin-top: 5%;
+  margin-bottom: 5%;
+  min-width: 260px;
+  margin-left: auto;
+  margin-right: auto;
 }
-#pin{
-    opacity: 0;
-    &:hover{
+#pin {
+  opacity: 0;
+  &:hover {
     opacity: 1;
-    }
+  }
 
-    .btn{
-        opacity:0.2;
-        &:hover{
-          opacity: 1.5;
-        }
-      
+  .btn {
+    opacity: 0.2;
+    &:hover {
+      opacity: 1.5;
     }
+  }
 }
-.title{
-    font-family: 'Times New Roman';
-    font-weight: bold;
+.title {
+  font-family: "Times New Roman";
+  font-weight: bold;
 }
-.discp{
-    font-family: sans-serif;
-    word-break: break-all;
+.discp {
+  font-family: sans-serif;
+  word-break: break-all;
 }
-.icon{
-    opacity: 0;
-&:hover{
-opacity: 1.4;
-}
+.icon {
+  opacity: 0;
+  &:hover {
+    opacity: 1.4;
+  }
 }
 
 .barpin {
-    border: none;
-    outline: none;
-    user-select: none;
-    margin-top: 6px
-  }
-  .chip{
-      background-color: inherit
-  }
+  border: none;
+  outline: none;
+  user-select: none;
+  margin-top: 6px;
+}
+.chip {
+  background-color: inherit;
+}

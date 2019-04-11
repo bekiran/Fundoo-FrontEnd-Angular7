@@ -11,3 +11,31 @@ app-displaynote {
     opacity: 0.6
     // margin-right: auto
 }
+element.style {
+    visibility: visible;
+    transform: translate(0px, 252px);
+}
+
+.pinned1 {
+    color: #5f6368;
+    letter-spacing: .07272727em;
+    font-family: Roboto,Arial,sans-serif;
+    font-size: .6875rem;
+    font-weight: 500;
+    line-height: 1rem;
+    text-transform: uppercase;
+    margin: 32px 32px 8px;
+    // position: absolute;
+}
+
+.unpinned1 {
+    color: #5f6368;
+    letter-spacing: .07272727em;
+    font-family: Roboto,Arial,sans-serif;
+    font-size: .6875rem;
+    font-weight: 500;
+    line-height: 1rem;
+    text-transform: uppercase;
+    margin: 32px 32px 8px;
+    // position: absolute;
+}

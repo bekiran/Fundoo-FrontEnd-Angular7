@@ -38,6 +38,7 @@ export class NoteComponent implements OnInit {
       // this.cards = data['data'];
      var data1=data['data'];
      this.cards=[];
+     this.allcards=[];
       for(let i=0;i<data1.length;i++){
         if(!data1[i].archive && !data1[i].trash && data1[i].pinned){
           this.cards.push(data1[i])
@@ -47,14 +48,17 @@ export class NoteComponent implements OnInit {
         }
       }
       this.cards = this.cards.reverse();
+      this.allcards=this.allcards.reverse();
+      console.log('all card is ',this.cards);
       
     });
   }
   recievemessage($event) {
     this.addnote = $event;
     console.log(this.addnote,"......addnote")
-    this.allcards.push(this.addnote);
-    this.ngOnInit();
+    // this.allcards.push(this.addnote);
+    // this.ngOnInit();
+    this.getCards()
   }
   getPinCard($event) {
     let ind = this.allcards.indexOf($event)
