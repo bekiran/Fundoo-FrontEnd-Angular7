@@ -100,6 +100,34 @@
         ></textarea>
       </div>
 
+      <!-- mat chip -->
+
+      <div  fxLayout="row" fxLayout="row wrap">
+        <mat-chip-list class="chip">
+
+          <div *ngIf="(todaydate | date: 'shortDate') == (array.reminder | date: 'shortDate') && (array.reminder!='')">
+            <mat-chip >Today {{array.reminder | date:'shortTime'}}
+              <mat-icon matChipRemove (click)="removeReminder(array)">cancel</mat-icon>
+            </mat-chip>
+          </div>
+
+          <div *ngIf="(tomorrow | date: 'shortDate') == (array.reminder | date: 'shortDate') && (array.reminder!='')">
+              <mat-chip>Tomorrow {{array.reminder | date:'shortTime'}}
+                <mat-icon matChipRemove (click)="removeReminder(array)">cancel</mat-icon>
+              </mat-chip>
+            </div>
+
+            <div *ngIf="(tomorrow | date: 'shortDate') != (array.reminder | date: 'shortDate') && (todaydate | date: 'shortDate') != (array.reminder | date: 'shortDate') && (array.reminder!='') ">
+                <mat-chip>{{array.reminder | date:'medium'}}
+                  <mat-icon matChipRemove (click)="removeReminder(array)">cancel</mat-icon>
+                </mat-chip>
+              </div>
+  
+        </mat-chip-list>
+    </div>
+
+    <!-- icon -->
+
       <div fxFlex="10" fxLayoutAlign="start center">
         <div fxFlex="50">
           <app-iconlist [type]='type' [more]='more' (color)="changeColor($event)"></app-iconlist>

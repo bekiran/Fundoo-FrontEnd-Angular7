@@ -66,7 +66,8 @@
     width: 45%
   }
   .email{
-    padding: -20% 45%
+    // padding: -20% 45%;
+    width: 92%;
   }
   .password{
     width: 45%
@@ -125,4 +126,27 @@
     color: $lblue;
     margin-left: 5%;
 
+}
+
+@media only screen and (max-width: 600px) {
+  #firstname{
+    width: 100%;
+  }
+
+  #lastname{
+    width: 100%
+  }
+  .email{
+    width: 100%;
+  }
+  .password{
+    width: 100%
+  }
+  .confirm{
+    width: 100%
+  }
+  #suffix[_ngcontent-c1] {
+    margin-left: 90%;
+    margin-top: -4%;
+}
 }

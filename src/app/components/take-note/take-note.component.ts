@@ -22,6 +22,10 @@ export class TakeNoteComponent implements OnInit {
   model: any;
   response: any;
 
+  todaydate = new Date();
+  tomorrow  = new Date(this.todaydate.getFullYear(), this.todaydate.getMonth(),
+  (this.todaydate.getDate() + 1), 0, 0, 0, 0);
+
   
   constructor(
     private httpService: HttpService,

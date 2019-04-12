@@ -33,22 +33,22 @@ export class IconlistComponent implements OnInit {
    **************************************************************/
   colorArray = [
   [
-  { 'color': '#FFFFFF', 'name': 'White' },
-  { 'color': '#E57373', 'name': 'Red' },
-  { 'color': '#FF9100', 'name': 'Orange' },
-  { 'color': '#FFEB3B', 'name': 'Yellow' }],
+  { 'color': '#fff', 'name': 'White' },
+  { 'color': '#f28b82', 'name': 'Red' },
+  { 'color': '#fbbc04', 'name': 'Orange' },
+  { 'color': '#fff475', 'name': 'Yellow' }],
 
   [
-  { 'color': '#CCFF90', 'name': 'Green' },
-  { 'color': '#84FFFF', 'name': 'Teal' },
-  { 'color': '#B3E5FC', 'name': 'Blue' },
-  { 'color': '#82B1FF', 'name': 'Darkblue' }],
+  { 'color': '#ccff90', 'name': 'Green' },
+  { 'color': '#a7ffeb', 'name': 'Teal' },
+  { 'color': '#cbf0f8', 'name': 'Blue' },
+  { 'color': '#aecbfa', 'name': 'Darkblue' }],
 
   [
-  { 'color': '#B388FF', 'name': 'Purple' },
-  { 'color': '#E1BEE7', 'name': 'Pink' },
-  { 'color': '#A1887F', 'name': 'Brown' },
-  { 'color': '#F5F5F5', 'name': 'Gray' }
+  { 'color': '#d7aefb', 'name': 'Purple' },
+  { 'color': '#fdcfe8', 'name': 'Pink' },
+  { 'color': '#e6c9a8', 'name': 'Brown' },
+  { 'color': '#e8eaed', 'name': 'Gray' }
   ]
 ]
 
