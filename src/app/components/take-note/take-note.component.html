@@ -78,14 +78,13 @@
           ></textarea>
         </div>
         <div fxLayout="row">
-          <button id="pin" *ngIf="flag1==true"(click)="notePin()" mat-icon-button color="basic">
-            <div class="barpin"  >
-              <img src="../../../assets/image/pinbar.svg" />
+          <button   mat-icon-button color="basic" (click)="pinned()" id="pin">
+            <div class="barpin"  *ngIf="flag1==false" >
+              <img src="../../../assets/image/pinbar.svg" (click)='dopin(false)' />
             </div>
-          </button>
-          <button id="unpin" *ngIf="flag1==false"  (click)="notePin()" mat-icon-button color="basic">
-              <div class="barpin">
-                  <img src="../../../assets/image/unpinbar.svg" />
+
+              <div class="barpin"  *ngIf="flag1==true">
+                  <img src="../../../assets/image/unpinbar.svg" (click)='dopin(true)'/>
                 </div>
             </button>
         </div>
@@ -100,9 +99,9 @@
         ></textarea>
       </div>
 
-      <!-- mat chip -->
+      <!-- mat chip  reminder-->
 
-      <div  fxLayout="row" fxLayout="row wrap">
+      <!-- <div  fxLayout="row" fxLayout="row wrap">
         <mat-chip-list class="chip">
 
           <div *ngIf="(todaydate | date: 'shortDate') == (array.reminder | date: 'shortDate') && (array.reminder!='')">
@@ -124,13 +123,13 @@
               </div>
   
         </mat-chip-list>
-    </div>
+    </div> -->
 
     <!-- icon -->
 
       <div fxFlex="10" fxLayoutAlign="start center">
         <div fxFlex="50">
-          <app-iconlist [type]='type' [more]='more' (color)="changeColor($event)"></app-iconlist>
+          <app-iconlist [type]='type' [more]='more'  (emitReminderNote)='getReminder($event)'  (color)="changeColor($event)"></app-iconlist>
         </div>
         <div fxFlex="50" fxLayoutAlign="end center">
           <button

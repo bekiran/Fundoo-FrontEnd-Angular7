@@ -14,13 +14,13 @@ export interface DialogData {
   flag: boolean;
 }
 
-export interface DialogData {
-  model: any;
-  array: [];
-  cond: any;
-  flag1: true;
-  show: false;
-}
+// export interface DialogData {
+//   model: any;
+//   array: [];
+//   cond: any;
+//   flag1: true;
+//   show: false;
+// }
 @Component({
   selector: "app-displaynote",
   templateUrl: "./displaynote.component.html",

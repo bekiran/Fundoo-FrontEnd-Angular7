@@ -14,7 +14,11 @@ export class UpdatenoteComponent implements OnInit {
   flag1=true
   show=false;
   flag:boolean=false;
-  todaydate = new Date;
+
+  model
+  todaydate = new Date();
+  tomorrow  = new Date(this.todaydate.getFullYear(), this.todaydate.getMonth(),
+  (this.todaydate.getDate() + 1), 0, 0, 0, 0);
 
 
   constructor(public dialogRef: MatDialogRef<UpdatenoteComponent>,

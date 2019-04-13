@@ -21,6 +21,8 @@ export class TakeNoteComponent implements OnInit {
   noteContent = new FormControl("", [Validators.required, Validators.required]);
   model: any;
   response: any;
+  isPined = false;
+  reminder =[];
 
   todaydate = new Date();
   tomorrow  = new Date(this.todaydate.getFullYear(), this.todaydate.getMonth(),
@@ -51,8 +53,8 @@ export class TakeNoteComponent implements OnInit {
         userId: localStorage.getItem("userid"),
         title: this.noteTitle.value,
         description: this.noteContent.value,
-        reminder: "",
-        pinned: false,
+        reminder: this.reminder,
+        pinned: this.isPined,
         archive: false,
         color: this.bgcolor,
         trash: false,
@@ -91,7 +93,21 @@ export class TakeNoteComponent implements OnInit {
   /************************************************************************
   * to reverse the flag 
   *************************************************************************/
- notePin() {
+ pinned() {
   this.flag1 = !this.flag1;
 }
+
+dopin(set) {
+  this.isPined = set
+}
+getReminder($event){
+  if(this.reminder != undefined){
+    this.reminder=[];
+    this.reminder.push($event)
+  }
+  else{
+    this.reminder.push($event)
+  }
+}
+
 }

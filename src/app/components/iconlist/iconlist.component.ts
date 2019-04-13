@@ -17,6 +17,7 @@ export class IconlistComponent implements OnInit {
   @Output() deletecard = new EventEmitter();
   @Output() archivedCard = new EventEmitter();
   @Output() unarchiveCard = new EventEmitter();
+  @Output() emitReminderNote = new EventEmitter();
   
 
   model: any;

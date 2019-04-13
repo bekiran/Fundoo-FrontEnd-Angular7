@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import {NoteServiceService} from '../../../app/service/noteService/note-service.service';
 import { from } from 'rxjs';
 @Component({
@@ -9,6 +9,7 @@ import { from } from 'rxjs';
 export class ReminderComponent implements OnInit {
 
   @Input() card;
+  @Output() emitReminderNote = new EventEmitter();
 
   dayCount=0;
   reminderShow : boolean = true;
