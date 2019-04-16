@@ -33,6 +33,7 @@ import { NoteDialogComponent } from './components/note-dialog/note-dialog.compon
 import { ReminderComponent } from './components/reminder/reminder.component';
 import { SearchPipe } from './pipe/search/search.pipe';
 import { LabelPipe } from './pipe/label/label.pipe';
+import { SearchComponent } from './components/search/search.component';
 
 // import { GridModule } from 'angular-switchable-grid';
 
@@ -58,6 +59,8 @@ import { LabelPipe } from './pipe/label/label.pipe';
     ReminderComponent,
     SearchPipe,
     LabelPipe,
+    SearchComponent,
+  
   ],
   imports: [
     BrowserModule,

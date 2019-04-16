@@ -14,11 +14,16 @@ export class NoteComponent implements OnInit {
   cards: any = [];
   wrap:string="wrap";
   direction
-  view
+  view;
+  flag=false;
   layout
   unpinned = [];
   pin: 'pin';
   unpin: 'unpin';
+  mainClass={
+    open:this.flag,
+    close:!this.flag
+  }
   // note='note'
   ngOnInit() {
     this.getCards();

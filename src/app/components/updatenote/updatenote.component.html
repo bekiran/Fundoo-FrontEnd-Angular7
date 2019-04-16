@@ -3,7 +3,7 @@
   <div style="margin: 20px">
     <div fxFlex="100" fxLayoutAlign='space-between start' fxLayout='row'>
         <div *ngIf="data.cond !='trash'"><input matInput [(ngModel)]="data.array.title" placeholder="add title here"></div>
-        <div *ngIf="data.cond =='trash'" (click)='openSnackBar()'>{{data.array.title}}</div>
+        <div class="title" *ngIf="data.cond =='trash'" (click)='openSnackBar()'>{{data.array.title}}</div>
           <div *ngIf="data.cond !='trash'" >
         <div class="barpin" *ngIf="data.array.pinned" >
           <img src="../../../assets/image/pinbar.svg" (click)='doUnPin(data.array)'/>

@@ -129,7 +129,7 @@
 
       <div fxFlex="10" fxLayoutAlign="start center">
         <div fxFlex="50">
-          <app-iconlist [type]='type' [more]='more'  (emitReminderNote)='getReminder($event)'  (color)="changeColor($event)"></app-iconlist>
+          <app-iconlist [type]='type' [more]='more'  (emitReminderNote)='getReminder($event)' (archivedNoteCard)='archive($event)' (color)="changeColor($event)"></app-iconlist>
         </div>
         <div fxFlex="50" fxLayoutAlign="end center">
           <button

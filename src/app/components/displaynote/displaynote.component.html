@@ -1,7 +1,61 @@
+<!-- <div  class="gridView">
+  <mat-card fxLayout="row" [style.backgroundColor]="array.color"  fxLayoutGap="10px" *ngFor="let array of cards">
+    <div fxLayout='row' fxLayoutAlign="space-between center" >
+      <div class="title">
+        <div>{{array.title}}</div>
+        <div>
+          <button>
+
+          </button>
+          <button>
+
+          </button>
+          
+        </div>
+
+      </div>
+      <div>
+          {{array.description}}
+        </div>
+        <div fxFlex="100" *ngIf="more == 'trash'" fxLayoutAlign="start center">
+            <button
+              mat-icon-button
+              [matMenuTriggerFor]="menu"
+              colour="basic"
+              matTooltip="more"
+            >
+              <img id="img" src="../../../assets//image/outline-more_vert-24px.svg" />
+            </button>
+            <mat-menu #menu="matMenu">
+              <button mat-menu-item (click)="deleteForever(array)">
+                Delete forever
+              </button>
+              <button mat-menu-item (click)="restore(array)">Restore</button>
+            </mat-menu>
+          </div>
+       
+    </div>
+    <div *ngIf="more != 'trash'">
+        <app-iconlist
+          class="icon"
+          fxFlex="50"
+          fxFlex.xs="90"
+          [card]="array"
+          [more]="archived"
+          (archivedCard)="archive($event)"
+          (unarchiveCard)="unarchived($event)"
+          (deletecard)="archive(array)"
+          [type]="type"
+        ></app-iconlist>
+      </div>
+  </mat-card>
+</div> -->
+<!-- --------------------- display note earlier design --------------------------------------- -->
+
 <div
   *ngFor="let array of cards"
   fxLayout="row wrap"
-  fxLayoutAlign="center center"
+  fxLayoutAlign="start center"
   fxLayout.xs="column"
 >
   <mat-card
@@ -17,7 +71,7 @@
       fxFlexOffset.xl="20"
       fxFlex.xs="97"
       fxLayout="row"
-      fxLayoutAlign="start center"
+      fxLayoutAlign="start center" 
     >
       <div fxLayout="column" fxFlex="100">
         <div fxLayout="row" fxLayoutAlign="space-between start" fxFlex="100">
@@ -35,8 +89,9 @@
           </div>
 
           <!-- Pin & Unpin -->
+
+
           <div *ngIf="cond != 'trash'" id="pin" fxFlex="15">
-            
             <button mat-icon-button color="basic">
               <div class="barpin" *ngIf="array.pinned">
                 <img
@@ -52,11 +107,10 @@
               </div>
             </button>
           </div>
-
         </div>
         <div>
           <div
-            fxLayout="center center"
+          fxLayoutAlign="start center" 
             (click)="openDialog(array, cond, array.id)"
           >
             <mat-card-title
@@ -70,35 +124,60 @@
       </div>
     </div>
 
-<!-- reminder -->
+    <!-- reminder -->
 
-    <div  fxLayout="row" fxLayout="row wrap">
-        <mat-chip-list class="chip">
+    <div fxLayout="row" fxLayout="row wrap">
+      <mat-chip-list class="chip">
+        <div
+          *ngIf="
+            (todaydate | date: 'shortDate') ==
+              (array.reminder | date: 'shortDate') && array.reminder != ''
+          "
+        >
+          <mat-chip
+            >Today {{ array.reminder | date: "shortTime" }}
+            <mat-icon matChipRemove (click)="removeReminder(array)"
+              >cancel</mat-icon
+            >
+          </mat-chip>
+        </div>
 
-          <div *ngIf="(todaydate | date: 'shortDate') == (array.reminder | date: 'shortDate') && (array.reminder!='')">
-            <mat-chip >Today {{array.reminder | date:'shortTime'}}
-              <mat-icon matChipRemove (click)="removeReminder(array)">cancel</mat-icon>
-            </mat-chip>
-          </div>
+        <div
+          *ngIf="
+            (tomorrow | date: 'shortDate') ==
+              (array.reminder | date: 'shortDate') && array.reminder != ''
+          "
+        >
+          <mat-chip
+            >Tomorrow {{ array.reminder | date: "shortTime" }}
+            <mat-icon matChipRemove (click)="removeReminder(array)"
+              >cancel</mat-icon
+            >
+          </mat-chip>
+        </div>
 
-          <div *ngIf="(tomorrow | date: 'shortDate') == (array.reminder | date: 'shortDate') && (array.reminder!='')">
-              <mat-chip>Tomorrow {{array.reminder | date:'shortTime'}}
-                <mat-icon matChipRemove (click)="removeReminder(array)">cancel</mat-icon>
-              </mat-chip>
-            </div>
-
-            <div *ngIf="(tomorrow | date: 'shortDate') != (array.reminder | date: 'shortDate') && (todaydate | date: 'shortDate') != (array.reminder | date: 'shortDate') && (array.reminder!='') ">
-                <mat-chip>{{array.reminder | date:'medium'}}
-                  <mat-icon matChipRemove (click)="removeReminder(array)">cancel</mat-icon>
-                </mat-chip>
-              </div>
-  
-        </mat-chip-list>
+        <div
+          *ngIf="
+            (tomorrow | date: 'shortDate') !=
+              (array.reminder | date: 'shortDate') &&
+            (todaydate | date: 'shortDate') !=
+              (array.reminder | date: 'shortDate') &&
+            array.reminder != ''
+          "
+        >
+          <mat-chip
+            >{{ array.reminder | date: "medium" }}
+            <mat-icon matChipRemove (click)="removeReminder(array)"
+              >cancel</mat-icon
+            >
+          </mat-chip>
+        </div>
+      </mat-chip-list>
     </div>
 
     <!-- more menu icon button -->
 
-    <div fxFlex="100" *ngIf="more == 'trash'" fxLayoutAlign="start center">
+    <div fxFlex="100" *ngIf="more == 'trash'" fxLayoutAlign="start center" >
       <button
         mat-icon-button
         [matMenuTriggerFor]="menu"
@@ -132,3 +211,59 @@
     </div>
   </mat-card>
 </div>
+
+
+
+
+
+
+
+
+
+
+<!-- <div [ngClass]="sidenave">
+
+    <div [ngClass]="grid" fxLayout="row" fxLayoutAlign="space-around center" >
+
+        <mat-card class="matcard"  *ngFor='let array of cards' [style.backgroundColor]="array.color">
+
+            <div fxLayout='row' fxLayoutAlign="space-between center" >
+                <div class="title" (click)="openDialog(array)">
+                    {{array.title}}
+                </div>
+                <div>
+                    <button *ngIf="array.pinned" matTooltip="Unpin note" mat-icon-button color="basic" (click)=doUnPinned(array)>
+                        <img src="../../../assets/unpinbar.svg">
+                    </button>
+                    <button *ngIf="!array.pinned" matTooltip="Pin note"  mat-icon-button color="basic" (click)=doPinned(array)>
+                        <img  src="../../../assets/pinbar.svg">
+                    </button>
+              
+                </div>
+            </div>
+            <div (click)="openDialog(array)">
+                {{array.description}}
+
+            </div>
+
+
+            <div fxFlex="100" *ngIf="trash=='trash'" fxLayoutAlign="start center">
+                <button mat-icon-button [matMenuTriggerFor]="menu" colour="basic" matTooltip="more">
+                    <img id="img" src="../../../assets/more.svg" />
+                </button>
+                <mat-menu #menu="matMenu">
+                    <button mat-menu-item (click)="deleteForever(array)">
+                        Delete forever
+                    </button>
+                    <button mat-menu-item (click)="restore(array)">Restore</button>
+                </mat-menu>
+            </div>
+
+            <div *ngIf="trash!='trash'">
+                <app-iconlist class="icon" fxFlex="50" fxFlex.xs="90" [card]="array" [more]="archived"
+                    (archivedCard)="archive($event)" (trashCard)="trashcard($event)"
+                    (unarchiveCard)="unarchived($event)"></app-iconlist>
+            </div>
+        </mat-card>
+    </div>
+</div> -->

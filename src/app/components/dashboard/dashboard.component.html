@@ -32,6 +32,8 @@
       </div>
     </div>
 
+    <!-- Search -->
+
     <div fxFlex="80" fxLayoutAlign="end start">
       <mat-form-field
         appearance="outline"
@@ -45,13 +47,14 @@
 
         <input
           fxFlex="90"
-          [(ngModel)]="value"
-          (keyup)="onKeyUp($event)"
+          [(ngModel)]="search"
+          (keyup)="lookfor"
           matInput
           placeholder="Search"
           [style.fontSize.px]="16"
           class="search-window"
           autocomplete="off"
+          (click)="startSearch"
         />
       </mat-form-field>
     </div>
@@ -104,7 +107,10 @@
       
     </div>
 
-    <button
+<!-- profile pic edit -->
+
+    <button fxHide.xs="100" fxHide.sm="100"
+      class="userProfile"
       mat-icon-button
       [matMenuTriggerFor]="menu1"
       colour="basic"
@@ -164,8 +170,8 @@
         </button>
       </div>
 
-
     </mat-menu>
+
   </mat-toolbar>
 
 
@@ -177,7 +183,7 @@
       #snav
       [mode]="mobileQuery.matches ? 'over' : 'side'"
       [fixedInViewport]="mobileQuery.matches"
-      fixedTopGap="56"
+      fixedTopGap="56" (openedStart)="sidenav()" (closedStart)="sidenav()"
       
       class="sidenav"
     >

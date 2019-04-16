@@ -109,4 +109,15 @@ export class DashboardComponent implements OnInit, OnDestroy {
     this.message="Trash"
     this.router.navigate(['dashboard/trash']);
   }
+  startSearch() {
+    this.router.navigate(['dashboard/search']);
+  }
+  // lookfor() {
+  //   this.changeMessage(this.Search)
+  // }
+
+  sidenav(){
+    console.log('i am run');
+    
+  }
 }

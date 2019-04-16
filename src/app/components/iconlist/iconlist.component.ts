@@ -18,6 +18,7 @@ export class IconlistComponent implements OnInit {
   @Output() archivedCard = new EventEmitter();
   @Output() unarchiveCard = new EventEmitter();
   @Output() emitReminderNote = new EventEmitter();
+  @Output() archivedNoteCard = new EventEmitter();
   
 
   model: any;
@@ -88,6 +89,9 @@ export class IconlistComponent implements OnInit {
 
 // to move notes from note to archive
     doArchive(card){
+      if(card == undefined) {
+        this.archivedNoteCard.emit(true)
+      } else {
       console.log(this.card,"cardddd")
       console.log(card._id,"cardidddddddddd")
       this.notes.archiveNote({
@@ -97,6 +101,7 @@ export class IconlistComponent implements OnInit {
         console.log(data,"dataaaaaaaaaaaaaaaaaaaaa")
         this.cardArchive(card)
       }),err=>console.log(err)
+    }
   }
 
     cardArchive(card){

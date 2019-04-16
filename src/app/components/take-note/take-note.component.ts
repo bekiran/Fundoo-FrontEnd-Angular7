@@ -24,6 +24,7 @@ export class TakeNoteComponent implements OnInit {
   isPined = false;
   reminder =[];
 
+
   todaydate = new Date();
   tomorrow  = new Date(this.todaydate.getFullYear(), this.todaydate.getMonth(),
   (this.todaydate.getDate() + 1), 0, 0, 0, 0);
@@ -55,7 +56,7 @@ export class TakeNoteComponent implements OnInit {
         description: this.noteContent.value,
         reminder: this.reminder,
         pinned: this.isPined,
-        archive: false,
+        archive: this.archive,
         color: this.bgcolor,
         trash: false,
         image: ""
@@ -108,6 +109,10 @@ getReminder($event){
   else{
     this.reminder.push($event)
   }
+}
+archive($event){
+  this.archive = $event;
+  this.addNote();
 }
 
 }
