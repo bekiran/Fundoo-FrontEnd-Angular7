@@ -105,6 +105,7 @@ export class IconlistComponent implements OnInit {
   }
 
     cardArchive(card){
+      card.archive=true
       this.archivedCard.emit(card)
     }
 
@@ -117,6 +118,7 @@ export class IconlistComponent implements OnInit {
       }),err=>console.log(err)
     }
     notArchive(card){
+      card.archive=false
       this.unarchiveCard.emit(card)
     }
 

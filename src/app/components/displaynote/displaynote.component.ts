@@ -6,7 +6,7 @@ import { forEach } from "@angular/router/src/utils/collection";
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from "@angular/material";
 import { UpdatenoteComponent } from "../updatenote/updatenote.component";
 import { NoteServiceService } from "../../service/noteService/note-service.service";
-import { Message } from '@angular/compiler/src/i18n/i18n_ast';
+import { Message } from "@angular/compiler/src/i18n/i18n_ast";
 export interface DialogData {
   array: [];
   cardid: any;
@@ -41,13 +41,23 @@ export class DisplaynoteComponent implements OnInit {
   @Output() emitUnPinnedCard = new EventEmitter();
   @Output() dialogResult = new EventEmitter();
   @Output() emitMainNote = new EventEmitter();
+ 
   @Input() pin;
+  @Input() cond;
+  pinnedValue;
 
-  model
+  model;
   flag1 = true;
   todaydate = new Date();
-  tomorrow  = new Date(this.todaydate.getFullYear(), this.todaydate.getMonth(),
-  (this.todaydate.getDate() + 1), 0, 0, 0, 0);
+  tomorrow = new Date(
+    this.todaydate.getFullYear(),
+    this.todaydate.getMonth(),
+    this.todaydate.getDate() + 1,
+    0,
+    0,
+    0,
+    0
+  );
   // displaymode:boolean=true
 
   constructor(
@@ -70,43 +80,46 @@ export class DisplaynoteComponent implements OnInit {
   unarchived($event) {
     this.archive($event);
   }
-  openDialog(array) {
+  openDialog(array, cond) {
+    var archie = array.archive;
+    this.pinnedValue=array.pinned
     const dialogRef = this.dialog.open(UpdatenoteComponent, {
-      width: "600px",
+      width: "550px",
       // height: "130px",
-      data: {array}
+      data: { array, cond }
     });
 
     dialogRef.afterClosed().subscribe(result => {
-    
-      console.log(result['array'], 'from dialog box');
-      
-      this.emitMainNote.emit(result['array']);
-      if(this.doPinned!=result['array'].isPined){
-      this.dialogResult.emit(result['array']);
+      console.log(result["array"], "from dialog box");
+
+      if (archie != result['array'].archive) {
+        console.log('dnfkjdnfkjdnfkjndfkjdfkj',result['array'].archive)
+        let ind = this.cards.indexOf(result['array']);
+        console.log(ind);
+        this.cards.splice(ind, 1);
+        return;
+      }
+      this.emitMainNote.emit(result["array"]);
+      if (this.pinnedValue != result["array"].pinned) {
+        this.dialogResult.emit(result["array"]);
       }
       this.model = {
-        noteID: result['array']._id,
-        title: result['array'].title,
-        description: result['array'].description,
-      }
-      console.log(this.model, "modelll of update")
-      this.noteService.updatenote(
-        this.model).subscribe(message => {
-          console.log(message)
-        })
-
-
-        this.noteService.updatedescription(
-          this.model).subscribe(Message => {
-            console.log(Message);
-            
-          })
+        noteID: result["array"]._id,
+        title: result["array"].title,
+        description: result["array"].description
+      };
+      console.log(this.model, "modelll of update");
+      this.noteService.updatenote(this.model).subscribe(message => {
+        console.log(message);
       });
 
+      this.noteService.updatedescription(this.model).subscribe(Message => {
+        console.log(Message);
+      });
+    });
   }
 
-  restore(card) {
+  restore(card, cond) {
     try {
       this.noteService
         .deleteNote({
@@ -179,18 +192,15 @@ export class DisplaynoteComponent implements OnInit {
   }
 
   removeReminder(array) {
-    console.log(array,"bgcdvzjh");
+    console.log(array, "bgcdvzjh");
 
-    var model= { "noteID": [array._id],
-    "reminder":"" }
-    console.log(model,"model")
-  
-      this.noteService.removeRemainder( model).subscribe(data => {
-        console.log(data),
-        array.reminder="";
-        // let ind = this.cards.indexOf(array);
-        // array.reminder.splice(ind, 1)
-      })
-   
+    var model = { noteID: [array._id], reminder: "" };
+    console.log(model, "model");
+
+    this.noteService.removeRemainder(model).subscribe(data => {
+      console.log(data), (array.reminder = "");
+      // let ind = this.cards.indexOf(array);
+      // array.reminder.splice(ind, 1)
+    });
   }
 }

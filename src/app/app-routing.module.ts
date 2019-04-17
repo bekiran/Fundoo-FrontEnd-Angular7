@@ -13,6 +13,7 @@ import { TrashComponent } from '../app/components/trash/trash.component';
 import { RemindersComponent } from '../app/components/reminders/reminders.component'
 import { AuthguardService } from './service/authguard/authguard.service';
 import {ReminderComponent} from '../app/components/reminder/reminder.component';
+import { SearchComponent } from './components/search/search.component';
 
 const routes: Routes = [
   {
@@ -63,6 +64,10 @@ const routes: Routes = [
       {
         path: 'reminder',
         component: ReminderComponent
+      },
+      {
+        path: 'search',
+        component: SearchComponent
       }
     ]
   },

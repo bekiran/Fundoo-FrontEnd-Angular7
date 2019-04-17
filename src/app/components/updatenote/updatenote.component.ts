@@ -24,8 +24,8 @@ export class UpdatenoteComponent implements OnInit {
   constructor(public dialogRef: MatDialogRef<UpdatenoteComponent>,
     @Inject(MAT_DIALOG_DATA) public data: DialogData, public noteService : NoteServiceService, 
     private snackBar: MatSnackBar, public dialog: MatDialog) {
-    
-    console.log(this.flag=data['flag']);
+  
+    // console.log(this.flag=data['flag']);
      }
 
   ngOnInit() {
@@ -36,7 +36,7 @@ export class UpdatenoteComponent implements OnInit {
       "pinned": true,
       "noteID": [card._id]
     }).subscribe(data=>{
-      console.log(card.isPined=true,'card pinned')
+      console.log(card.pinned=true,'card pinned')
       console.log(data,"resp dopin")},err=>
       console.log(err)) 
   
@@ -46,7 +46,7 @@ export class UpdatenoteComponent implements OnInit {
         "pinned": false,
         "noteID": [card._id]
       }).subscribe(data=>{
-        console.log(card.isPined=false,'do unpin card')},err=>
+        console.log(card.pinned=false,'do unpin card')},err=>
         console.log(err))
   }
 }

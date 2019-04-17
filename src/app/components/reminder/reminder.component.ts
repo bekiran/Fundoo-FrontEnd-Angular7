@@ -55,6 +55,8 @@ export class ReminderComponent implements OnInit {
 }
 
 customreminder(timeCount){
+  console.log('time ',timeCount);
+  
   this.changed = true;
   this.checker.setHours(timeCount, 0, 0);
   this.model ={
@@ -65,14 +67,14 @@ customreminder(timeCount){
 
 
 saveReminder(){
-  console.log('save reminder run',this.changed,'    ',this.card._id);
+  console.log('save reminder run',this.changed,'    ',this.card._id,'      ');
   
   if(this.changed){
     // console.log(this.model.reminder, "model");
     if(this.card._id==undefined) {
       this.card.reminder =this.model.reminder;
     } else {
-      console.log('api call');
+      console.log('api call',this.model);
       
       this.notes.addRemainder(this.model).subscribe(response => {
         console.log(response,"response");
@@ -83,14 +85,4 @@ saveReminder(){
     
   }
 }
-// customreminder(timeCount){
-//   this.changed = true;
-//   this.checker = setHours(timeCount, 0, 0);
-//   this.model ={
-//     "noteID":[this.card._id],
-//     "reminder": this.checker
-//   }
-// }
-
-
 }

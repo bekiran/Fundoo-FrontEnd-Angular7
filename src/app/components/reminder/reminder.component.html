@@ -41,7 +41,7 @@
 
 <div
   *ngIf="!reminderShow"
-  (click)="$event.stopPropagation()"
+  
   fxLayout="column"
   fxFlex="100"
 >
@@ -88,7 +88,7 @@
       <mat-select [(value)]="selected">
         <mat-option *ngFor="let remind of customList" value="remind.value">
           <div>
-            <button mat-menu-item (clicked)="customReminder(remind.timeCount)">
+            <button mat-menu-item (click)="customreminder(remind.timeCount)">
               <div fxLayout="row" fxLayoutAlign="space-between center"></div>
               <div>{{ remind.timeZone }}</div>
               <div fxFlexOffset="18">{{ remind.time }}</div>
@@ -104,7 +104,7 @@
       <button
         fxLayout="column"
         fxLayoutAlign="end end"
-        (click)="saveReminder()"
+        (click)="saveReminder( )"
         mat-menu-item
       >
         Save

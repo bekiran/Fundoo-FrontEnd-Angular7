@@ -76,15 +76,18 @@ export class NoteComponent implements OnInit {
     this.allcards.splice(0, 0, $event)
   }
   dialogResult($event) {
-    if ($event.isPined) {
-      let ind = this.unpinned.indexOf($event)
-      this.unpinned.splice(ind, 1);
-      this.allcards.splice(0, 0, $event)
-    }
-    else {
+    console.log($event,"event in note");
+    
+    if ($event.pinned) {
       let ind = this.allcards.indexOf($event)
       this.allcards.splice(ind, 1);
-      this.unpinned.splice(0, 0, $event)
+      this.cards.splice(0,0,$event);
+    }
+    else {
+      let ind = this.cards.indexOf($event)
+      this.cards.splice(ind, 1);
+      this.allcards.unshift($event);
     }
   }
+ 
 }

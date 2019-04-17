@@ -14,7 +14,7 @@ import { from } from "rxjs";
 export class TakeNoteComponent implements OnInit {
   pinnedcard: any;
   bgcolor: any = "#FFFFFF";
-  type='note'
+  type='note';
   flag = true;
   flag1= true;
   noteTitle = new FormControl("", [Validators.required, Validators.required]);

@@ -5,12 +5,14 @@
         <div *ngIf="data.cond !='trash'"><input matInput [(ngModel)]="data.array.title" placeholder="add title here"></div>
         <div class="title" *ngIf="data.cond =='trash'" (click)='openSnackBar()'>{{data.array.title}}</div>
           <div *ngIf="data.cond !='trash'" >
+            <button mat-icon-button color="basic">
         <div class="barpin" *ngIf="data.array.pinned" >
           <img src="../../../assets/image/pinbar.svg" (click)='doUnPin(data.array)'/>
         </div>
         <div class="barpin"  *ngIf="!data.array.pinned">
           <img src="../../../assets/image/unpinbar.svg" (click)='doPin(data.array)'/>
         </div>
+      </button>
       </div>
     </div>
   </div>
@@ -41,19 +43,19 @@
     <!-- <div  fxLayout="row" fxLayout="row wrap">
       <mat-chip-list class="chip">
 
-        <div *ngIf="(todaydate | date: 'shortDate') == (data.array.reminder | date: 'shortDate') && (array.reminder!='')">
+        <div *ngIf="(todaydate | date: 'shortDate') == (data.array.reminder | date: 'shortDate') && (data.array.reminder!='')">
           <mat-chip >Today {{array.reminder | date:'shortTime'}}
             <mat-icon matChipRemove (click)="removeReminder(array)">cancel</mat-icon>
           </mat-chip>
         </div>
 
-        <div *ngIf="(tomorrow | date: 'shortDate') == (data.array.reminder | date: 'shortDate') && (array.reminder!='')">
+        <div *ngIf="(tomorrow | date: 'shortDate') == (data.array.reminder | date: 'shortDate') && (data.array.reminder!='')">
             <mat-chip>Tomorrow {{array.reminder | date:'shortTime'}}
               <mat-icon matChipRemove (click)="removeReminder(array)">cancel</mat-icon>
             </mat-chip>
           </div>
 
-          <div *ngIf="(tomorrow | date: 'shortDate') != (data.array.reminder | date: 'shortDate') && (todaydate | date: 'shortDate') != (array.reminder | date: 'shortDate') && (array.reminder!='') ">
+          <div *ngIf="(tomorrow | date: 'shortDate') != (data.array.reminder | date: 'shortDate') && (todaydate | date: 'shortDate') != (data.array.reminder | date: 'shortDate') && (data.array.reminder!='') ">
               <mat-chip>{{array.reminder | date:'medium'}}
                 <mat-icon matChipRemove (click)="removeReminder(array)">cancel</mat-icon>
               </mat-chip>
@@ -64,7 +66,7 @@
 
 <!-- icon -->
         <div fxFlex='100'  *ngIf="data.cond!='trash'">
-          <app-iconlist></app-iconlist>
+          <app-iconlist  [card]=data.array ></app-iconlist>
         </div>
 
         <button fxLayoutAlign='end end' mat-button [mat-dialog-close]="data" cdkFocusInitial >close</button>
