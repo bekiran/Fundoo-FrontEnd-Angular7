@@ -82,6 +82,9 @@ export class DisplaynoteComponent implements OnInit {
   }
   openDialog(array, cond) {
     var archie = array.archive;
+    var delete1=array.trash
+    console.log(delete1);
+    
     this.pinnedValue=array.pinned
     const dialogRef = this.dialog.open(UpdatenoteComponent, {
       width: "550px",
@@ -91,8 +94,10 @@ export class DisplaynoteComponent implements OnInit {
 
     dialogRef.afterClosed().subscribe(result => {
       console.log(result["array"], "from dialog box");
+      console.log("===========================",result["array"].trash);
+      
 
-      if (archie != result['array'].archive) {
+      if (archie != result['array'].archive || delete1!=result['array'].trash) {
         console.log('dnfkjdnfkjdnfkjndfkjdfkj',result['array'].archive)
         let ind = this.cards.indexOf(result['array']);
         console.log(ind);

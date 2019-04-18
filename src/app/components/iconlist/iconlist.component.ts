@@ -134,6 +134,7 @@ export class IconlistComponent implements OnInit {
       
     }
     cardDelete(card){
+      card.trash=true
       this.deletecard.emit(card)
     }
 

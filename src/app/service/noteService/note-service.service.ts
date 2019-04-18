@@ -18,7 +18,6 @@ export class NoteServiceService {
   {
     return this.http.put('isArchived',data)
   }
-
   deleteNote(data){
     return this.http.put('isTrashed',data)
   }
@@ -31,14 +30,9 @@ export class NoteServiceService {
   addRemainder(data){
     return this.http.put('reminder',data)
   }
-  // setHours(data){
-  //   return this.http.put('reminde',data)
-  // }
-
   doPin(data){
     return this.http.put('isPinned',data)
     }
-
   getView() {
     this.gridview();
     return this.subject.asObservable();

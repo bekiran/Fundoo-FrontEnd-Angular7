@@ -183,7 +183,7 @@
       #snav
       [mode]="mobileQuery.matches ? 'over' : 'side'"
       [fixedInViewport]="mobileQuery.matches"
-      fixedTopGap="56" (openedStart)="sidenav()" (closedStart)="sidenav()"
+      fixedTopGap="56" (openedStart)="sidenav(open)" (closedStart)="sidenav(close)"
       
       class="sidenav"
     >
