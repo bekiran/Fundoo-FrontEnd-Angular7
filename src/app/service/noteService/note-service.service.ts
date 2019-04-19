@@ -33,6 +33,8 @@ export class NoteServiceService {
   doPin(data){
     return this.http.put('isPinned',data)
     }
+
+
   getView() {
     this.gridview();
     return this.subject.asObservable();
@@ -49,6 +51,7 @@ export class NoteServiceService {
       this.result = true;
     }
   }
+
   removeRemainder(data){
     return this.http.put('reminder',data)
   }

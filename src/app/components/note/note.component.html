@@ -8,5 +8,5 @@
 
 <div class="others" class = "unpinned1" *ngIf="allcards.length >0 && cards.length >0" >OTHERS</div>
 <app-displaynote [cards]="allcards" [ngClass]="mainClass"   fxLayout="{{layout}}" fxLayout="row wrap" (dialogResult)='dialogResult($event)' fxLayoutAlign="start center"  (emitPinnedCard)="getPinCard($event)" ></app-displaynote>
-
+  
 <!-- *ngIf="pinArray.length >0" -->

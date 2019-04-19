@@ -7,11 +7,13 @@ import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from "@angular/material";
 import { UpdatenoteComponent } from "../updatenote/updatenote.component";
 import { NoteServiceService } from "../../service/noteService/note-service.service";
 import { Message } from "@angular/compiler/src/i18n/i18n_ast";
+import { MockResourceLoader } from '@angular/compiler/testing';
 export interface DialogData {
   array: [];
   cardid: any;
   cond: any;
   flag: boolean;
+  more: any
 }
 
 // export interface DialogData {
@@ -41,6 +43,7 @@ export class DisplaynoteComponent implements OnInit {
   @Output() emitUnPinnedCard = new EventEmitter();
   @Output() dialogResult = new EventEmitter();
   @Output() emitMainNote = new EventEmitter();
+  @Input() More;
  
   @Input() pin;
   @Input() cond;
@@ -80,7 +83,7 @@ export class DisplaynoteComponent implements OnInit {
   unarchived($event) {
     this.archive($event);
   }
-  openDialog(array, cond) {
+  openDialog(array, more) {
     var archie = array.archive;
     var delete1=array.trash
     console.log(delete1);
@@ -89,7 +92,7 @@ export class DisplaynoteComponent implements OnInit {
     const dialogRef = this.dialog.open(UpdatenoteComponent, {
       width: "550px",
       // height: "130px",
-      data: { array, cond }
+      data: { array, more }
     });
 
     dialogRef.afterClosed().subscribe(result => {
@@ -124,7 +127,7 @@ export class DisplaynoteComponent implements OnInit {
     });
   }
 
-  restore(card, cond) {
+  restore(card, more) {
     try {
       this.noteService
         .deleteNote({

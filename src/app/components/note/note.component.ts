@@ -29,7 +29,7 @@ export class NoteComponent implements OnInit {
     this.getCards();
     this.noteService.getView().subscribe((res:any)=>{
       // debugger
-      console.log(res);
+      console.log("note====>",res);
       
         this.view = res;
         this.direction = this.view.data;

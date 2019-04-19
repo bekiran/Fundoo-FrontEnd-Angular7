@@ -18,18 +18,18 @@
       <body>
         <div fxLayout="row" fxLayout.xs="column"fxLayoutGap="2%">
           <mat-form-field   fxFlex.xs="100"  appearance="outline" id="firstname">
-            <mat-label fxFlex="40"> First name</mat-label>
+            <mat-label fxFlex="40" aria-autocomplete="off"> First name</mat-label>
             <input matInput placeholder="First name" [formControl]="firstname" />
           </mat-form-field>
           <mat-form-field  fxFlex.xs="100"   appearance="outline" id="lastname">
-            <mat-label fxFlex="40"> Last name</mat-label>
+            <mat-label fxFlex="40" aria-autocomplete="off"> Last name</mat-label>
             <input matInput placeholder="Last name" [formControl]="lastname"/>
           </mat-form-field>
         </div>
 
         <div>
           <mat-form-field appearance="outline" class="email">
-            <mat-label>Email id</mat-label>
+            <mat-label aria-autocomplete="off">Email id</mat-label>
             <input
               matInput
               placeholder="Enter your email id"
@@ -39,7 +39,6 @@
             <mat-hint fxShow.sm="false" fxShow.xs="false" fxShow="true"
               >Errors appear instantly!</mat-hint
             >
-            <!-- <mat-hint>Enter your Email id to reset</mat-hint>  -->
             <mat-error
               *ngIf="
                 emailFormControl.hasError('email') &&
@@ -56,7 +55,7 @@
 
         <div fxLayout="row" fxLayout.xs="column" fxLayoutGap="2%">
           <mat-form-field appearance="outline" class="password">
-            <mat-label>Password</mat-label>
+            <mat-label aria-autocomplete="off">Password</mat-label>
             <input
               matInput
               placeholder="Enter your password"
@@ -70,7 +69,7 @@
           </mat-form-field>
 
           <mat-form-field appearance="outline" class="confirm">
-            <mat-label>Confirm</mat-label>
+            <mat-label aria-autocomplete="off">Confirm</mat-label>
             <input
               matInput
               placeholder="Enter your password"

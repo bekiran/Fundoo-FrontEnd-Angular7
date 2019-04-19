@@ -1,24 +1,24 @@
 // To import from scss fiel
 @import "../../scss/colour.scss";
 
-.toolbar{
+.toolbar {
   display: flex;
   justify-content: space-between;
   flex-direction: row;
-  background-color:white;
+  background-color: white;
 }
-.iconTitle{
+.iconTitle {
   display: flex;
 }
-.titleFundoo{
+.titleFundoo {
   vertical-align: middle;
   line-height: -45px;
-  width: 100%
+  width: 100%;
 }
-.searchBar{
+.searchBar {
   display: flex;
   width: 50%;
-  border-radius: 2% 
+  border-radius: 2%;
 }
 
 .example-toolbar {
@@ -27,42 +27,6 @@
   border-color: white;
   outline: none;
 }
-// .f {
-//   color: $blue;
-//   font-weight: bold;
-//   font-family: "Gill Sans";
-//   text-align: center;
-// }
-// .u {
-//   color: $red;
-//   font-weight: bold;
-//   font-family: "Gill Sans";
-//   text-align: center;
-// }
-// .n {
-//   color: $yellow;
-//   font-weight: bold;
-//   font-family: "Gill Sans";
-//   text-align: center;
-// }
-// .d {
-//   color: $blue;
-//   font-weight: bold;
-//   font-family: "Gill Sans";
-//   text-align: center;
-// }
-// .o {
-//   color: $green;
-//   font-weight: bold;
-//   font-family: "Gill Sans";
-//   text-align: center;
-// }
-// .oo {
-//   color: $red;
-//   font-weight: bold;
-//   font-family: "Gill Sans";
-//   text-align: center;
-// }
 
 .container {
   display: flex;
@@ -86,7 +50,7 @@
 
 .search {
   border-radius: 10%;
-  margin-left: - 28%;
+  margin-left: -28%;
   width: 100%;
   line-height: 2;
   background: rgba(0, 0, 0, 0.04);
@@ -110,10 +74,9 @@
   left: 0;
   right: 0;
 }
-
 .example-is-mobile .example-toolbar {
-  position: fixed;
-  /* Make sure the toolbar will stay on top of the content as it scrolls past. */
+position: fixed;
+/* Make sure the toolbar will stay on top of the content as it scrolls past. */
   z-index: 2;
 }
 
@@ -122,8 +85,9 @@ h1.example-app-name {
 }
 
 .example-sidenav-container {
-  /* When the sidenav is not fixed, stretch the sidenav container to fill the available space. This
-       causes `<mat-sidenav-content>` to act as our scrolling element for desktop layouts. */
+/* When the sidenav is not fixed, stretch the sidenav container to fill the 
+available space. This causes `<mat-sidenav-content>` to act as our scrolling 
+element for desktop layouts. */
   flex: 1;
   background-color: white;
 }
@@ -136,32 +100,15 @@ h1.example-app-name {
 .example-header-image {
   background-image: url("../../../assets/image/profile.jpg");
   background-size: cover;
-  border-radius: 50%;
-  // margin-top: -8px;
-  // width: 40px;
-  // height: 40px;
-}
-// #user-image-button{
-//   border-radius: 50%;
-//   // margin-top: -8px;
-//   width: 40px;
-//   height: 40px;
-
-// }
-
-.menu-button {
-  width: 20%;
-  // background-image: url("../../../assets/image/profile.jpg");
-  // background-size: cover;
-  // // background-color: aqua;
-  // border-radius: 50%;
-
 }
 
 .menu-button {
+  width: auto;
+  height: auto;
   display: flex;
   justify-content: space-between;
-  padding: 25px 45px;
+  border-radius: 5%;
+  // padding: 25px 45px;
 }
 #user-image-button {
   margin-left: 6%;
@@ -268,58 +215,57 @@ h1.example-app-name {
   width: 140px;
 }
 
-#menu{
-  opacity: 0.7
+#menu {
+  opacity: 0.7;
 }
-#search{
-  opacity: 0.7
+#search {
+  opacity: 0.7;
 }
-#refresh{
-  opacity: 0.7
+#refresh {
+  opacity: 0.7;
 }
-#gridlist{
+#gridlist {
   img {
-      opacity: 0.7
+    opacity: 0.7;
   }
 }
-#title{
+#title {
   opacity: 0.7;
-  font-family: 'Times New Roman';
-  margin-top: 7%
+  font-family: "Times New Roman";
+  margin-top: 7%;
 }
-.signout{
+.signout {
   margin-left: auto;
-  margin-right: auto
+  margin-right: auto;
 }
-
-
 
 // .gb_Ta {
 //   outline: none;
 //   transform: translateZ(0);
 // }
 
-element.style {
-}
-.gb_Fc.gb_7b .gb_Ra, .gb_Fc.gb_7b .gb_Sa, .gb_Fc.gb_7b .gb_z, .gb_7b.gb_z {
-    display: block;
+.gb_Fc.gb_7b .gb_Ra,
+.gb_Fc.gb_7b .gb_Sa,
+.gb_Fc.gb_7b .gb_z,
+.gb_7b.gb_z {
+  display: block;
 }
 .gb_Ta {
-    outline: none;
-    transform: translateZ(0);
+  outline: none;
+  transform: translateZ(0);
 }
 .gb_z {
-    z-index: 991;
-    line-height: normal;
+  z-index: 991;
+  line-height: normal;
 }
 
 .gb_z {
   background: #fff;
   border: 1px solid #ccc;
-  border-color: rgba(0,0,0,.2);
+  border-color: rgba(0, 0, 0, 0.2);
   color: #000;
   // -webkit-box-shadow: 0 2px 10px rgba(0,0,0,.2);
-  box-shadow: 0 2px 10px rgba(0,0,0,.2);
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
   display: none;
   outline: none;
   overflow: hidden;
@@ -327,7 +273,7 @@ element.style {
   right: 8px;
   top: 62px;
   // -webkit-animation: gb__a .2s;
-  animation: gb__a .2s;
+  animation: gb__a 0.2s;
   // -webkit-border-radius: 2px;
   border-radius: 2px;
   // -webkit-user-select: text;
@@ -337,6 +283,13 @@ element.style {
   margin: 20px;
   white-space: nowrap;
 }
-.userProfile{
-  box-shadow: 0 1px 0 rgba(0,0,0,.15);
+.userProfile {
+  box-shadow: 0 1px 0 rgba(0, 0, 0, 0.15);
+}
+
+.profileImage {
+  margin-top: -08px;
+}
+.my-tooltip {
+  height: 100px;
 }

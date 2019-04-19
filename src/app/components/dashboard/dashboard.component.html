@@ -1,6 +1,4 @@
-
-
-  <div class="example-container" [class.example-is-mobile]="mobileQuery.matches">
+<div class="example-container" [class.example-is-mobile]="mobileQuery.matches">
   <mat-toolbar class="example-toolbar">
     <button mat-icon-button (click)="snav.toggle()">
       <mat-icon id="menu" matTooltip="Main menu">menu</mat-icon>
@@ -19,14 +17,13 @@
           src="../../../assets/image/icons8-google-keep.svg"
         />
 
-                <h3 class="example-app-name" fxLayoutAlign="center center">
+        <h3 class="example-app-name" fxLayoutAlign="center center">
           <mat-card-title
             class="fundoo"
             fxLayout="row"
             fxLayoutAlign="end center"
           >
-            <span id="title">{{message}}</span>
-           
+            <span id="title">{{ message }}</span>
           </mat-card-title>
         </h3>
       </div>
@@ -48,39 +45,44 @@
         <input
           fxFlex="90"
           [(ngModel)]="search"
-          (keyup)="lookfor"
+          (keyup)="(lookfor)"
           matInput
           placeholder="Search"
           [style.fontSize.px]="16"
           class="search-window"
           autocomplete="off"
-          (click)="startSearch"
+          (click)="(startSearch)"
         />
       </mat-form-field>
     </div>
 
     <div fxFlex="25" class="settingbtn">
-      <button mat-icon-button color="basic" (click)="refresh()" id="refresh" matTooltip="Refresh">
-        <mat-icon id="refresh">refresh</mat-icon>
-      </button>
-
       <button
         mat-icon-button
         color="basic"
-        id="grid"
-        matTooltip="Grid view"
+        (click)="refresh()"
+        id="refresh"
+        matTooltip="Refresh"
       >
+        <mat-icon id="refresh">refresh</mat-icon>
+      </button>
+
+      <button mat-icon-button color="basic" id="grid" matTooltip="Grid view">
         <mat-icon id="gridlist">
-          <img *ngIf="islist" (click) ="changeview()"
-          
+          <img
+            *ngIf="islist"
+            (click)="changeview()"
             src="../../../assets/image/outline-view_agenda-24px.svg"/>
-          <img isClicked
-          *ngIf="isClicked" (click) ="changeview()"
+          <img
+            isClicked
+            *ngIf="isClicked"
+            (click)="changeview()"
             src="../../../assets/image/download.svg"
         /></mat-icon>
       </button>
 
-      
+      <!-- settings button  -->
+
       <!-- <button
         mat-icon-button
         [matMenuTriggerFor]="menu"
@@ -104,25 +106,25 @@
           ><img src="../../../assets/image/outline-apps-24px.svg"
         /></mat-icon>
       </button> -->
-      
     </div>
 
-<!-- profile pic edit -->
+    <!-- profile pic edit -->
 
-    <button fxHide.xs="100" fxHide.sm="100"
+    <button
+      fxHide.xs="100"
+      fxHide.sm="100"
       class="userProfile"
       mat-icon-button
       [matMenuTriggerFor]="menu1"
-      colour="basic"
       matTooltip=" Fundoo Account"
       [matTooltipClass]="'my-tooltip'"
-      div
       fxLayout="row"
       fxLayoutAlign="end center"
     >
-      <div mat-card-avatar class="example-header-image">
+      <button class="profileImage" mat-fab color="warn">change</button>
+      <!-- <div mat-card-avatar class="example-header-image">
         <mat-icon></mat-icon>
-      </div>
+      </div> -->
     </button>
     <mat-menu
       #menu1="matMenu"
@@ -132,7 +134,7 @@
       class="menu-button"
     >
       <button mat-fab disabled id="user-image-button">
-          <!-- <div class="person-icon">
+        <!-- <div class="person-icon">
               <img [src]="profileImage" style="max-width: 100%; max-height: 
                100%;">
               <input (change)="onPersonEdit($event)" required accept=".jpg" 
@@ -142,25 +144,20 @@
         <div mat-card-avatar class="example-header-image"></div>
       </button>
 
-
       <!-- <div class="profileMenu" class="gb_Ta gb_z gb_7b" aria-label="Account Information" img-loaded="1">
         <div class="gb_1a">
 
         </div>
       </div> -->
 
-
-
       <div class="profileMenu">
-        <div fxLayout="row" fxLayoutAlign="start start">
-       
-        </div>
+        <div fxLayout="row" fxLayoutAlign="start start"></div>
 
         <div fxLayout="row" fxLayoutAlign="center start" class="userNameinf">
-          <p>{{username}}</p>
+          <p>{{ username }}</p>
         </div>
         <div fxLayout="row" fxLayoutAlign="center center">
-          <p class="userEmail">{{email}}</p>
+          <p class="userEmail">{{ email }}</p>
         </div>
 
         <mat-divider></mat-divider>
@@ -169,11 +166,8 @@
           Sign out
         </button>
       </div>
-
     </mat-menu>
-
   </mat-toolbar>
-
 
   <mat-sidenav-container
     class="example-sidenav-container"
@@ -183,50 +177,50 @@
       #snav
       [mode]="mobileQuery.matches ? 'over' : 'side'"
       [fixedInViewport]="mobileQuery.matches"
-      fixedTopGap="56" (openedStart)="sidenav(open)" (closedStart)="sidenav(close)"
-      
+      fixedTopGap="56"
+      (openedStart)="sidenav(open)"
+      (closedStart)="sidenav(close)"
       class="sidenav"
     >
       <mat-nav-list>
         <mat-list role="List">
           <div>
-          <mat-list-item
-            role="listitem"
-            id="note"
-            (click)="note()"
-           
-          >
-            <img id="img1" src="../../../assets/image/note.svg" />
-            Notes</mat-list-item
-          ></div>
+            <mat-list-item role="listitem" id="note" (click)="note()">
+              <img id="img1" src="../../../assets/image/note.svg" />
+              Notes</mat-list-item
+            >
+          </div>
 
           <div>
-          <mat-list-item role="listitem" (click)="reminders()" id="rem">
-            <img id="img2" src="../../../assets/image/remainder.svg" />
-            Reminders</mat-list-item
-          ></div>
+            <mat-list-item role="listitem" (click)="reminders()" id="rem">
+              <img id="img2" src="../../../assets/image/remainder.svg" />
+              Reminders</mat-list-item
+            >
+          </div>
 
           <mat-divider></mat-divider>
           <div>
-          <p id="para">LABELS</p>
-          <mat-list-item role="listitem" (click)="openLabel()" id="lable">
-            <mat-icon id="edit">edit</mat-icon>
-            Edit label
-          </mat-list-item></div>
+            <p id="para">LABELS</p>
+            <mat-list-item role="listitem" (click)="openLabel()" id="lable">
+              <mat-icon id="edit">edit</mat-icon>
+              Edit label
+            </mat-list-item>
+          </div>
 
           <mat-divider></mat-divider>
           <div>
-          <mat-list-item role="listitem" id="arch" (click)="archive()">
-            <img id="img4" src="../../../assets/image/archieve.svg" />
-            Archive</mat-list-item
-          ></div>
+            <mat-list-item role="listitem" id="arch" (click)="archive()">
+              <img id="img4" src="../../../assets/image/archieve.svg" />
+              Archive</mat-list-item
+            >
+          </div>
 
           <div>
-          <mat-list-item role="listitem" id="bin" (click)="trashBox()">
-            <img id="img5" src="../../../assets/image/bin.svg" />
-            Trash</mat-list-item
-          ></div>
-
+            <mat-list-item role="listitem" id="bin" (click)="trashBox()">
+              <img id="img5" src="../../../assets/image/bin.svg" />
+              Trash</mat-list-item
+            >
+          </div>
         </mat-list>
       </mat-nav-list>
     </mat-sidenav>
@@ -234,6 +228,4 @@
       <router-outlet> </router-outlet>
     </mat-sidenav-content>
   </mat-sidenav-container>
-</div> 
-
-
+</div>

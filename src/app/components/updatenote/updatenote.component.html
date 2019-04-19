@@ -2,9 +2,9 @@
 
   <div style="margin: 20px">
     <div fxFlex="100" fxLayoutAlign='space-between start' fxLayout='row'>
-        <div *ngIf="data.cond !='trash'"><input matInput [(ngModel)]="data.array.title" placeholder="add title here"></div>
-        <div class="title" *ngIf="data.cond =='trash'" (click)='openSnackBar()'>{{data.array.title}}</div>
-          <div *ngIf="data.cond !='trash'" >
+        <div *ngIf="data.more !='trash'"><input matInput [(ngModel)]="data.array.title" placeholder="add title here"></div>
+        <div class="title" *ngIf="data.more =='trash'" (click)='openSnackBar()'>{{data.array.title}}</div>
+          <div *ngIf="data.more !='trash'" >
             <button mat-icon-button color="basic">
         <div class="barpin" *ngIf="data.array.pinned" >
           <img src="../../../assets/image/pinbar.svg" (click)='doUnPin(data.array)'/>
@@ -20,15 +20,15 @@
   <div style="margin:20px">
     <!-- ....disc...... -->
 
-    <div *ngIf="data.cond!='trash'"><input class='desc' matInput [(ngModel)]="data.array.description" placeholder="Add description"></div>
-    <div *ngIf="data.cond=='trash'" (click)='openSnackBar()'>{{data.array.description}}</div>
+    <div *ngIf="data.more!='trash'"><input class='desc' matInput [(ngModel)]="data.array.description" placeholder="Add description"></div>
+    <div *ngIf="data.more=='trash'" (click)='openSnackBar()'>{{data.array.description}}</div>
 
     <!-- ..... -->
     
       <!-- <app-iconlist></app-iconlist> -->
 
       <div fxLayoutAlign='space-between end'>
-        <div fxFlex='100' *ngIf="data.cond=='trash'">
+        <div fxFlex='100' *ngIf="data.more=='trash'">
           <button mat-icon-button [matMenuTriggerFor]="menu" colour="basic" matTooltip="more">
             <img id="img" src="../../../assets/image/outline-more_vert-24px.svg" />
           </button>
@@ -65,7 +65,7 @@
   </div> -->
 
 <!-- icon -->
-        <div fxFlex='100'  *ngIf="data.cond!='trash'">
+        <div fxFlex='100'  *ngIf="data.more!='trash'">
           <app-iconlist  [card]=data.array ></app-iconlist>
         </div>
 

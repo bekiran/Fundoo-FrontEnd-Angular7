@@ -7,7 +7,7 @@ export class SearchPipe implements PipeTransform {
 
   transform(value: any, args?: any): any {
     if(!value) return null;
-    if(!args) return null;
+    if(!args) return value;
 
 
     return value.filter(array=>

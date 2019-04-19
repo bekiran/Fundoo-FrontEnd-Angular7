@@ -37,12 +37,13 @@
 
         <div fxLayout="column" fxLayoutAlign="space-around center">
           <mat-form-field appearance="outline" class="email">
-            <mat-label>Email id</mat-label>
+            <mat-label >Email id</mat-label>
             <input
               matInput
               placeholder="Enter your email id"
               [formControl]="emailFormControl"
               [errorStateMatcher]="matcher"
+              aria-autocomplete="off"
             />
             <!-- <mat-hint>Errors appear instantly!</mat-hint> -->
             <mat-error
