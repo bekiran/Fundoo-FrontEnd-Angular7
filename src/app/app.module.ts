@@ -34,7 +34,8 @@ import { ReminderComponent } from './components/reminder/reminder.component';
 import { SearchPipe } from './pipe/search/search.pipe';
 import { LabelPipe } from './pipe/label/label.pipe';
 import { SearchComponent } from './components/search/search.component';
-
+import { ImagecropperComponent } from './components/imagecropper/imagecropper.component';
+import { ImageCropperModule } from 'ngx-image-cropper';
 // import { GridModule } from 'angular-switchable-grid';
 
 
@@ -60,6 +61,8 @@ import { SearchComponent } from './components/search/search.component';
     SearchPipe,
     LabelPipe,
     SearchComponent,
+    ImagecropperComponent,
+    
   
   ],
   imports: [
@@ -82,6 +85,7 @@ import { SearchComponent } from './components/search/search.component';
     MatTooltipModule,
     MatSnackBarModule,
     AppMaterial,
+    ImageCropperModule
     // GridModule
   ],
   providers: [],

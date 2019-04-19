@@ -83,13 +83,13 @@
 
       <!-- settings button  -->
 
-      <!-- <button
+      <button
         mat-icon-button
         [matMenuTriggerFor]="menu"
         colour="basic"
         matTooltip="settings"
       >
-        <mat-icon
+        <mat-icon class="setting"
           ><img src="../../../assets/image/outline-settings-24px.svg"
         /></mat-icon>
       </button>
@@ -101,16 +101,54 @@
         <button mat-menu-item>Keyboard Shortcuts</button>
       </mat-menu>
 
-      <button mat-icon-button color="basic" matTooltip="Apps">
+      <button mat-icon-button color="basic" matTooltip="Apps" [matMenuTriggerFor]="apps" class="app">
         <mat-icon
           ><img src="../../../assets/image/outline-apps-24px.svg"
         /></mat-icon>
-      </button> -->
+      </button>
+      <mat-menu #apps="matMenu" fxLayout="row">
+        <button mat-menu-item (click)="goToUrl()"><img src="../../../assets/image/icons8-google.svg"></button>
+        <button mat-menu-item (click)="goToUrl1()"><img src="../../../assets/image/icons8-google-drive.svg"></button>
+        <button mat-menu-item (click)="goToUrl2()"><img src="../../../assets/image/icons8-google-maps.svg"></button>
+        <button mat-menu-item (click)="goToUrl3()"><img src="../../../assets/image/icons8-play-button.svg"></button>
+        <button mat-menu-item (click)="goToUrl4()"><img src="../../../assets/image/icons8-gmail.svg"></button>
+      </mat-menu>
+
+
     </div>
 
     <!-- profile pic edit -->
 
-    <button
+    <button class="profileImage" mat-mini-fab [ngStyle]="{'background-image': 'url(' + img +')', 'background-size':'cover'}" 
+    [matMenuTriggerFor]="menu1" colour="warn"  matTooltip="Fundoo account : {{ username }}, email: {{ email }}" [matTooltipClass]="'my-tooltip'" 
+    fxLayout="row" fxLayoutAlign="end center"></button>
+
+    <mat-menu id="profile" #menu1="matMenu" class="menu-button" fxLayout="row" fxLayoutAlign="end start">
+
+      <div class="backgroundimage">
+
+        <button mat-fab (click)="$event.stopPropogation()" [ngStyle]="{'background-image': 'url(' + img +')', 'background-size':'cover','width':'64px', 'height': '65px'}"
+        (click)="imageSelectFile.click()" matTooltip="Profile" class="imageSelect"
+        ><div mat-raised-button class="change">Change</div>
+        </button>
+        <div>
+          <div class="profileName">
+            {{ username }}
+          </div>
+          <div class="profileEmail">
+            {{ email }}
+          </div>
+        </div>
+      </div>
+      <mat-divider></mat-divider>
+      <button class="signout" mat-flat-button (click)="signout()" (click)='openSnackBar()'>
+          Sign out
+        </button>
+
+      
+    </mat-menu>
+
+    <!-- <button
       fxHide.xs="100"
       fxHide.sm="100"
       class="userProfile"
@@ -121,12 +159,11 @@
       fxLayout="row"
       fxLayoutAlign="end center"
     >
-      <button class="profileImage" mat-fab color="warn">change</button>
-      <!-- <div mat-card-avatar class="example-header-image">
-        <mat-icon></mat-icon>
-      </div> -->
-    </button>
-    <mat-menu
+      <button class="profileImage" mat-mini-fab color="warn"></button>
+    
+    </button> -->
+
+    <!-- <mat-menu
       #menu1="matMenu"
       div
       fxLayout="row"
@@ -134,21 +171,10 @@
       class="menu-button"
     >
       <button mat-fab disabled id="user-image-button">
-        <!-- <div class="person-icon">
-              <img [src]="profileImage" style="max-width: 100%; max-height: 
-               100%;">
-              <input (change)="onPersonEdit($event)" required accept=".jpg" 
-               type="file" style="opacity: 0.0; position: absolute; top:120px; 
-               left: 30px; bottom: 0; right:0; width: 200px; height:200px;" />
-            </div> -->
+        
         <div mat-card-avatar class="example-header-image"></div>
       </button>
 
-      <!-- <div class="profileMenu" class="gb_Ta gb_z gb_7b" aria-label="Account Information" img-loaded="1">
-        <div class="gb_1a">
-
-        </div>
-      </div> -->
 
       <div class="profileMenu">
         <div fxLayout="row" fxLayoutAlign="start start"></div>
@@ -161,12 +187,11 @@
         </div>
 
         <mat-divider></mat-divider>
-        <!-- <button mat-flat-button (click)="addAccount()">Add account</button> -->
-        <button class="signout" mat-flat-button (click)="signout()">
+        <button class="signout" mat-flat-button (click)="signout()" (click)='openSnackBar()'>
           Sign out
         </button>
       </div>
-    </mat-menu>
+    </mat-menu> -->
   </mat-toolbar>
 
   <mat-sidenav-container

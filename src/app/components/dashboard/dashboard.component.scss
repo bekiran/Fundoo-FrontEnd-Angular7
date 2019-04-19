@@ -1,3 +1,11 @@
+::ng-deep .mat-menu-panel{
+  overflow: hidden;
+  }
+
+::ng-deep .mat-tooltip  {
+  white-space: pre-line    !important;
+}
+
 // To import from scss fiel
 @import "../../scss/colour.scss";
 
@@ -44,8 +52,9 @@
 }
 .menu-button {
   color: #757575;
-  margin-left: 0%;
-  padding: 0% 5%;
+  // margin-left: 0%;
+  // padding: 0% 5%;
+  overflow: hidden;
 }
 
 .search {
@@ -108,6 +117,7 @@ element for desktop layouts. */
   display: flex;
   justify-content: space-between;
   border-radius: 5%;
+  overflow: hidden;
   // padding: 25px 45px;
 }
 #user-image-button {
@@ -216,27 +226,28 @@ h1.example-app-name {
 }
 
 #menu {
-  opacity: 0.7;
+  opacity: 0.6;
 }
 #search {
-  opacity: 0.7;
+  opacity: 0.6;
 }
 #refresh {
-  opacity: 0.7;
+  opacity: 0.8;
 }
 #gridlist {
   img {
-    opacity: 0.7;
+    opacity: 0.6;
   }
 }
 #title {
-  opacity: 0.7;
+  opacity: 0.6;
   font-family: "Times New Roman";
   margin-top: 7%;
 }
 .signout {
   margin-left: auto;
   margin-right: auto;
+  margin-left: 130px
 }
 
 // .gb_Ta {
@@ -288,8 +299,61 @@ h1.example-app-name {
 }
 
 .profileImage {
-  margin-top: -08px;
+  margin-top: 0px
 }
 .my-tooltip {
   height: 100px;
+}
+.setting{
+  opacity: 0.6
+}
+.app{
+  opacity: 0.6;
+}.backgroundimage{
+  width: auto
+}
+.change{
+  bottom: 0;
+    color: #fff;
+    font-size: 9px;
+    font-weight: bold;
+    left: 0;
+    line-height: 9px;
+    position: absolute;
+    padding: 7px 0;
+    text-align: center;
+    width: 96px;
+    margin-left: -15px;
+    
+}
+.profileName{
+  box-sizing: border-box;
+  text-align: center;
+  width: 100%;
+  display: block;
+  padding: 0px;
+  margin-left: 23px;
+  margin-top: -55px;
+  font-family: 'Times New Roman';
+  font-weight: bold
+}
+.profileEmail{
+  box-sizing: border-box;
+  text-align: center;
+  width: 100%;
+  display: block;
+  padding: 34px;
+  margin-left: 33px;
+  margin-top: -28px;
+  opacity: 0.6
+}
+.imageSelect{
+  margin-left: 7px
+}
+.profile{
+  overflow: hidden;
+  
+}
+::ng-deep .mat-menu-panel{
+overflow: hidden;
 }

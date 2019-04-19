@@ -111,12 +111,12 @@
       <button id="arc" *ngIf="more !='archive'" mat-icon-button matTooltip="Archive" >
         <img
           src="../../../assets/image/outline-archive-24px.svg"
-          (click)="doArchive(card)"
+          (click)="doArchive(card)" (click)='openSnackBar1()'
         />
       </button>
       <button id="unarc"  *ngIf="more == 'archive'" mat-icon-button matTooltip="unarchive" >
         <img
-          src="../../../assets/image/outline-unarchive-24px.svg" (click)="doUnArchive(card)"
+          src="../../../assets/image/outline-unarchive-24px.svg" (click)="doUnArchive(card)" (click)='openSnackBar2()'
         />
       </button>
     </div>
@@ -131,7 +131,7 @@
         <button mat-menu-item >show tick boxes</button></div>
         
       <div *ngIf="type!='note'">
-        <button mat-menu-item (click)="deleteNote(card)">Delete Note</button>
+        <button mat-menu-item (click)="deleteNote(card)" (click)='openSnackBar3()'>Delete Note</button>
         <button mat-menu-item  (click)="$event.stopPropagation()">add label</button>
         <div *ngIf='flag4==true'>
           <button mat-menu-item (click)='checklist(card)' (click)='HideTick()'>show tick boxes</button>

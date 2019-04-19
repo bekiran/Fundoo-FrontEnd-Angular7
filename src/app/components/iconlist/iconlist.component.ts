@@ -1,6 +1,7 @@
 import { Component, OnInit, Output, Input } from '@angular/core'; 
 import {NoteServiceService} from "../../service/noteService/note-service.service"
 import { EventEmitter } from '@angular/core';
+import {MatSnackBar} from '@angular/material';
 
 @Component({
   selector: 'app-iconlist',
@@ -54,7 +55,7 @@ export class IconlistComponent implements OnInit {
   ]
 ]
 
-  constructor(private notes:NoteServiceService) { }
+  constructor(private notes:NoteServiceService, private snackBar: MatSnackBar) { }
 
   ngOnInit() {
   }
@@ -141,4 +142,16 @@ export class IconlistComponent implements OnInit {
     reverseFlag(){
       this.flag2=!this.flag2
     }
+
+    openSnackBar1(){
+      this.snackBar.open('Note archived', 'Ok' , {duration:2000})
+    }
+    openSnackBar2(){
+      this.snackBar.open('Note unarchived', 'Ok' , {duration:2000})
+    }
+    openSnackBar3(){
+      this.snackBar.open('Note trashed', 'Ok' , {duration:2000})
+    }
+    
+
 }

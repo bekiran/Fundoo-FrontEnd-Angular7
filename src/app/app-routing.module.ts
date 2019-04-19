@@ -14,6 +14,7 @@ import { RemindersComponent } from '../app/components/reminders/reminders.compon
 import { AuthguardService } from './service/authguard/authguard.service';
 import {ReminderComponent} from '../app/components/reminder/reminder.component';
 import { SearchComponent } from './components/search/search.component';
+import { ImagecropperComponent } from './components/imagecropper/imagecropper.component';
 
 const routes: Routes = [
   {
@@ -75,6 +76,10 @@ const routes: Routes = [
     path: 'updatenote',
     component: UpdatenoteComponent
   },
+  {
+    path : 'imagecropper',
+    component: ImagecropperComponent
+  }
 
 ];
 

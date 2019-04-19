@@ -49,4 +49,7 @@ export class UpdatenoteComponent implements OnInit {
         console.log(card.pinned=false,'do unpin card')},err=>
         console.log(err))
   }
+  openSnackBar(){
+    this.snackBar.open("Can't edit in Trash", "Ok", {duration : 5000})
+  }
 }

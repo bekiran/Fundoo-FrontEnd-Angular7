@@ -8,6 +8,7 @@ import { UpdatenoteComponent } from "../updatenote/updatenote.component";
 import { NoteServiceService } from "../../service/noteService/note-service.service";
 import { Message } from "@angular/compiler/src/i18n/i18n_ast";
 import { MockResourceLoader } from '@angular/compiler/testing';
+import {MatSnackBar} from '@angular/material';
 export interface DialogData {
   array: [];
   cardid: any;
@@ -66,7 +67,7 @@ export class DisplaynoteComponent implements OnInit {
   constructor(
     public http: HttpService,
     public dialog: MatDialog,
-    private noteService: NoteServiceService
+    private noteService: NoteServiceService, private snackBar: MatSnackBar
   ) {}
 
   ngOnInit() {}
@@ -210,5 +211,14 @@ export class DisplaynoteComponent implements OnInit {
       // let ind = this.cards.indexOf(array);
       // array.reminder.splice(ind, 1)
     });
+  }
+  openSnackBar(){
+    this.snackBar.open('Reminder deleted', 'Ok' , {duration:2000})
+  }
+  openSnackBar1(){
+    this.snackBar.open('Note deleted permanently', 'Ok' , {duration:2000})
+  }
+  openSnackBar2(){
+    this.snackBar.open('Note restored', 'Ok' , {duration:2000})
   }
 }
