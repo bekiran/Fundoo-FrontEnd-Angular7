@@ -14,17 +14,21 @@ import { from } from 'rxjs';
 export class ImagecropperComponent implements OnInit {
   imagecroped : any
   response : any
-
+  img:any
   constructor(public dialogRef: MatDialogRef<DashboardComponent>,
     @Inject(MAT_DIALOG_DATA) public data: MatDialog, private userService : UserService) { }
 
   ngOnInit() {
   }
 
-  imageCropped($event) {
+  imageCropped($event){
+  console.log("data",this.data);
+  
     console.log("cropper==>",$event);
     
-    this.imageCropped = $event.file;
+    this.img= $event.file;
+    console.log("kdsghfdsghfdsakljidfhsifhdkaishihf",this.img);
+    
   }
 
   close(){
@@ -33,8 +37,10 @@ export class ImagecropperComponent implements OnInit {
   }
   submit(){
     var formData = new FormData();
-    formData.append('image',this.imagecroped);
+    formData.append('image',this.img);
     this.userService.profilePic(formData).subscribe(data =>{
+       console.log("------------------------------",data);
+      
       this.dialogRef.close(data);
       this.response=data
       localStorage.setItem('image',this.response.profilePic)
