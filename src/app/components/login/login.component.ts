@@ -53,7 +53,7 @@ this.response=data
   localStorage.setItem('userid',this.response._id)
   localStorage.setItem('email',this.emailFormControl.value)
   localStorage.setItem('name',this.response.name)
-  localStorage.setItem('image',this.response.image)
+  localStorage.setItem('image',this.response.profilePic)
   //snackbar to show messages.
 this.snackBar.open("Logged in successfully!!", "ok", { duration: 5000 });
 this.router.navigate(['dashboard'])

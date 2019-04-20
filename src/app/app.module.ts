@@ -85,7 +85,8 @@ import { ImageCropperModule } from 'ngx-image-cropper';
     MatTooltipModule,
     MatSnackBarModule,
     AppMaterial,
-    ImageCropperModule
+    ImageCropperModule,
+   
     // GridModule
   ],
   providers: [],

@@ -26,7 +26,7 @@ import { MatSnackBar } from "@angular/material";
 import { NoteServiceService } from 'src/app/service/noteService/note-service.service';
 import { DOCUMENT } from '@angular/common';
 import { ImagecropperComponent } from '../imagecropper/imagecropper.component'
-import { ImageCropperComponent } from 'ngx-image-cropper';
+// import { ImageCropperComponent } from 'ngx-image-cropper';
 
 @Component({
   selector: "app-dashboard",
@@ -126,16 +126,18 @@ export class DashboardComponent implements OnInit, OnDestroy {
     
   }
   fileUpload($event){
+    console.log("jhgdhs==>", $event);
+    
     this.setProfilePic($event)
   }
   setProfilePic($event){
-    const dialogRef = this.dialog.open(ImageCropperComponent, {
+    const dialogRef = this.dialog.open(ImagecropperComponent, {
       width:'600px',
       data:$event
     });
 
     dialogRef.afterClosed().subscribe(result => {
-      if(result=undefined){
+      if(result==undefined){
         return;
       }this.img=result.data;
       localStorage.setItem('image',this.img)

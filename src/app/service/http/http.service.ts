@@ -47,7 +47,7 @@ export class HttpService {
     url = this.apiBaseurl + url;
     const httpOptions = {
       headers: new HttpHeaders({
-        "Content-Type": "application/json",
+        // "Content-Type": "application/json",
         token: localStorage.getItem("token")
       })
     };

@@ -1,11 +1,12 @@
+<input type="file" (change)="fileChangeEvent($event)" />
 <image-cropper
-  [imageChangedEvent]="data"
-  [maintainAspectRatio]="true"
-  [aspectRatio]="4 / 4"
-  [resizeToWidth]="128"
-  format="png"
-  (imageCropped)="imageCropped($event)"
+    [imageChangedEvent]="data"
+    [maintainAspectRatio]="true"
+    [aspectRatio]="4/ 4"
+    [resizeToWidth]="128"
+    format="png"
+    (imageCropped)="imageCropped($event)"
+   
 ></image-cropper>
-
-<button mat-button (click)=close()>Close</button>
-<button mat-raised-button color="primary" (click)=submit() >Set as profile photo</button>
+<button  mat-button  (click)="cancel()">cancel</button>
+<button  mat-button   (click)="submit()">Submit</button>

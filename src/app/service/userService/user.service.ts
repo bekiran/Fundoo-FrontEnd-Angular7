@@ -18,4 +18,8 @@ export class UserService {
   resetpassword(body: any) {
     return this.service.postUser(body, "resetpassword");
   }
+  profilePic(body: any) {
+    console.log("res @ user service===>",body);
+    return this.service.put( "setProfilePic",body)
+  }
 }

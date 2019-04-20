@@ -22,6 +22,8 @@ export class ImagecropperComponent implements OnInit {
   }
 
   imageCropped($event) {
+    console.log("cropper==>",$event);
+    
     this.imageCropped = $event.file;
   }
 
@@ -30,13 +32,13 @@ export class ImagecropperComponent implements OnInit {
 
   }
   submit(){
-    var formData = new formData();
+    var formData = new FormData();
     formData.append('image',this.imagecroped);
-    // this.userService.profilepic(formData).subscribe(data =>{
-    //   this.dialogRef.close(data);
-    //   this.response.data
-    //   localStorage.setItem('image',this.response.profilepic)
-    // })
+    this.userService.profilePic(formData).subscribe(data =>{
+      this.dialogRef.close(data);
+      this.response=data
+      localStorage.setItem('image',this.response.profilePic)
+    })
     
   }
 
