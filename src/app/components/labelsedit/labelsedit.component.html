@@ -1,0 +1,57 @@
+<div fxFlex="100"  fxLayout="column">
+  <div fxLayoutAlign='start start' class="title">Edit labels</div>
+  <div fxLayout="row">
+    <div *ngIf="flag==false">
+      <button  mat-icon-button matTooltip="Cancle" (click)="reverseFlag()"><img id="button"  src="../../../assets/image/close.svg"></button>
+    </div>
+
+    <div *ngIf="flag==true">
+      <button mat-icon-button matTooltip="Create label" (click)="reverseFlag()"><img id="button" src="../../../assets/image/add.svg" ></button>
+    </div>
+  
+    <div fxLayoutAlign="center center">
+    <mat-form-field class="example-full-width">
+      <div fxFlex="100">
+        <input [(ngModel)]="label" matInput placeholder="Create new Label" autocomplete="off" maxlength="15" >
+      </div>
+      </mat-form-field>
+    </div>
+
+    <div>
+      <button  mat-icon-button matTooltip="add label"> <img id="button" src="../../../assets/image/corrrect.svg" (click)="addLabel(label)"/></button>
+    </div>
+  </div>
+
+  <div *ngFor="let array of labelsList">
+    <div fxLayout="row">
+      <div>
+
+        <button  mat-icon-button matTooltip="delete" (click)="reverseFlag()" (click)="deleteLabel(array)">
+          <img id="button"  src="../../../assets/image/delete.svg" >
+        </button>
+
+      </div>
+
+      <div fxLayoutAlign="center center">
+        <input  matInput  [(ngModel)]="array.label" placeholder="Create new Label" (click)="reverse()" >
+      </div>
+
+      <button class="write" *ngIf='flags==true' mat-icon-button matTooltip="edit label" (click)="reverseFlag()" >
+        <img id="button" src="../../../assets/image/pen.svg"  (click)="reverse()"/>
+      </button>
+
+      <button class="update" *ngIf='flags==false' mat-icon-button matTooltip="update label"   >
+        <img id="button" src="../../../assets/image/corrrect.svg"  (click)="updateLabel(array)"  />
+      </button>
+
+    </div>
+  </div>
+  <mat-divider></mat-divider>
+  <div>
+    <button class="done" mat-button [mat-dialog-close]="label" cdkFocusInitial>
+      Done
+    </button>
+  </div>
+</div>
+
+

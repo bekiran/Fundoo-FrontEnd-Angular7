@@ -45,6 +45,7 @@ export class DisplaynoteComponent implements OnInit {
   @Output() dialogResult = new EventEmitter();
   @Output() emitMainNote = new EventEmitter();
   @Input() More;
+  @Input() Search;
  
   @Input() pin;
   @Input() cond;

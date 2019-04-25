@@ -63,4 +63,23 @@ export class HttpService {
     };
     return this.http.get(this.apiBaseurl + url, httpTocken);
   }
+  getHttpLabel(url) {
+    const httpTocken = {
+      headers: new HttpHeaders({
+        "content-Type": "application/json",
+        token: localStorage.getItem("token")
+      })
+    };
+    return this.http.get(this.apiBaseurl + url,httpTocken);
+  }
+  postJSONLabel(url: string, body: any): any {
+    url = this.apiBaseurl + url;
+    const httpOptions = {
+      headers: new HttpHeaders({
+        // "Content-Type": "application/json",
+        token: localStorage.getItem("token")
+      })
+    };
+    return this.http.post(url, body, httpOptions);
+  }
 }

@@ -62,5 +62,18 @@ export class NoteServiceService {
   updatedescription(data){
     return this.http.put('editDescription',data)
   }
+  getLableList(){
+    return this.http.getHttpLabel('getLabels')
+  }
+  postLabel(data){
+    return this.http.postJSON('addLabel',data)
+
+  }
+  deleteLabel(data){
+    return this.http.postJSONLabel('deleteLabel',data)
+  }
+  updateLabel(data){
+    return this.http.put('updateLabel',data)
+  }
 
 }

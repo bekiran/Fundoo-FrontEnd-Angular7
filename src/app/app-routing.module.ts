@@ -15,6 +15,8 @@ import { AuthguardService } from './service/authguard/authguard.service';
 import {ReminderComponent} from '../app/components/reminder/reminder.component';
 import { SearchComponent } from './components/search/search.component';
 import { ImagecropperComponent } from './components/imagecropper/imagecropper.component';
+import { LabelsComponent } from './components/labels/labels.component';
+import { LabelseditComponent } from './components/labelsedit/labelsedit.component';
 
 const routes: Routes = [
   {
@@ -69,6 +71,11 @@ const routes: Routes = [
       {
         path: 'search',
         component: SearchComponent
+      },
+      {
+        path: 'labels',
+        component: LabelsComponent
+
       }
     ]
   },
@@ -79,6 +86,10 @@ const routes: Routes = [
   {
     path : 'imagecropper',
     component: ImagecropperComponent
+  },
+  {
+    path : 'labelsedit',
+    component : LabelseditComponent
   }
 
 ];

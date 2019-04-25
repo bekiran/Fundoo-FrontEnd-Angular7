@@ -1,6 +1,6 @@
 
 <div
-  *ngFor="let array of cards" 
+  *ngFor="let array of cards | search: Search" 
   fxLayout="row wrap"
   fxLayoutAlign="start center"
   fxLayout.xs="column"

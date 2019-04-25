@@ -36,6 +36,8 @@ import { LabelPipe } from './pipe/label/label.pipe';
 import { SearchComponent } from './components/search/search.component';
 import { ImagecropperComponent } from './components/imagecropper/imagecropper.component';
 import { ImageCropperModule } from 'ngx-image-cropper';
+import { LabelsComponent } from './components/labels/labels.component';
+import { LabelseditComponent } from './components/labelsedit/labelsedit.component';
 // import { GridModule } from 'angular-switchable-grid';
 
 
@@ -62,6 +64,8 @@ import { ImageCropperModule } from 'ngx-image-cropper';
     LabelPipe,
     SearchComponent,
     ImagecropperComponent,
+    LabelsComponent,
+    LabelseditComponent,
     
   
   ],

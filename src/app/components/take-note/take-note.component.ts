@@ -67,7 +67,6 @@ export class TakeNoteComponent implements OnInit {
         this.noteTitle.reset();
         this.noteContent.reset();
         this.bgcolor="#FFFFFF"
-       
       }),
         err => {
           console.log(err);

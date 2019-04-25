@@ -241,7 +241,8 @@ h1.example-app-name {
 }
 #title {
   opacity: 0.6;
-  font-family: "Times New Roman";
+  font-family: sans-serif;
+  // font-style: italic;
   margin-top: 7%;
 }
 .signout {
@@ -356,4 +357,8 @@ h1.example-app-name {
 }
 ::ng-deep .mat-menu-panel{
 overflow: hidden;
+}
+.searchNotes{
+  display: flex;
+  width: 50%;
 }
