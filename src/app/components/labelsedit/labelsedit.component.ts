@@ -50,7 +50,9 @@ export class LabelseditComponent implements OnInit {
         "label": label,
         "userId":userid
       }).subscribe(data=>{
-        this.labelsList.splice(0,0,data)
+        console.log("skjhg",data);
+        
+        this.labelsList.splice(0,0,data['data'])
         this.label=''
       })
     } catch (error) {

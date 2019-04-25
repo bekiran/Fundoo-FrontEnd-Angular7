@@ -15,48 +15,6 @@
     <mat-menu #remindme="matMenu" class="matmenu">
       <div class="remaindMenu">
           <app-reminder [card]='card'></app-reminder>
-        <!-- <mat-nav-list>
-          <mat-list role="List">
-            <mat-list-item role="listitem">
-              <p>Reminder :</p>
-            </mat-list-item>
-
-            <mat-list-item>
-              <p>Later Today  <span id="later">8:00 PM</span></p>
-            </mat-list-item>
-
-            <mat-list-item>
-              <p>Tomorrow  <span id="tom">8:00 AM</span></p>
-            </mat-list-item>
-
-            <mat-list-item>
-              <p>Next week  <span id="nextweek">Mon,8:00AM</span></p>
-            </mat-list-item>
-
-            <mat-list-item>
-              <button mat-menu-item [matMenuTriggerFor]="menu6">
-                <mat-icon>
-                  <img src="../../../assets/image/outline-schedule-24px.svg">
-                </mat-icon>Pick date & time
-            </button>
-            </mat-list-item>
-
-            <div>
-              <mat-menu #menu6="matMenu">
-                <mat-nav-list>
-                  <mat-list>
-                      <div class="pickdate">
-                          <mat-list-item id="pickAdjust">
-                            <span>Pick date and Time </span>
-                          </mat-list-item>
-                        </div>
-                  </mat-list>
-                </mat-nav-list>
-              </mat-menu>
-            </div>
-
-          </mat-list>
-        </mat-nav-list> -->
       </div>
     </mat-menu>
 
@@ -127,12 +85,12 @@
     </button>
     <mat-menu #menu="matMenu">
       <div *ngIf="type=='note'">
-        <button mat-menu-item  (click)="$event.stopPropagation()">add label</button>
+        <button mat-menu-item [matMenuTriggerFor]='labelmenu' (click)="$event.stopPropagation()">add label</button>
         <button mat-menu-item >show tick boxes</button></div>
         
       <div *ngIf="type!='note'">
         <button mat-menu-item (click)="deleteNote(card)" (click)='openSnackBar3()'>Delete Note</button>
-        <button mat-menu-item  (click)="$event.stopPropagation()">add label</button>
+        <button mat-menu-item [matMenuTriggerFor]='labelmenu' (click)="$event.stopPropagation()" >add label</button>
         <div *ngIf='flag4==true'>
           <button mat-menu-item (click)='checklist(card)' (click)='HideTick()'>show tick boxes</button>
         </div>
@@ -142,10 +100,45 @@
         <button mat-menu-item>copy to google docs</button>
       </div>
     </mat-menu> 
+
+
+    <mat-menu #labelmenu=matMenu>
+      <div fxLayout='column' (click)="$event.stopPropagation()">
+        <div>Label note</div>
+        <div fxLayout="row"> 
+          <div>
+            <input (click)="doSomething($event)" matInput [(ngModel)]="label" placeholder="Enter label name" (click)="reverseFlag()">
+          </div>
+          <div >
+              <img src="../../../assets/image/searchicon.svg" alt="">
+            </div>
+        </div>
+
+
+        <div *ngFor="let array of labelsList">
+
+          <div *ngIf="flag1 == true">
+            <div fxLayout="row">
+              <mat-checkbox (click)="$event.stopPropagation()" (click)='saveLabeltoNote(card,label)'>
+                {{array.label}}
+              </mat-checkbox>
+            </div>
+          </div>
+
+          <div *ngIf="flag1 == false">
+              <div fxLayout="row">
+                <mat-checkbox (click)="$event.stopPropagation()" (click)='saveLabeltoNote(card,label)'>
+                  {{array.label}}
+                </mat-checkbox>
+              </div>
+            </div>
+
+        </div>
+
+      </div>
+    </mat-menu>
   </div>
 
 
 
 </html>
-
-

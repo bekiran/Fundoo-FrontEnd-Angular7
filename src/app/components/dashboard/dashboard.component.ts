@@ -44,6 +44,7 @@ export class DashboardComponent implements OnInit, OnDestroy {
   email : any;
   username:string;
   img = localStorage.getItem('image');
+  labelsList:any
   private _mobileQueryListener: () => void;
 
   constructor(
@@ -64,6 +65,7 @@ export class DashboardComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit() {
+    this.getLabels()
     this.islist = true;
     this.isClicked =false;
   }
@@ -182,6 +184,22 @@ export class DashboardComponent implements OnInit, OnDestroy {
       } catch (error) {
         console.log("error occured"); 
       }
+    }
+  }
+
+  getLabels(){
+    try {
+      var userid=localStorage.getItem("userid")
+      this.notes.getLableList().subscribe(data=>{
+        console.log("labels in labels edit comp==>",data);
+        
+        this.labelsList=data['data'];
+        this.labelsList=this.labelsList.reverse()
+        console.log("svg",this.labelsList);
+        
+      })
+    } catch (error) {
+      console.log("error at getting labels");
     }
   }
 }

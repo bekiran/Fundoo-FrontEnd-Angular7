@@ -242,17 +242,18 @@
           <mat-divider></mat-divider>
           <!-- *************************** labels *********************************** -->
         
-            <div id="para">LABELS</div>
-            <div>
-              <button mat-button (click)="editlabel()">
-                  <mat-icon>label_outline</mat-icon>
-              </button>
+            <!-- <div id="para">LABELS</div> -->
+            <div *ngFor='let array of labelsList'>
+                <mat-list-item role="listitem" id="lable">
+                    <mat-icon id="edit">label_outline</mat-icon>
+                    {{array.label}}
+                  </mat-list-item>
             </div>
+
             <mat-list-item role="listitem" (click)="openLabel()" id="lable">
               <mat-icon id="edit">edit</mat-icon>
               Edit labels
             </mat-list-item>
-          
 
           <mat-divider></mat-divider>
 

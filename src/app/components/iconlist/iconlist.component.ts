@@ -1,7 +1,9 @@
 import { Component, OnInit, Output, Input } from '@angular/core'; 
 import {NoteServiceService} from "../../service/noteService/note-service.service"
 import { EventEmitter } from '@angular/core';
-import {MatSnackBar} from '@angular/material';
+import {MatSnackBar,MatDialog} from '@angular/material';
+import { LabelseditComponent } from '../labelsedit/labelsedit.component'
+import { from } from 'rxjs';
 
 @Component({
   selector: 'app-iconlist',
@@ -25,10 +27,13 @@ export class IconlistComponent implements OnInit {
   model: any;
   flag = false;
   flag2 = true;
+  flag1 = true;
   flag3 = true;
   flag4 = true;
   display=false;
   allcards:any;
+  labelsList:any;
+  label:string
   
 
   /***************************************************************
@@ -55,9 +60,10 @@ export class IconlistComponent implements OnInit {
   ]
 ]
 
-  constructor(private notes:NoteServiceService, private snackBar: MatSnackBar) { }
+  constructor(private notes:NoteServiceService, private snackBar: MatSnackBar,  public dialog: MatDialog,) { }
 
   ngOnInit() {
+    this.getLabels()
   }
   
   colorsEdit(color,card) {
@@ -139,6 +145,21 @@ export class IconlistComponent implements OnInit {
       this.deletecard.emit(card)
     }
 
+    // openLabel(){
+    //   {
+    //     try {
+    //       const dialogRef = this.dialog.open(LabelseditComponent, {
+    //         width:'auto',
+    //         data:{}
+  
+    //       })
+          
+    //     } catch (error) {
+    //       console.log("error occured"); 
+    //     }
+    //   }
+    // }
+
     reverseFlag(){
       this.flag2=!this.flag2
     }
@@ -152,6 +173,56 @@ export class IconlistComponent implements OnInit {
     openSnackBar3(){
       this.snackBar.open('Note trashed', 'Ok' , {duration:2000})
     }
+
+
+
+    getLabels(){
+      try {
+        var userid=localStorage.getItem("userid")
+        this.notes.getLableList().subscribe(data=>{
+          console.log("labels in labels edit comp==>",data);
+          
+          this.labelsList=data['data'];
+          this.labelsList=this.labelsList.reverse()
+        })
+      } catch (error) {
+        console.log("error at getting labels");
+      }
+    }
+
+     /******* To add labels  *********/
+
+  addLabel(label){
+    try {
+      var userid=localStorage.getItem("userid")
+      this.notes.postLabel({
+        "label": label,
+        "userId":userid
+      }).subscribe(data=>{
+        console.log("skjhg",data);
+        
+        this.labelsList.splice(0,0,data['data'])
+        this.label=''
+      })
+    } catch (error) {
+      console.log("Error at adding label");
+    }
+  }
+
+  doSomething($event: any) {
+    this.flag3 = !this.flag3
+    $event.stopPropagation();
+    //Another instructions
+  }
+  
+  saveLabeltoNote(card,label){
+    if(card != undefined){
+      this.notes.saveLabelToNote(card._id,label._id).subscribe(data=>{
+
+      })
+    }
+
+  }
     
 
 }
