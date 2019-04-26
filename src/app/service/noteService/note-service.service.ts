@@ -76,8 +76,10 @@ export class NoteServiceService {
     return this.http.put('updateLabel',data)
   }
 
-  saveLabelToNote(card,array){
-    return this.http.postJSON('notes/'+card+'/saveLabelToNote/'+array+'/add','')
+  saveLabelToNote(body){
+    return this.http.postJSON('saveLabelToNote',body)
   }
-
+  // deleteLabelfromNotes(body){
+  //   return this.http.postJSON('deleteLabelToNote',body)
+  // }
 }

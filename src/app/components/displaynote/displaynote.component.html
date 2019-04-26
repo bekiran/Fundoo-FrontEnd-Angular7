@@ -122,6 +122,21 @@
       </mat-chip-list>
     </div>
 
+    <!-- Labels -->
+    
+    <div *ngFor="let labels of array.noteLabels">
+      <mat-chip-list selected>
+        <mat-chip
+          style="padding-right:0px;padding-left:7px;padding-top: 0px;padding-bottom: 0px"
+          class="btn"
+          >{{ labels.label }}
+          <mat-icon matChipRemove (click)="deleteLabelFromNote(array, labels)"
+            >cancel</mat-icon
+          >
+        </mat-chip>
+      </mat-chip-list>
+    </div>
+
     <!-- more menu icon button -->
 
     <div fxFlex="100" *ngIf="more == 'trash'" fxLayoutAlign="start center" >

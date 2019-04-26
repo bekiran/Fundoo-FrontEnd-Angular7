@@ -10,11 +10,14 @@ import { Message } from "@angular/compiler/src/i18n/i18n_ast";
 import { MockResourceLoader } from '@angular/compiler/testing';
 import {MatSnackBar} from '@angular/material';
 export interface DialogData {
+  labelsList:any
   array: [];
   cardid: any;
   cond: any;
   flag: boolean;
   more: any
+  labelname:string;
+
 }
 
 // export interface DialogData {
@@ -46,6 +49,7 @@ export class DisplaynoteComponent implements OnInit {
   @Output() emitMainNote = new EventEmitter();
   @Input() More;
   @Input() Search;
+  @Input()
  
   @Input() pin;
   @Input() cond;
@@ -222,4 +226,38 @@ export class DisplaynoteComponent implements OnInit {
   openSnackBar2(){
     this.snackBar.open('Note restored', 'Ok' , {duration:2000})
   }
+
+  // addlabel($event) {
+  //   this.labelname = $event.label
+  // }
+
+  deleteLabelFromNote(card,label){
+    if(card != undefined){
+      this.noteService.saveLabelToNote({
+
+	        "noteID":card._id,
+        	"label":label.label,
+	            "pull":true
+      }).subscribe(data=>{
+console.log("data in save labels",data)
+      })
+    }
+
+  }
+
+  // getLabels(){
+  //   try {
+  //     var userid=localStorage.getItem("userid")
+  //     this.noteService.getLableList().subscribe(data=>{
+  //       console.log("labels in labels edit comp==>",data);
+        
+  //       this.labelsList=data['data'];
+  //       this.labelsList=this.labelsList.reverse()
+  //       console.log("svg",this.labelsList);
+        
+  //     })
+  //   } catch (error) {
+  //     console.log("error at getting labels");
+  //   }
+  // }
 }

@@ -119,7 +119,7 @@
 
           <div *ngIf="flag1 == true">
             <div fxLayout="row">
-              <mat-checkbox (click)="$event.stopPropagation()" (click)='saveLabeltoNote(card,label)'>
+              <mat-checkbox (click)="$event.stopPropagation()" (click)='saveLabeltoNote(card,array)'>
                 {{array.label}}
               </mat-checkbox>
             </div>
@@ -127,7 +127,7 @@
 
           <div *ngIf="flag1 == false">
               <div fxLayout="row">
-                <mat-checkbox (click)="$event.stopPropagation()" (click)='saveLabeltoNote(card,label)'>
+                <mat-checkbox (click)="$event.stopPropagation()" (click)='saveLabeltoNote(card,array)'>
                   {{array.label}}
                 </mat-checkbox>
               </div>

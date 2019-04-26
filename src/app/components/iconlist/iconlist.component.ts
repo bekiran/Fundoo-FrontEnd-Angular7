@@ -22,6 +22,7 @@ export class IconlistComponent implements OnInit {
   @Output() unarchiveCard = new EventEmitter();
   @Output() emitReminderNote = new EventEmitter();
   @Output() archivedNoteCard = new EventEmitter();
+  @Output() emitLabelToNote = new EventEmitter();
   
 
   model: any;
@@ -217,9 +218,19 @@ export class IconlistComponent implements OnInit {
   
   saveLabeltoNote(card,label){
     if(card != undefined){
-      this.notes.saveLabelToNote(card._id,label._id).subscribe(data=>{
+      this.notes.saveLabelToNote({
 
+	        "noteID":card._id,
+        	"label":label.label,
+	            "pull":false
+      }).subscribe(data=>{
+        card = card['noteLabels'].push(label)
+        console.log("dkjsf==>",card);
+        
+console.log("data in save labels",data)
       })
+    }else{
+      this.emitLabelToNote.emit(label)
     }
 
   }
