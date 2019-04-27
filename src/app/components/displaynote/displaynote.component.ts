@@ -7,17 +7,16 @@ import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from "@angular/material";
 import { UpdatenoteComponent } from "../updatenote/updatenote.component";
 import { NoteServiceService } from "../../service/noteService/note-service.service";
 import { Message } from "@angular/compiler/src/i18n/i18n_ast";
-import { MockResourceLoader } from '@angular/compiler/testing';
-import {MatSnackBar} from '@angular/material';
+import { MockResourceLoader } from "@angular/compiler/testing";
+import { MatSnackBar } from "@angular/material";
 export interface DialogData {
-  labelsList:any
+  labelsList: any;
   array: [];
   cardid: any;
   cond: any;
   flag: boolean;
-  more: any
-  labelname:string;
-
+  more: any;
+  labelname: string;
 }
 
 // export interface DialogData {
@@ -50,8 +49,8 @@ export class DisplaynoteComponent implements OnInit {
   @Input() More;
   @Input() Search;
   @Input()
- 
-  @Input() pin;
+  @Input()
+  pin;
   @Input() cond;
   pinnedValue;
 
@@ -72,7 +71,8 @@ export class DisplaynoteComponent implements OnInit {
   constructor(
     public http: HttpService,
     public dialog: MatDialog,
-    private noteService: NoteServiceService, private snackBar: MatSnackBar
+    private noteService: NoteServiceService,
+    private snackBar: MatSnackBar
   ) {}
 
   ngOnInit() {}
@@ -91,10 +91,10 @@ export class DisplaynoteComponent implements OnInit {
   }
   openDialog(array, more) {
     var archie = array.archive;
-    var delete1=array.trash
+    var delete1 = array.trash;
     console.log(delete1);
-    
-    this.pinnedValue=array.pinned
+
+    this.pinnedValue = array.pinned;
     const dialogRef = this.dialog.open(UpdatenoteComponent, {
       width: "550px",
       // height: "130px",
@@ -103,12 +103,14 @@ export class DisplaynoteComponent implements OnInit {
 
     dialogRef.afterClosed().subscribe(result => {
       console.log(result["array"], "from dialog box");
-      console.log("===========================",result["array"].trash);
-      
+      console.log("===========================", result["array"].trash);
 
-      if (archie != result['array'].archive || delete1!=result['array'].trash) {
-        console.log('dnfkjdnfkjdnfkjndfkjdfkj',result['array'].archive)
-        let ind = this.cards.indexOf(result['array']);
+      if (
+        archie != result["array"].archive ||
+        delete1 != result["array"].trash
+      ) {
+        console.log("dnfkjdnfkjdnfkjndfkjdfkj", result["array"].archive);
+        let ind = this.cards.indexOf(result["array"]);
         console.log(ind);
         this.cards.splice(ind, 1);
         return;
@@ -217,47 +219,81 @@ export class DisplaynoteComponent implements OnInit {
       // array.reminder.splice(ind, 1)
     });
   }
-  openSnackBar(){
-    this.snackBar.open('Reminder deleted', 'Ok' , {duration:2000})
+  openSnackBar() {
+    this.snackBar.open("Reminder deleted", "Ok", { duration: 2000 });
   }
-  openSnackBar1(){
-    this.snackBar.open('Note deleted permanently', 'Ok' , {duration:2000})
+  openSnackBar1() {
+    this.snackBar.open("Note deleted permanently", "Ok", { duration: 2000 });
   }
-  openSnackBar2(){
-    this.snackBar.open('Note restored', 'Ok' , {duration:2000})
+  openSnackBar2() {
+    this.snackBar.open("Note restored", "Ok", { duration: 2000 });
   }
 
   // addlabel($event) {
   //   this.labelname = $event.label
   // }
 
-  deleteLabelFromNote(card,label){
-    if(card != undefined){
-      this.noteService.saveLabelToNote({
 
-	        "noteID":card._id,
-        	"label":label.label,
-	            "pull":true
-      }).subscribe(data=>{
-console.log("data in save labels",data)
+  /**
+   * @description: to remove label from card
+   * 
+   * @param card : note card 
+   * 
+   * @param l : label
+   */
+
+  deleteLabelFromNote(card, l) {
+    // if(card != undefined){
+
+    console.log(card, "   hkji      ", l);
+
+    this.noteService
+      .saveLabelToNote({
+        noteID: card._id,
+        label: l,
+        pull: true
       })
-    }
-
+      .subscribe(
+        data => {
+          console.log("data in", data);
+          let ind = l.indexOf(l)
+         l.splice(ind, 1);
+        },
+        err => {
+          console.log(err);
+        }
+      );
   }
+}
+
+
+// deleteLabelFromNote( l) {
+  //   try {
+  //     this.noteService.saveLabelToNote( l).subscribe(data => {
+  //       console.log(data)
+  //       let ind = l.indexOf(l)
+  //       l.splice(ind, 1);
+  //     }), err => {
+  //       console.log(err, "err")
+  //     }
+  //   }
+  //   catch (err) {
+  //     console.log(err)
+  //   }
+  // }
 
   // getLabels(){
   //   try {
   //     var userid=localStorage.getItem("userid")
   //     this.noteService.getLableList().subscribe(data=>{
   //       console.log("labels in labels edit comp==>",data);
-        
+
   //       this.labelsList=data['data'];
   //       this.labelsList=this.labelsList.reverse()
   //       console.log("svg",this.labelsList);
-        
+
   //     })
   //   } catch (error) {
   //     console.log("error at getting labels");
   //   }
   // }
-}

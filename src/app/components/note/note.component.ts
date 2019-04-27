@@ -38,8 +38,8 @@ export class NoteComponent implements OnInit {
   }
   getCards() {
     this.http.getHttp("getNotes").subscribe(data => {
-      console.log(data);
-      console.log(data['data'],"ghghfghvfghfghghghdf");
+      console.log("wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwww",data);
+      console.log("data in notes=====>",data['data']);
       // this.cards = data['data'];
      var data1=data['data'];
      this.cards=[];
@@ -58,6 +58,28 @@ export class NoteComponent implements OnInit {
       
     });
   }
+  // getCards() {
+  //   this.http.getHttp("getNotes").subscribe(data => {
+  //     console.log("wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwww",data);
+  //     console.log(data['data'],"ghghfghvfghfghghghdf");
+  //     // this.cards = data['data'];
+  //    var data1=data['data'];
+  //    this.cards=[];
+  //    this.allcards=[];
+  //     for(let i=0;i<data1.length;i++){
+  //       if(!data1[i].archive && !data1[i].trash && data1[i].pinned){
+  //         this.cards.push(data1[i])
+  //       }
+  //       else if(!data1[i].archive && !data1[i].trash && !data1[i].pinned){
+  //         this.allcards.push(data1[i])
+  //       }
+  //     }
+  //     this.cards = this.cards.reverse();
+  //     this.allcards=this.allcards.reverse();
+  //     console.log('all card is ',this.cards);
+      
+  //   });
+  // }
   recievemessage($event) {
     this.addnote = $event;
     console.log(this.addnote,"......addnote")

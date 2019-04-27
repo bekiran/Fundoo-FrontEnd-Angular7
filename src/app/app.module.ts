@@ -40,6 +40,14 @@ import { LabelsComponent } from './components/labels/labels.component';
 import { LabelseditComponent } from './components/labelsedit/labelsedit.component';
 // import { GridModule } from 'angular-switchable-grid';
 
+import { AngularFireMessagingModule } from '@angular/fire/messaging';
+import { AngularFireDatabaseModule } from '@angular/fire/database';
+import { AngularFireAuthModule } from '@angular/fire/auth';
+import { AngularFireModule } from '@angular/fire';
+import { MessagingService } from './shared/messaging.service';
+import { environment } from '../environments/environment';
+import { AsyncPipe } from '../../node_modules/@angular/common';
+
 
 @NgModule({
   declarations: [
@@ -90,10 +98,15 @@ import { LabelseditComponent } from './components/labelsedit/labelsedit.componen
     MatSnackBarModule,
     AppMaterial,
     ImageCropperModule,
+    BrowserModule,
+    AngularFireDatabaseModule,
+    AngularFireAuthModule,
+    AngularFireMessagingModule,
+    AngularFireModule.initializeApp(environment.firebase),
    
     // GridModule
   ],
-  providers: [],
+  providers: [MessagingService, AsyncPipe],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

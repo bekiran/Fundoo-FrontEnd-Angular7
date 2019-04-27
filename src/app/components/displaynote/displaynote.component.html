@@ -123,14 +123,13 @@
     </div>
 
     <!-- Labels -->
-    
-    <div *ngFor="let labels of array.noteLabels">
+  
+    <div *ngFor="let l of array.label">
       <mat-chip-list selected>
         <mat-chip
-          style="padding-right:0px;padding-left:7px;padding-top: 0px;padding-bottom: 0px"
           class="btn"
-          >{{ labels.label }}
-          <mat-icon matChipRemove (click)="deleteLabelFromNote(array, labels)"
+          >{{ l}}
+          <mat-icon matChipRemove (click)="deleteLabelFromNote(array, l)"
             >cancel</mat-icon
           >
         </mat-chip>
