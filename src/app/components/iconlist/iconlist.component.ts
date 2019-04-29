@@ -4,6 +4,7 @@ import { EventEmitter } from '@angular/core';
 import {MatSnackBar,MatDialog} from '@angular/material';
 import { LabelseditComponent } from '../labelsedit/labelsedit.component'
 import { from } from 'rxjs';
+import { CollaboratorsComponent } from '../collaborators/collaborators.component';
 
 @Component({
   selector: 'app-iconlist',
@@ -231,6 +232,22 @@ console.log("data in save labels",data)
       })
     }else{
       this.emitLabelToNote.emit(label)
+    }
+
+  }
+
+  openCollaborators(){
+    {
+      try {
+        const dialogRef = this.dialog.open(CollaboratorsComponent, {
+          width:'500px',
+          data:{}
+
+        })
+        
+      } catch (error) {
+        console.log("error occured"); 
+      }
     }
 
   }

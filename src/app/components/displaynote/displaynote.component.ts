@@ -234,13 +234,13 @@ export class DisplaynoteComponent implements OnInit {
   // }
 
 
-  /**
+  /*************************************************************
    * @description: to remove label from card
    * 
    * @param card : note card 
    * 
    * @param l : label
-   */
+   *************************************************************/
 
   deleteLabelFromNote(card, l) {
     // if(card != undefined){
@@ -256,8 +256,10 @@ export class DisplaynoteComponent implements OnInit {
       .subscribe(
         data => {
           console.log("data in", data);
-          let ind = l.indexOf(l)
-         l.splice(ind, 1);
+          let ind = this.cards.indexOf(l);
+      l.reminder.splice(ind, 1)
+        //   let ind = l.indexOf(l)
+        //  l.splice(ind, 1);
         },
         err => {
           console.log(err);
@@ -267,33 +269,3 @@ export class DisplaynoteComponent implements OnInit {
 }
 
 
-// deleteLabelFromNote( l) {
-  //   try {
-  //     this.noteService.saveLabelToNote( l).subscribe(data => {
-  //       console.log(data)
-  //       let ind = l.indexOf(l)
-  //       l.splice(ind, 1);
-  //     }), err => {
-  //       console.log(err, "err")
-  //     }
-  //   }
-  //   catch (err) {
-  //     console.log(err)
-  //   }
-  // }
-
-  // getLabels(){
-  //   try {
-  //     var userid=localStorage.getItem("userid")
-  //     this.noteService.getLableList().subscribe(data=>{
-  //       console.log("labels in labels edit comp==>",data);
-
-  //       this.labelsList=data['data'];
-  //       this.labelsList=this.labelsList.reverse()
-  //       console.log("svg",this.labelsList);
-
-  //     })
-  //   } catch (error) {
-  //     console.log("error at getting labels");
-  //   }
-  // }

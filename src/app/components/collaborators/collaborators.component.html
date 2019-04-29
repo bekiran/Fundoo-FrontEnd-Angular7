@@ -1,0 +1,59 @@
+
+
+<div  fxFlex="100" fxLayout="column"  >
+  <div fxLayoutAlign="start start">
+  <h3>Collaborators</h3>
+</div>
+
+  <mat-divider></mat-divider>
+
+  <!-- *************************************** Owner information ************************************* -->
+
+  <div fxLayout="row">
+    <div fxFlex="10">
+      <button mat-mini-fab [ngStyle]="{'background-image':'url(' +img+ ')','background-size':'cover'}" 
+      colour="basic" matTooltip=" Fundoo Account user: {{username}}, email: {{email}}" [matTooltipClass]="'my-tooltip'"
+        fxLayout="row" fxLayoutAlign="end center">
+      </button>
+    </div>
+
+    <div fxFlex='70' fxLayout="column">      
+      <div fxLayout="row">
+        {{username}}  (Owner)
+      </div>
+      <div>
+        {{email}}
+      </div>
+    </div>
+  </div>
+
+  <!-- ************************************ To share Notes with other user *********************************** -->
+
+  <br>
+  <div fxLayout="row">
+    <div fxFlex="10">
+        <button mat-mini-fab 
+          fxLayout="row" fxLayoutAlign="end center">
+        </button>
+    </div>
+    <div fxLayout='column' fxFlex='85'>
+      <div>  <input [(ngModel)]="name" matInput placeholder="person" autocomplete="off" maxlength="15" ></div>
+      <div> <input [(ngModel)]="label" matInput placeholder="Email ID" autocomplete="off" maxlength="30" ></div>
+    </div>
+
+  </div>
+
+  <br>
+  <mat-divider></mat-divider>
+
+  <div class="button-background">
+
+  <div class="button" fxLayout="row">
+    <button mat-button [mat-dialog-close]>Cancel</button>
+    <button mat-button (click)="saveUser()">Save</button>
+ 
+  </div>
+</div>
+
+</div>
+

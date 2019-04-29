@@ -47,6 +47,8 @@ import { AngularFireModule } from '@angular/fire';
 import { MessagingService } from './shared/messaging.service';
 import { environment } from '../environments/environment';
 import { AsyncPipe } from '../../node_modules/@angular/common';
+import { CollaboratorsComponent } from './components/collaborators/collaborators.component';
+
 
 
 @NgModule({
@@ -74,6 +76,8 @@ import { AsyncPipe } from '../../node_modules/@angular/common';
     ImagecropperComponent,
     LabelsComponent,
     LabelseditComponent,
+    CollaboratorsComponent,
+   
     
   
   ],

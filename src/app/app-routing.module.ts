@@ -17,6 +17,7 @@ import { SearchComponent } from './components/search/search.component';
 import { ImagecropperComponent } from './components/imagecropper/imagecropper.component';
 import { LabelsComponent } from './components/labels/labels.component';
 import { LabelseditComponent } from './components/labelsedit/labelsedit.component';
+import { CollaboratorsComponent } from './components/collaborators/collaborators.component';
 
 const routes: Routes = [
   {
@@ -76,6 +77,10 @@ const routes: Routes = [
         path: 'labels',
         component: LabelsComponent
 
+      },
+      {
+        path: 'collaborators',
+        component: CollaboratorsComponent
       }
     ]
   },

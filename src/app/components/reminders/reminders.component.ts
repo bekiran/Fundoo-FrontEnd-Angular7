@@ -33,7 +33,7 @@ export class RemindersComponent implements OnInit {
       // this.cards = data['data'];
      var data1=data['data']
       for(let i=0;i<data1.length;i++){
-        if(!data1[i].archive && !data1[i].trash){
+        if(!data1[i].archive && !data1[i].trash && data1[i].reminder){
           this.cards.push(data1[i])
         }
       }

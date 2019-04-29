@@ -63,7 +63,6 @@ export class LabelseditComponent implements OnInit {
   deleteLabel(array){
     try {
       console.log("hasgbjh",array._id);
-    
       this.noteService.deleteLabel({
         "labelID":array._id
       }).subscribe(data=>{
