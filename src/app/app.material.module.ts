@@ -5,17 +5,10 @@ import { CdkTreeModule } from '@angular/cdk/tree';
 import { A11yModule } from '@angular/cdk/a11y';
 import { NgModule } from '@angular/core';
 import { TextFieldModule } from '@angular/cdk/text-field';
-import {PortalModule} from '@angular/cdk/portal';
-import {CdkStepperModule} from '@angular/cdk/stepper';
-
-
-
-
+import { PortalModule } from '@angular/cdk/portal';
+import { CdkStepperModule } from '@angular/cdk/stepper';
 
 // import {MatMenuModule} from '@angular/material/menu';
-
-
-
 
 import {
   MatAutocompleteModule,
@@ -53,10 +46,8 @@ import {
   MatToolbarModule,
   MatTooltipModule,
   MatTreeModule,
-  
-  
-
 }
+  
 from '@angular/material';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 // import { ContenteditableModule } from '@ng-stack/contenteditable';
@@ -118,7 +109,6 @@ import { FlexLayoutModule } from '@angular/flex-layout'
     ScrollingModule,
     TextFieldModule
     // ContenteditableModule
-
   ],
   exports: [
     MatInputModule,
@@ -179,6 +169,6 @@ import { FlexLayoutModule } from '@angular/flex-layout'
   ]
 })
 
-export class AppMaterial{
+export class AppMaterial {
 
 }

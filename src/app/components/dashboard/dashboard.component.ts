@@ -19,7 +19,7 @@ import {
   Output
 } from "@angular/core";
 import { MediaMatcher } from "@angular/cdk/layout";
-import { MatDialog,} from "@angular/material";
+import { MatDialog, } from "@angular/material";
 import { ChangeDetectorRef, OnDestroy } from "@angular/core";
 import { Router } from "@angular/router";
 import { MatSnackBar } from "@angular/material";
@@ -38,13 +38,13 @@ import { from } from 'rxjs';
 })
 export class DashboardComponent implements OnInit, OnDestroy {
   mobileQuery: MediaQueryList;
-  message: string="Fundoo";
+  message: string = "Fundoo";
   Search: string;
   labelList: any;
-  email : any;
-  username:string;
+  email: any;
+  username: string;
   img = localStorage.getItem('image');
-  labelsList:any
+  labelsList: any
   private _mobileQueryListener: () => void;
 
   constructor(
@@ -55,7 +55,7 @@ export class DashboardComponent implements OnInit, OnDestroy {
     public dialog: MatDialog,
     private snackBar: MatSnackBar,
     private notes: NoteServiceService,
-    private data:DataserviceService
+    private data: DataserviceService
   ) {
     this.mobileQuery = media.matchMedia("(max-width: 600px)");
     this._mobileQueryListener = () => changeDetectorRef.detectChanges();
@@ -67,23 +67,23 @@ export class DashboardComponent implements OnInit, OnDestroy {
   ngOnInit() {
     this.getLabels()
     this.islist = true;
-    this.isClicked =false;
+    this.isClicked = false;
   }
   islist;
   isClicked;
-  changeview(){
+  changeview() {
     // debugger
-    if(this.islist){
+    if (this.islist) {
       this.islist = false;
-      console.log("list",this.islist);
+      console.log("list", this.islist);
       this.isClicked = true;
     }
-    
-    else{
 
-        this.isClicked = false;
-        console.log("grid",this.isClicked);
-        this.islist =true;
+    else {
+
+      this.isClicked = false;
+      console.log("grid", this.isClicked);
+      this.islist = true;
     }
     this.notes.gridview();
   }
@@ -98,32 +98,32 @@ export class DashboardComponent implements OnInit, OnDestroy {
 
   refresh(): void {
     window.location.reload();
-}
+  }
   note() {
-    this.message="Fundoo"
+    this.message = "Fundoo"
     this.router.navigate(['dashboard/note']);
   }
-  reminders(){
+  reminders() {
 
-    this.message="Reminders"
+    this.message = "Reminders"
     this.router.navigate(['dashboard/reminders'])
   }
   signout() {
     localStorage.clear();
     this.router.navigate(['login']);
   }
-  archive(){
-    this.message="Archive"
+  archive() {
+    this.message = "Archive"
     this.router.navigate(['dashboard/archive']);
   }
   trashBox() {
-    this.message="Trash"
+    this.message = "Trash"
     this.router.navigate(['dashboard/trash']);
   }
   startSearch() {
     this.router.navigate(['dashboard/search']);
   }
-  editlabes(){
+  editlabes() {
     this.router.navigate(['dashboard/labels'])
   }
   lookfor() {
@@ -131,72 +131,72 @@ export class DashboardComponent implements OnInit, OnDestroy {
     this.data.changeMessage(this.Search)
   }
 
-  sidenav(){
+  sidenav() {
     console.log('i am run');
-    
+
   }
-  fileUpload($event){
+  fileUpload($event) {
     console.log("jhgdhs==>", $event);
-    
+
     this.setProfilePic($event)
   }
-  setProfilePic($event){
+  setProfilePic($event) {
     const dialogRef = this.dialog.open(ImagecropperComponent, {
-      width:'600px',
-      data:$event
+      width: '600px',
+      data: $event
     });
 
     dialogRef.afterClosed().subscribe(result => {
-      if(result==undefined){
+      if (result == undefined) {
         return;
-      }this.img=result.data;
-      localStorage.setItem('image',this.img)
+      } this.img = result.data;
+      localStorage.setItem('image', this.img)
     })
   }
 
-  openSnackBar(){
-    this.snackBar.open('Signed out successfully', 'Ok' , {duration:2000})
+  openSnackBar() {
+    this.snackBar.open('Signed out successfully', 'Ok', { duration: 2000 })
   }
-  goToUrl():void {
+  goToUrl(): void {
     this.document.location.href = 'https://www.google.com';
   }
-  goToUrl1():void {
+  goToUrl1(): void {
     this.document.location.href = 'https://www.google.com/intl/en-GB/drive';
   }
-  goToUrl2():void {
+  goToUrl2(): void {
     this.document.location.href = 'https://www.google.com/maps';
   }
-  goToUrl3():void {
+  goToUrl3(): void {
     this.document.location.href = 'https://www.youtube.com';
   }
-  goToUrl4():void {
+  goToUrl4(): void {
     this.document.location.href = 'https://www.google.com/intl/en-GB/gmail/about';
   }
-  openLabel(){
+  openLabel() {
     {
       try {
         const dialogRef = this.dialog.open(LabelseditComponent, {
-          width:'auto',
-          data:{}
+          width: 'auto',
+          data: {}
 
         })
-        
+
       } catch (error) {
-        console.log("error occured"); 
+        console.log("error occured");
       }
     }
   }
 
-  getLabels(){
+  getLabels() {
     try {
-      var userid=localStorage.getItem("userid")
-      this.notes.getLableList().subscribe(data=>{
-        console.log("labels in labels edit comp==>",data);
-        
-        this.labelsList=data['data'];
-        this.labelsList=this.labelsList.reverse()
-        console.log("svg",this.labelsList);
-        
+      var userid = localStorage.getItem("userid")
+      this.notes.getLableList().subscribe(data => {
+        console.log("labels in labels edit comp==>", data);
+
+        this.labelsList = data['data'];
+        this.labelsList = this.labelsList.reverse()
+        console.log("svg", this.labelsList);
+
       })
     } catch (error) {
       console.log("error at getting labels");

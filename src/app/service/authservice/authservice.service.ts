@@ -6,9 +6,9 @@ import { Injectable } from '@angular/core';
 export class AuthserviceService {
 
   constructor() { }
-  public isAuthenticated() : boolean{
+  public isAuthenticated(): boolean {
     const token = localStorage.getItem('token');
-    if(token){
+    if (token) {
       return true;
     } else {
       return false;

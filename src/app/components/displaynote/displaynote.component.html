@@ -1,37 +1,12 @@
-
-<div
-  *ngFor="let array of cards | search: Search" 
-  fxLayout="row wrap"
-  fxLayoutAlign="start center"
-  fxLayout.xs="column"
->
-  <mat-card
-    [style.backgroundColor]="array.color"
-    fxFlex.xs="100"
-    fxLayout="column"
-    class="matcard"
-    fxFlex="45"
-    fxFlexOffset.xl="10"
-  >
-    <div
-      fxFlex="55"
-      fxFlexOffset.xl="20"
-      fxFlex.xs="97"
-      fxLayout="row"
-      fxLayoutAlign="start center" 
-    >
+<div *ngFor="let array of cards | search: Search" fxLayout="row wrap" fxLayoutAlign="start center" fxLayout.xs="column">
+  <mat-card [style.backgroundColor]="array.color" fxFlex.xs="100" fxLayout="column" class="matcard" fxFlex="45"
+    fxFlexOffset.xl="10">
+    <div fxFlex="55" fxFlexOffset.xl="20" fxFlex.xs="97" fxLayout="row" fxLayoutAlign="start center">
       <div fxLayout="column" fxFlex="100">
         <div fxLayout="row" fxLayoutAlign="space-between start" fxFlex="100">
-          <div
-            fxFlex="85"
-            fxLayout="row wrap"
-            fxFlex="90"
-            fxFlexOffset.xl="20"
-            fxFlex.xs="97"
-            (click)="openDialog(array, more, array.id)"
-          >
-            <mat-card-title matTextareaAutosize class="title"
-              >{{ array.title }}
+          <div fxFlex="85" fxLayout="row wrap" fxFlex="90" fxFlexOffset.xl="20" fxFlex.xs="97"
+            (click)="openDialog(array, more, array.id)">
+            <mat-card-title matTextareaAutosize class="title">{{ array.title }}
             </mat-card-title>
           </div>
 
@@ -41,31 +16,18 @@
           <div *ngIf="more != 'trash'" id="pin" fxFlex="15">
             <button mat-icon-button color="basic">
               <div class="barpin" *ngIf="array.pinned">
-                <img
-                  src="../../../assets/image/pinbar.svg"
-                  (click)="doUnPinned(array)"
-                />
+                <img src="../../../assets/image/pinbar.svg" (click)="doUnPinned(array)" />
               </div>
               <div class="barpin" *ngIf="!array.pinned">
-                <img
-                  src="../../../assets/image/unpinbar.svg"
-                  (click)="doPinned(array)"
-                />
+                <img src="../../../assets/image/unpinbar.svg" (click)="doPinned(array)" />
               </div>
             </button>
           </div>
         </div>
         <div>
-          <div
-          fxLayoutAlign="start center" 
-            (click)="openDialog(array, more, array.id)"
-          >
-            <mat-card-title
-              matTextareaAutosize
-              class="discp"
-              fxLayout="row wrap"
-              >{{ array.description }}</mat-card-title
-            >
+          <div fxLayoutAlign="start center" (click)="openDialog(array, more, array.id)">
+            <mat-card-title matTextareaAutosize class="discp" fxLayout="row wrap">{{ array.description }}
+            </mat-card-title>
           </div>
         </div>
       </div>
@@ -75,76 +37,52 @@
 
     <div fxLayout="row" fxLayout="row wrap">
       <mat-chip-list class="chip">
-        <div
-          *ngIf="
+        <div *ngIf="
             (todaydate | date: 'shortDate') ==
               (array.reminder | date: 'shortDate') && array.reminder != ''
-          "
-        >
-          <mat-chip
-            >Today {{ array.reminder | date: "shortTime" }}
-            <mat-icon matChipRemove (click)="removeReminder(array)" (click)='openSnackBar()'
-              >cancel</mat-icon
-            >
+          ">
+          <mat-chip>Today {{ array.reminder | date: "shortTime" }}
+            <mat-icon matChipRemove (click)="removeReminder(array)" (click)='openSnackBar()'>cancel</mat-icon>
           </mat-chip>
         </div>
 
-        <div
-          *ngIf="
+        <div *ngIf="
             (tomorrow | date: 'shortDate') ==
               (array.reminder | date: 'shortDate') && array.reminder != ''
-          "
-        >
-          <mat-chip
-            >Tomorrow {{ array.reminder | date: "shortTime" }}
-            <mat-icon matChipRemove (click)="removeReminder(array)" (click)='openSnackBar()'
-              >cancel</mat-icon
-            >
+          ">
+          <mat-chip>Tomorrow {{ array.reminder | date: "shortTime" }}
+            <mat-icon matChipRemove (click)="removeReminder(array)" (click)='openSnackBar()'>cancel</mat-icon>
           </mat-chip>
         </div>
 
-        <div
-          *ngIf="
+        <div *ngIf="
             (tomorrow | date: 'shortDate') !=
               (array.reminder | date: 'shortDate') &&
             (todaydate | date: 'shortDate') !=
               (array.reminder | date: 'shortDate') &&
             array.reminder != ''
-          "
-        >
-          <mat-chip
-            >{{ array.reminder | date: "medium" }}
-            <mat-icon matChipRemove (click)="removeReminder(array)" (click)='openSnackBar()'
-              >cancel</mat-icon
-            >
+          ">
+          <mat-chip>{{ array.reminder | date: "medium" }}
+            <mat-icon matChipRemove (click)="removeReminder(array)" (click)='openSnackBar()'>cancel</mat-icon>
           </mat-chip>
         </div>
       </mat-chip-list>
     </div>
 
     <!-- Labels -->
-  
+
     <div *ngFor="let l of array.label">
       <mat-chip-list selected>
-        <mat-chip
-          class="btn"
-          >{{ l}}
-          <mat-icon matChipRemove (click)="deleteLabelFromNote(array, l)"
-            >cancel</mat-icon
-          >
+        <mat-chip class="btn">{{ l}}
+          <mat-icon matChipRemove (click)="deleteLabelFromNote(array, l)">cancel</mat-icon>
         </mat-chip>
       </mat-chip-list>
     </div>
 
     <!-- more menu icon button -->
 
-    <div fxFlex="100" *ngIf="more == 'trash'" fxLayoutAlign="start center" >
-      <button
-        mat-icon-button
-        [matMenuTriggerFor]="menu"
-        colour="basic"
-        matTooltip="more"
-      >
+    <div fxFlex="100" *ngIf="more == 'trash'" fxLayoutAlign="start center">
+      <button mat-icon-button [matMenuTriggerFor]="menu" colour="basic" matTooltip="more">
         <img id="img" src="../../../assets//image/outline-more_vert-24px.svg" />
       </button>
       <mat-menu #menu="matMenu">
@@ -158,17 +96,9 @@
     <!-- TO IMPORT ICONS FROM ICONLIST -->
 
     <div fxFlex="100" *ngIf="more != 'trash'">
-      <app-iconlist
-        class="icon"
-        fxFlex="50"
-        fxFlex.xs="90"
-        [card]="array"
-        [more]="archived"
-        (archivedCard)="archive($event)"
-        (unarchiveCard)="unarchived($event)"
-        (deletecard)="archive(array)"
-        [type]="type"
-      ></app-iconlist>
+      <app-iconlist class="icon" fxFlex="50" fxFlex.xs="90" [card]="array" [more]="archived"
+        (archivedCard)="archive($event)" (unarchiveCard)="unarchived($event)" (deletecard)="archive(array)"
+        [type]="type"></app-iconlist>
     </div>
   </mat-card>
 </div>

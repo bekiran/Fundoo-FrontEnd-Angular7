@@ -1,107 +1,59 @@
 <html>
-  <!-- TO DISPLAT TAKE NOTE  -->
-  <div
-    *ngIf="flag === true"
-    class="body"
-    (click)="reverseFlag()"
-    fxLayout="row"
-    fxLayoutAlign="space-around start"
-    fxFlex="100"
-  >
-    <mat-card
-      fxFlex="45"
-      fxFlex.xs="100"
-      class="matcard"
-      fxLayoutAlign="space-between center"
-      style="padding-bottom:0px;padding-top:0px"
-    >
-      <div
-        data-text="Take a note..."
-        class="Border"
-        id="noteTitle"
-        fxLayout="column"
-        contenteditable="true"
-        class="maincard"
-      ></div>
-      <div fxLayout="row" fxLayoutAlign="end start">
-        <button mat-icon-button>
-          <mat-icon class="check" matTooltip="New List"
-            ><img
-              id="img2"
-              src="../../../assets/image/outline-check_box-24px.svg"
-          /></mat-icon>
-        </button>
+<!-- TO DISPLAT TAKE NOTE  -->
+<div *ngIf="flag === true" class="body" (click)="reverseFlag()" fxLayout="row" fxLayoutAlign="space-around start"
+  fxFlex="100">
+  <mat-card fxFlex="45" fxFlex.xs="100" class="matcard" fxLayoutAlign="space-between center"
+    style="padding-bottom:0px;padding-top:0px">
+    <div data-text="Take a note..." class="Border" id="noteTitle" fxLayout="column" contenteditable="true"
+      class="maincard"></div>
+    <div fxLayout="row" fxLayoutAlign="end start">
+      <button mat-icon-button>
+        <mat-icon class="check" matTooltip="New List"><img id="img2"
+            src="../../../assets/image/outline-check_box-24px.svg" /></mat-icon>
+      </button>
 
-        <button mat-icon-button>
-          <mat-icon class="check" matTooltip="New note with drawing"
-            ><img id="img2" src="../../../assets/image/outline-brush-24px.svg"
-          /></mat-icon>
-        </button>
+      <button mat-icon-button>
+        <mat-icon class="check" matTooltip="New note with drawing"><img id="img2"
+            src="../../../assets/image/outline-brush-24px.svg" /></mat-icon>
+      </button>
 
-        <button mat-icon-button>
-          <mat-icon class="insert" matTooltip="New note with image"
-            ><img id="img2" src="../../../assets/image/outline-image-24px.svg"
-          /></mat-icon>
-        </button>
-      </div>
-    </mat-card>
-  </div>
+      <button mat-icon-button>
+        <mat-icon class="insert" matTooltip="New note with image"><img id="img2"
+            src="../../../assets/image/outline-image-24px.svg" /></mat-icon>
+      </button>
+    </div>
+  </mat-card>
+</div>
 
-  <!-- TO DISPLAY TITLE AND TAKE A NOTE -->
-  <div
-    *ngIf="flag === false"
-    fxLayout="row"
-    fxLayoutAlign="space-around start"
-    fxFlex="100"
-  >
-    <mat-card
-      fxLayout="column"
-      class="matcard"
-      fxFlex="45"
-      fxFlexOffset.xl="60"
-      fxFlex.xs="100"
-      [style.backgroundColor]="bgcolor"
-    >
-      <div
-        fxFlex="55"
-        fxFlexOffset.xl="20"
-        fxFlex.xs="97"
-        fxLayout="row"
-        fxLayoutAlign="space-between center"
-      >
-        <div class="Border" fxLayout="column" class="takenote">
-          <textarea
-            class="textArea"
-            matTextareaAutosize
-            placeholder="Title"
-            [formControl]="noteTitle"
-          ></textarea>
-        </div>
-        <div fxLayout="row">
-          <button   mat-icon-button color="basic" (click)="pinned()" id="pin">
-            <div class="barpin"  *ngIf="flag1==false" >
-              <img src="../../../assets/image/pinbar.svg" (click)='dopin(false)' />
-            </div>
-
-              <div class="barpin"  *ngIf="flag1==true">
-                  <img src="../../../assets/image/unpinbar.svg" (click)='dopin(true)'/>
-                </div>
-            </button>
-        </div>
-      </div>
-
+<!-- TO DISPLAY TITLE AND TAKE A NOTE -->
+<div *ngIf="flag === false" fxLayout="row" fxLayoutAlign="space-around start" fxFlex="100">
+  <mat-card fxLayout="column" class="matcard" fxFlex="45" fxFlexOffset.xl="60" fxFlex.xs="100"
+    [style.backgroundColor]="bgcolor">
+    <div fxFlex="55" fxFlexOffset.xl="20" fxFlex.xs="97" fxLayout="row" fxLayoutAlign="space-between center">
       <div class="Border" fxLayout="column" class="takenote">
-        <textarea
-          class="textArea"
-          matTextareaAutosize
-          placeholder="Take a note..."
-          [formControl]="noteContent"
-        ></textarea>
+        <textarea class="textArea" matTextareaAutosize placeholder="Title" [formControl]="noteTitle"></textarea>
       </div>
+      <div fxLayout="row">
+        <button mat-icon-button color="basic" (click)="pinned()" id="pin">
+          <div class="barpin" *ngIf="flag1==false">
+            <img src="../../../assets/image/pinbar.svg" (click)='dopin(false)' />
+          </div>
 
-      <!-- mat chip  reminder-->
+          <div class="barpin" *ngIf="flag1==true">
+            <img src="../../../assets/image/unpinbar.svg" (click)='dopin(true)' />
+          </div>
+        </button>
+      </div>
+    </div>
 
-      <!-- <div  fxLayout="row" fxLayout="row wrap">
+    <div class="Border" fxLayout="column" class="takenote">
+      <textarea class="textArea" matTextareaAutosize placeholder="Take a note..."
+        [formControl]="noteContent"></textarea>
+    </div>
+
+    <!-- mat chip  reminder-->
+
+    <!-- <div  fxLayout="row" fxLayout="row wrap">
         <mat-chip-list class="chip">
 
           <div *ngIf="(todaydate | date: 'shortDate') == (array.reminder | date: 'shortDate') && (array.reminder!='')">
@@ -127,20 +79,18 @@
 
     <!-- icon -->
 
-      <div fxFlex="10" fxLayoutAlign="start center">
-        <div fxFlex="50">
-          <app-iconlist [type]='type' [more]='more'  (emitReminderNote)='getReminder($event)' (archivedNoteCard)='archive($event)' (color)="changeColor($event)"></app-iconlist>
-        </div>
-        <div fxFlex="50" fxLayoutAlign="end center">
-          <button
-            class="addnote"
-            mat-button
-            (click)="addNote()"
-          >
-            close
-          </button>
-        </div>
+    <div fxFlex="10" fxLayoutAlign="start center">
+      <div fxFlex="50">
+        <app-iconlist [type]='type' [more]='more' (emitReminderNote)='getReminder($event)'
+          (archivedNoteCard)='archive($event)' (color)="changeColor($event)"></app-iconlist>
       </div>
-    </mat-card>
-  </div>
+      <div fxFlex="50" fxLayoutAlign="end center">
+        <button class="addnote" mat-button (click)="addNote()">
+          close
+        </button>
+      </div>
+    </div>
+  </mat-card>
+</div>
+
 </html>

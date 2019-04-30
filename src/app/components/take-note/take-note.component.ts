@@ -1,4 +1,4 @@
-import { Component, OnInit,} from "@angular/core";
+import { Component, OnInit } from "@angular/core";
 import { HttpService } from "../../service/http/http.service";
 import { FormControl, Validators } from "@angular/forms";
 import { Router } from "@angular/router";
@@ -14,29 +14,34 @@ import { from } from "rxjs";
 export class TakeNoteComponent implements OnInit {
   pinnedcard: any;
   bgcolor: any = "#FFFFFF";
-  type='note';
+  type = "note";
   flag = true;
-  flag1= true;
+  flag1 = true;
   noteTitle = new FormControl("", [Validators.required, Validators.required]);
   noteContent = new FormControl("", [Validators.required, Validators.required]);
   model: any;
   response: any;
   isPined = false;
-  reminder =[];
-
+  reminder = [];
 
   todaydate = new Date();
-  tomorrow  = new Date(this.todaydate.getFullYear(), this.todaydate.getMonth(),
-  (this.todaydate.getDate() + 1), 0, 0, 0, 0);
+  tomorrow = new Date(
+    this.todaydate.getFullYear(),
+    this.todaydate.getMonth(),
+    this.todaydate.getDate() + 1,
+    0,
+    0,
+    0,
+    0
+  );
 
-  
   constructor(
     private httpService: HttpService,
     private router: Router,
     private note: NoteServiceService
-  ) {}
+  ) { }
 
-  ngOnInit() {}
+  ngOnInit() { }
 
   /**********************************************************************************
    * @output : to emit the event
@@ -49,7 +54,7 @@ export class TakeNoteComponent implements OnInit {
   addNote() {
     console.log(localStorage.getItem("token"), "tokennnn");
     this.flag = !this.flag;
-    if ((this.noteTitle || this.noteContent)) {
+    if (this.noteTitle || this.noteContent) {
       this.model = {
         userId: localStorage.getItem("userid"),
         title: this.noteTitle.value,
@@ -66,7 +71,7 @@ export class TakeNoteComponent implements OnInit {
         this.addingNote.emit(data["message"]);
         this.noteTitle.reset();
         this.noteContent.reset();
-        this.bgcolor="#FFFFFF"
+        this.bgcolor = "#FFFFFF";
       }),
         err => {
           console.log(err);
@@ -85,33 +90,31 @@ export class TakeNoteComponent implements OnInit {
    *
    * @param:  to change color
    ************************************************************************/
-  changeColor($event){
+  changeColor($event) {
     console.log("Entered parent");
-    
-    this.bgcolor=$event;
+
+    this.bgcolor = $event;
   }
   /************************************************************************
-  * to reverse the flag 
-  *************************************************************************/
- pinned() {
-  this.flag1 = !this.flag1;
-}
-
-dopin(set) {
-  this.isPined = set
-}
-getReminder($event){
-  if(this.reminder != undefined){
-    this.reminder=[];
-    this.reminder.push($event)
+   * to reverse the flag
+   *************************************************************************/
+  pinned() {
+    this.flag1 = !this.flag1;
   }
-  else{
-    this.reminder.push($event)
-  }
-}
-archive($event){
-  this.archive = $event;
-  this.addNote();
-}
 
+  dopin(set) {
+    this.isPined = set;
+  }
+  getReminder($event) {
+    if (this.reminder != undefined) {
+      this.reminder = [];
+      this.reminder.push($event);
+    } else {
+      this.reminder.push($event);
+    }
+  }
+  archive($event) {
+    this.archive = $event;
+    this.addNote();
+  }
 }

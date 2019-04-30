@@ -11,6 +11,7 @@ export class CollaboratorsComponent implements OnInit {
   username:string
   image:any
   img = localStorage.getItem('image')
+  flag = true
 
   constructor() { 
     this.email = localStorage.getItem('email');
@@ -19,6 +20,10 @@ export class CollaboratorsComponent implements OnInit {
   }
 
   ngOnInit() {
+  }
+
+  reverseFlag(){
+    this.flag=!this.flag
   }
 
 }

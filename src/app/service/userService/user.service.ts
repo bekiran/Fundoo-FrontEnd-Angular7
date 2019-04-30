@@ -4,7 +4,7 @@ import { HttpService } from "../http/http.service";
   providedIn: "root"
 })
 export class UserService {
-  constructor(private service: HttpService) {}
+  constructor(private service: HttpService) { }
 
   login(body: any) {
     return this.service.postUser(body, "login");
@@ -20,6 +20,6 @@ export class UserService {
   }
   profilePic(body: any) {
     // console.log("res @ user service===>",body);
-    return this.service.put( "setProfilePic",body)
+    return this.service.put("setProfilePic", body)
   }
 }

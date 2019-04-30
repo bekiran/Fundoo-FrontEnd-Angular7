@@ -8,7 +8,7 @@ import { environment } from "../../../environments/environment";
 })
 export class HttpService {
   url: string;
-  constructor(public http: HttpClient) {}
+  constructor(public http: HttpClient) { }
   apiBaseurl = environment.baseUrl;
 
   postUser(user, url) {
@@ -70,7 +70,7 @@ export class HttpService {
         token: localStorage.getItem("token")
       })
     };
-    return this.http.get(this.apiBaseurl + url,httpTocken);
+    return this.http.get(this.apiBaseurl + url, httpTocken);
   }
   postJSONLabel(url: string, body: any): any {
     url = this.apiBaseurl + url;

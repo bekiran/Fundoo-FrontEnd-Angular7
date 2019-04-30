@@ -1,102 +1,74 @@
 <html>
-  <div fxLayoutAlign="space-around center" fxFlex="100">
-    <mat-card fxFlex="30" class="card" fxFlex.xs="100">
-      <div>
-        <mat-card-title
-          class="fundoo"
-          fxLayout="row"
-          fxLayoutAlign="center center"
-        >
-          <span class="f">F</span>
-          <span class="u">u</span>
-          <span class="n">n</span>
-          <span class="d">d</span>
-          <span class="o">o</span>
-          <span class="oo">o</span>
-        </mat-card-title>
-      </div>
+<div fxLayoutAlign="space-around center" fxFlex="100">
+  <mat-card fxFlex="30" class="card" fxFlex.xs="100">
+    <div>
+      <mat-card-title class="fundoo" fxLayout="row" fxLayoutAlign="center center">
+        <span class="f">F</span>
+        <span class="u">u</span>
+        <span class="n">n</span>
+        <span class="d">d</span>
+        <span class="o">o</span>
+        <span class="oo">o</span>
+      </mat-card-title>
+    </div>
 
-      <!-- </mat-card-header> -->
+    <!-- </mat-card-header> -->
 
-      <!-- title & subtitle -->
-      <div>
-        <mat-card-title
-          calss="signin"
-          div
-          fxLayout="row"
-          fxLayoutAlign="center center"
-          >Sign In</mat-card-title
-        >
-        <mat-card-subtitle div fxLayout="row" fxLayoutAlign="center center"
-          >Use your Fundoo Account</mat-card-subtitle
-        >
-      </div>
+    <!-- title & subtitle -->
+    <div>
+      <mat-card-title calss="signin" div fxLayout="row" fxLayoutAlign="center center">Sign In</mat-card-title>
+      <mat-card-subtitle div fxLayout="row" fxLayoutAlign="center center">Use your Fundoo Account</mat-card-subtitle>
+    </div>
 
-      <body>
-        <!-- usre email id -->
+    <body>
+      <!-- usre email id -->
 
-        <div fxLayout="column" fxLayoutAlign="space-around center">
-          <mat-form-field appearance="outline" class="email">
-            <mat-label  aria-autocomplete="off" >Email id</mat-label>
-            <input
-              matInput
-              placeholder="Enter your email id"
-              [formControl]="emailFormControl"
-              [errorStateMatcher]="matcher"
-             
-            />
-            <!-- <mat-hint>Errors appear instantly!</mat-hint> -->
-            <mat-error
-              *ngIf="
+      <div fxLayout="column" fxLayoutAlign="space-around center">
+        <mat-form-field appearance="outline" class="email">
+          <mat-label aria-autocomplete="off">Email id</mat-label>
+          <input matInput placeholder="Enter your email id" [formControl]="emailFormControl"
+            [errorStateMatcher]="matcher" />
+          <!-- <mat-hint>Errors appear instantly!</mat-hint> -->
+          <mat-error *ngIf="
                 emailFormControl.hasError('email') &&
                 !emailFormControl.hasError('required')
-              "
-            >
-              Please enter a valid email address
-            </mat-error>
-            <mat-error *ngIf="emailFormControl.hasError('required')">
-              Email is <strong>required</strong>
-            </mat-error>
-          </mat-form-field>
+              ">
+            Please enter a valid email address
+          </mat-error>
+          <mat-error *ngIf="emailFormControl.hasError('required')">
+            Email is <strong>required</strong>
+          </mat-error>
+        </mat-form-field>
 
-          <!-- user password -->
+        <!-- user password -->
 
-          <mat-form-field appearance="outline" class="password">
-            <mat-label>Enter your password</mat-label>
-            <input
-              matInput
-              placeholder="Enter your password"
-              [type]="hide ? 'password' : 'text'"
-              [formControl]="password"
-              autocomplete="off"
-              requried
-            />
-            <mat-icon matSuffix (click)="hide = !hide">{{
+        <mat-form-field appearance="outline" class="password">
+          <mat-label>Enter your password</mat-label>
+          <input matInput placeholder="Enter your password" [type]="hide ? 'password' : 'text'" [formControl]="password"
+            autocomplete="off" requried />
+          <mat-icon matSuffix (click)="hide = !hide">{{
               hide ? "visibility_off" : "visibility"
             }}</mat-icon>
-          </mat-form-field>
-        </div>
-        <div>
-            <button mat-button (click)="forgotpassword()" class="pass-link" fxLayoutAlign="center">
-                Forgot password?
-              </button>
-        </div>
-        <br>
-        <div id="register">
-          <button mat-button (click)="register()" class="link" fxLayoutAlign="center">
-            Create account
-          </button>
-          <button
-            id="sigi-button" mat-button (click)="login()"
-            fxLayoutAlign="center center"
-            mat-raised-button
-            color="primary" mat-button aria-label="Show an example snack-bar"
-          >
-            Sign in
-          </button>
-        </div>
-        <!-- Sign in button -->
-      </body>
-    </mat-card>
-  </div>
+        </mat-form-field>
+      </div>
+      <div>
+        <button mat-button (click)="forgotpassword()" class="pass-link" fxLayoutAlign="center">
+          Forgot password?
+        </button>
+      </div>
+      <br>
+      <div id="register">
+        <button mat-button (click)="register()" class="link" fxLayoutAlign="center">
+          Create account
+        </button>
+        <button id="sigi-button" mat-button (click)="login()" fxLayoutAlign="center center" mat-raised-button
+          color="primary" mat-button aria-label="Show an example snack-bar">
+          Sign in
+        </button>
+      </div>
+      <!-- Sign in button -->
+    </body>
+  </mat-card>
+</div>
+
 </html>

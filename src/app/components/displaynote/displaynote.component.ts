@@ -233,12 +233,11 @@ export class DisplaynoteComponent implements OnInit {
   //   this.labelname = $event.label
   // }
 
-
   /*************************************************************
    * @description: to remove label from card
-   * 
-   * @param card : note card 
-   * 
+   *
+   * @param card : note card
+   *
    * @param l : label
    *************************************************************/
 
@@ -257,9 +256,9 @@ export class DisplaynoteComponent implements OnInit {
         data => {
           console.log("data in", data);
           let ind = this.cards.indexOf(l);
-      l.reminder.splice(ind, 1)
-        //   let ind = l.indexOf(l)
-        //  l.splice(ind, 1);
+          l.reminder.splice(ind, 1);
+          //   let ind = l.indexOf(l)
+          //  l.splice(ind, 1);
         },
         err => {
           console.log(err);
@@ -267,5 +266,3 @@ export class DisplaynoteComponent implements OnInit {
       );
   }
 }
-
-

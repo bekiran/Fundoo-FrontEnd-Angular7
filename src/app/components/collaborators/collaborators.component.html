@@ -1,9 +1,7 @@
-
-
-<div  fxFlex="100" fxLayout="column"  >
+<div fxFlex="100" fxLayout="column">
   <div fxLayoutAlign="start start">
-  <h3>Collaborators</h3>
-</div>
+    <h3>Collaborators</h3>
+  </div>
 
   <mat-divider></mat-divider>
 
@@ -11,15 +9,15 @@
 
   <div fxLayout="row">
     <div fxFlex="10">
-      <button mat-mini-fab [ngStyle]="{'background-image':'url(' +img+ ')','background-size':'cover'}" 
-      colour="basic" matTooltip=" Fundoo Account user: {{username}}, email: {{email}}" [matTooltipClass]="'my-tooltip'"
+      <button mat-mini-fab [ngStyle]="{'background-image':'url(' +img+ ')','background-size':'cover'}" colour="basic"
+        matTooltip=" Fundoo Account user: {{username}}, email: {{email}}" [matTooltipClass]="'my-tooltip'"
         fxLayout="row" fxLayoutAlign="end center">
       </button>
     </div>
 
-    <div fxFlex='70' fxLayout="column">      
+    <div fxFlex='70' fxLayout="column">
       <div fxLayout="row">
-        {{username}}  (Owner)
+        {{username}} (Owner)
       </div>
       <div>
         {{email}}
@@ -32,13 +30,22 @@
   <br>
   <div fxLayout="row">
     <div fxFlex="10">
-        <button mat-mini-fab 
-          fxLayout="row" fxLayoutAlign="end center">
-        </button>
+      <button mat-mini-fab fxLayout="row" fxLayoutAlign="end center">
+      </button>
     </div>
-    <div fxLayout='column' fxFlex='85'>
-      <div>  <input [(ngModel)]="name" matInput placeholder="person" autocomplete="off" maxlength="15" ></div>
-      <div> <input [(ngModel)]="label" matInput placeholder="Email ID" autocomplete="off" maxlength="30" ></div>
+    <div fxFlex='85'>
+      <div fxLayout="row"><input [(ngModel)]="name" matInput placeholder="Person or email to share with"
+          autocomplete="off" maxlength="45">
+
+
+        <div *ngIf="flage==true">
+          <button mat-icon-button (click)="reverseFlag()"><img src="../../../assets/image/corrrect.svg" alt=""></button>
+        </div>
+        <div *ngIf="flag==false">
+          <button mat-icon-button (click)="reverseFlag()"><img src="../../../assets/image/close.svg " alt=""></button>
+        </div>
+      </div>
+      <!-- <div> <input [(ngModel)]="label" matInput placeholder="Email ID" autocomplete="off" maxlength="30" ></div> -->
     </div>
 
   </div>
@@ -48,12 +55,11 @@
 
   <div class="button-background">
 
-  <div class="button" fxLayout="row">
-    <button mat-button [mat-dialog-close]>Cancel</button>
-    <button mat-button (click)="saveUser()">Save</button>
- 
+    <div class="button" fxLayout="row">
+      <button mat-button [mat-dialog-close]>Cancel</button>
+      <button mat-button (click)="saveUser()">Save</button>
+
+    </div>
   </div>
-</div>
 
 </div>
-

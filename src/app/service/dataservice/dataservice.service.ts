@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { BehaviorSubject, Subject} from 'rxjs'
+import { BehaviorSubject, Subject } from 'rxjs'
 
 // Subjects are used for multicasting Observables. This means that Subjects will make sure 
 // each subscription gets the exact same value as the Observable execution is 
@@ -14,16 +14,16 @@ import { BehaviorSubject, Subject} from 'rxjs'
 })
 export class DataserviceService {
 
-  private messageSource = new BehaviorSubject(''); 
+  private messageSource = new BehaviorSubject('');
   currentMessage = this.messageSource.asObservable();
 
   constructor() { }
 
 
-  changeMessage(message: string){
+  changeMessage(message: string) {
     console.log(message);
-    
+
     this.messageSource.next(message)
   }
-  
+
 }

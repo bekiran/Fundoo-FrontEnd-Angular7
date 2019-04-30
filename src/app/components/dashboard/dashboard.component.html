@@ -7,24 +7,11 @@
     </button>
 
     <div fxFlex="2">
-      <div
-        fxFlex="10"
-        fxLayout="row"
-        fxFlex.gt="500px"
-        [style.fontSize.px]="1"
-        matTooltip="Welcome to Fundoo Notes"
-      >
-        <img
-          id="google-keep-logo"
-          src="../../../assets/image/icons8-google-keep.svg"
-        />
+      <div fxFlex="10" fxLayout="row" fxFlex.gt="500px" [style.fontSize.px]="1" matTooltip="Welcome to Fundoo Notes">
+        <img id="google-keep-logo" src="../../../assets/image/icons8-google-keep.svg" />
 
         <h3 class="example-app-name" fxLayoutAlign="center center">
-          <mat-card-title
-            class="fundoo"
-            fxLayout="row"
-            fxLayoutAlign="end center"
-          >
+          <mat-card-title class="fundoo" fxLayout="row" fxLayoutAlign="end center">
             <span id="title">{{ message }}</span>
           </mat-card-title>
         </h3>
@@ -34,45 +21,23 @@
     <!-- ********************************** Search ***************************************** -->
 
     <div fxFlex="80" fxLayoutAlign="end start">
-      <mat-form-field
-        appearance="outline"
-        fxHide.xs
-        [style.fontSize.px]="2"
-        class="search"
-      >
+      <mat-form-field appearance="outline" fxHide.xs [style.fontSize.px]="2" class="search">
         <button mat-icon-button class="search-button">
           <mat-icon id="search" matTooltip="Search">search</mat-icon>
         </button>
 
-        <input
-        
-          fxFlex="90"
-          [(ngModel)]="Search"
-          (keyup)='lookfor()'
-          matInput
-          placeholder="Search"
-          [style.fontSize.px]="16"
-          class="search-window"
-          autocomplete="off"
-          (click)='startSearch()'
-          type="text"
-        />
+        <input fxFlex="90" [(ngModel)]="Search" (keyup)='lookfor()' matInput placeholder="Search"
+          [style.fontSize.px]="16" class="search-window" autocomplete="off" (click)='startSearch()' type="text" />
       </mat-form-field>
     </div>
 
- <!-- tool bar icons -->
+    <!-- tool bar icons -->
 
-    <div fxFlex="25" class="settingbtn"> 
- 
-<!-- refresh butto -->
+    <div fxFlex="25" class="settingbtn">
 
-      <button
-        mat-icon-button
-        color="basic"
-        (click)="refresh()"
-        id="refresh"
-        matTooltip="Refresh"
-      >
+      <!-- refresh butto -->
+
+      <button mat-icon-button color="basic" (click)="refresh()" id="refresh" matTooltip="Refresh">
         <mat-icon id="refresh">refresh</mat-icon>
       </button>
 
@@ -80,16 +45,8 @@
 
       <button fxHide.xs="100" mat-icon-button color="basic" id="grid" matTooltip="Grid view">
         <mat-icon id="gridlist">
-          <img
-            *ngIf="islist"
-            (click)="changeview()"
-            src="../../../assets/image/outline-view_agenda-24px.svg"/>
-          <img
-            isClicked
-            *ngIf="isClicked"
-            (click)="changeview()"
-            src="../../../assets/image/download.svg"
-        /></mat-icon>
+          <img *ngIf="islist" (click)="changeview()" src="../../../assets/image/outline-view_agenda-24px.svg" />
+          <img isClicked *ngIf="isClicked" (click)="changeview()" src="../../../assets/image/download.svg" /></mat-icon>
       </button>
 
       <!-- settings button  -->
@@ -115,9 +72,7 @@
       <!-- app routs to appilaction links -->
 
       <button mat-icon-button color="basic" matTooltip="Apps" [matMenuTriggerFor]="apps" class="app">
-        <mat-icon
-          ><img src="../../../assets/image/outline-apps-24px.svg"
-        /></mat-icon>
+        <mat-icon><img src="../../../assets/image/outline-apps-24px.svg" /></mat-icon>
       </button>
       <mat-menu #apps="matMenu" fxLayout="row rap">
         <button mat-menu-item (click)="goToUrl()"><img src="../../../assets/image/icons8-google.svg"></button>
@@ -131,129 +86,72 @@
     </div>
 
     <!-- user profile pic -->
-    
+
     <button mat-mini-fab [ngStyle]="{'background-image':'url(' +img+ ')','background-size':'cover'}"
-    [matMenuTriggerFor]="menu1" colour="basic" matTooltip=" Fundoo Account user: {{username}}, email: {{email}}" [matTooltipClass]="'my-tooltip'"
-    fxLayout="row" fxLayoutAlign="end center">
-  </button>
+      [matMenuTriggerFor]="menu1" colour="basic" matTooltip=" Fundoo Account user: {{username}}, email: {{email}}"
+      [matTooltipClass]="'my-tooltip'" fxLayout="row" fxLayoutAlign="end center">
+    </button>
 
     <mat-menu id="profile" #menu1="matMenu" class="menu-button" fxLayout="row" fxLayoutAlign="end start">
-      <div  class="backgroundimage" >
+      <div class="backgroundimage">
         <button (click)="$event.stopPropagation()"
-        [ngStyle]="{'background-image':'url(' +img+ ')','background-size':'cover','width':'75px','height':'75px'}"
-        (click)="imageSelectFile.click()" matTooltip="Fundoo Account" mat-mini-fab class="imageSelect">
-        <div mat-raised-button class="change">change</div>
-      </button>
-      <div  >
-          <div  class="profileName">
+          [ngStyle]="{'background-image':'url(' +img+ ')','background-size':'cover','width':'75px','height':'75px'}"
+          (click)="imageSelectFile.click()" matTooltip="Fundoo Account" mat-mini-fab class="imageSelect">
+          <div mat-raised-button class="change">change</div>
+        </button>
+        <div>
+          <div class="profileName">
             {{username}}
           </div>
-          <div  class="profileEmail" >
+          <div class="profileEmail">
             {{email}}
           </div>
         </div>
-    </div>
+      </div>
 
       <input fxHide class="image" type="file" (change)="fileUpload($event)" #imageSelectFile>
 
       <mat-divider></mat-divider>
       <button class="signout" mat-flat-button (click)="signout()" (click)='openSnackBar()'>
-          Sign out
-        </button>
-
-      
-    </mat-menu>
-
-    <!-- <button
-      fxHide.xs="100"
-      fxHide.sm="100"
-      class="userProfile"
-      mat-icon-button
-      [matMenuTriggerFor]="menu1"
-      matTooltip=" Fundoo Account"
-      [matTooltipClass]="'my-tooltip'"
-      fxLayout="row"
-      fxLayoutAlign="end center"
-    >
-      <button class="profileImage" mat-mini-fab color="warn"></button>
-    
-    </button> -->
-
-    <!-- <mat-menu
-      #menu1="matMenu"
-      div
-      fxLayout="row"
-      fxLayoutAlign="end start"
-      class="menu-button"
-    >
-      <button mat-fab disabled id="user-image-button">
-        
-        <div mat-card-avatar class="example-header-image"></div>
+        Sign out
       </button>
 
 
-      <div class="profileMenu">
-        <div fxLayout="row" fxLayoutAlign="start start"></div>
-
-        <div fxLayout="row" fxLayoutAlign="center start" class="userNameinf">
-          <p>{{ username }}</p>
-        </div>
-        <div fxLayout="row" fxLayoutAlign="center center">
-          <p class="userEmail">{{ email }}</p>
-        </div>
-
-        <mat-divider></mat-divider>
-        <button class="signout" mat-flat-button (click)="signout()" (click)='openSnackBar()'>
-          Sign out
-        </button>
-      </div>
-    </mat-menu> -->
+    </mat-menu>
   </mat-toolbar>
 
-  <mat-sidenav-container
-    class="example-sidenav-container"
-    [style.marginTop.px]="mobileQuery.matches ? 56 : 0"
-  >
-    <mat-sidenav
-      #snav
-      [mode]="mobileQuery.matches ? 'over' : 'side'"
-      [fixedInViewport]="mobileQuery.matches"
-      fixedTopGap="56"
-      (openedStart)="sidenav(open)"
-      (closedStart)="sidenav(close)"
-      class="sidenav"
-    >
+  <mat-sidenav-container class="example-sidenav-container" [style.marginTop.px]="mobileQuery.matches ? 56 : 0">
+    <mat-sidenav #snav [mode]="mobileQuery.matches ? 'over' : 'side'" [fixedInViewport]="mobileQuery.matches"
+      fixedTopGap="56" (openedStart)="sidenav(open)" (closedStart)="sidenav(close)" class="sidenav">
       <mat-nav-list>
         <mat-list role="List">
           <div>
             <mat-list-item role="listitem" id="note" (click)="note()">
               <img id="img1" src="../../../assets/image/note.svg" />
-              Notes</mat-list-item
-            >
+              Notes</mat-list-item>
           </div>
 
           <div>
             <mat-list-item role="listitem" (click)="reminders()" id="rem">
               <img id="img2" src="../../../assets/image/remainder.svg" />
-              Reminders</mat-list-item
-            >
+              Reminders</mat-list-item>
           </div>
 
           <mat-divider></mat-divider>
           <!-- *************************** labels *********************************** -->
-        
-            <!-- <div id="para">LABELS</div> -->
-            <div *ngFor='let array of labelsList'>
-                <mat-list-item role="listitem" id="lable">
-                    <mat-icon id="edit">label_outline</mat-icon>
-                    {{array.label}}
-                  </mat-list-item>
-            </div>
 
-            <mat-list-item role="listitem" (click)="openLabel()" id="lable">
-              <mat-icon id="edit">edit</mat-icon>
-              Edit labels
+          <!-- <div id="para">LABELS</div> -->
+          <div *ngFor='let array of labelsList'>
+            <mat-list-item role="listitem" id="lable">
+              <mat-icon id="edit">label_outline</mat-icon>
+              {{array.label}}
             </mat-list-item>
+          </div>
+
+          <mat-list-item role="listitem" (click)="openLabel()" id="lable">
+            <mat-icon id="edit">edit</mat-icon>
+            Edit labels
+          </mat-list-item>
 
           <mat-divider></mat-divider>
 
@@ -261,15 +159,13 @@
           <div>
             <mat-list-item role="listitem" id="arch" (click)="archive()">
               <img id="img4" src="../../../assets/image/archieve.svg" />
-              Archive</mat-list-item
-            >
+              Archive</mat-list-item>
           </div>
 
           <div>
             <mat-list-item role="listitem" id="bin" (click)="trashBox()">
               <img id="img5" src="../../../assets/image/bin.svg" />
-              Trash</mat-list-item
-            >
+              Trash</mat-list-item>
           </div>
         </mat-list>
       </mat-nav-list>

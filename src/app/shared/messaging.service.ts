@@ -15,20 +15,20 @@ export class MessagingService {
 
   constructor(private angularFireDB: AngularFireDatabase,
     private angularFireAuth: AngularFireAuth,
-    private angularFireMessaging: AngularFireMessaging) { 
-      this.angularFireMessaging.messaging.subscribe(
+    private angularFireMessaging: AngularFireMessaging) {
+    this.angularFireMessaging.messaging.subscribe(
       (_messaging) => {
         _messaging.onMessage = _messaging.onMessage.bind(_messaging);
         _messaging.onTokenRefresh = _messaging.onTokenRefresh.bind(_messaging);
       })
-    }
+  }
 
-    /**
-   * update token in firebase database
-   * 
-   * @param userId userId as a key 
-   * @param token token as a value
-   */
+  /**
+ * update token in firebase database
+ * 
+ * @param userId userId as a key 
+ * @param token token as a value
+ */
   updateToken(userId, token) {
     // we can change this function to request our backend service
     this.angularFireAuth.authState.pipe(take(1)).subscribe(
@@ -70,4 +70,3 @@ export class MessagingService {
 
 
 
- 

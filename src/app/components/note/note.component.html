@@ -1,12 +1,13 @@
-
-
- 
 <app-take-note (addingNote)="recievemessage($event)"></app-take-note>
 
-<div class="pinned" class = "pinned1" *ngIf="cards.length >0"  >PINNED</div>
-<app-displaynote [cards]="cards" class="notes"  fxLayout="{{layout}}" fxLayout="row wrap" (dialogResult)='dialogResult($event)' fxLayoutAlign="center none"  (emitPinnedCard)="getPinCard($event)"  (emitUnPinnedCard)='getUnpinCard($event)'></app-displaynote>
+<div class="pinned" class="pinned1" *ngIf="cards.length >0">PINNED</div>
+<app-displaynote [cards]="cards" class="notes" fxLayout="{{layout}}" fxLayout="row wrap"
+    (dialogResult)='dialogResult($event)' fxLayoutAlign="center none" (emitPinnedCard)="getPinCard($event)"
+    (emitUnPinnedCard)='getUnpinCard($event)'></app-displaynote>
 
-<div class="others" class = "unpinned1" *ngIf="allcards.length >0 && cards.length >0" >OTHERS</div>
-<app-displaynote [cards]="allcards" [ngClass]="mainClass"   fxLayout="{{layout}}" fxLayout="row wrap" (dialogResult)='dialogResult($event)' fxLayoutAlign="start center"  (emitPinnedCard)="getPinCard($event)" ></app-displaynote>
-  
+<div class="others" class="unpinned1" *ngIf="allcards.length >0 && cards.length >0">OTHERS</div>
+<app-displaynote [cards]="allcards" [ngClass]="mainClass" fxLayout="{{layout}}" fxLayout="row wrap"
+    (dialogResult)='dialogResult($event)' fxLayoutAlign="start center" (emitPinnedCard)="getPinCard($event)">
+</app-displaynote>
+
 <!-- *ngIf="pinArray.length >0" -->

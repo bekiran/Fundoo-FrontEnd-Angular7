@@ -1,10 +1,7 @@
 <div *ngIf="reminderShow" fxFlex="100">
   <div *ngFor="let remind of remindList">
     <div fxLayoutAlign="space-between center">
-      <button
-        mat-menu-item
-        (click)="reminder(remind.dayCount, remind.timeCount)"
-      >
+      <button mat-menu-item (click)="reminder(remind.dayCount, remind.timeCount)">
         <div fxLayout="row" fxLayoutAlign="space-between center">
           <div>
             {{ remind.day }}
@@ -17,18 +14,10 @@
     </div>
   </div>
   <div>
-    <button
-      overlapTrigger="true"
-      (click)="(toggle)"
-      (click)="$event.stopPropagation()"
-      (click)="reminderShow = false"
-      mat-menu-item
-    >
+    <button overlapTrigger="true" (click)="(toggle)" (click)="$event.stopPropagation()" (click)="reminderShow = false"
+      mat-menu-item>
       <div fxLayout="row">
-        <div
-          fxLayoutAlign="space-around center"
-          (click)="$event.stopPropagation()"
-        >
+        <div fxLayoutAlign="space-around center" (click)="$event.stopPropagation()">
           <img src="../../../assets/image/outline-schedule-24px.svg" />
         </div>
         <div fxFlexOffset="8">Pick date & time</div>
@@ -39,20 +28,11 @@
 
 <!-- Pick date and Time -->
 
-<div
-  *ngIf="!reminderShow"
-  
-  fxLayout="column"
-  fxFlex="100"
->
+<div *ngIf="!reminderShow" fxLayout="column" fxFlex="100">
   <div>
     <button overlapTrigger="true" mat-menu-item>
       <div fxLayout="row" (click)="$event.stopPropagation()">
-        <div
-          fxLayoutAlign="space-between center"
-          (click)="$event.stopPropagation()"
-          (click)="toggle()"
-        >
+        <div fxLayoutAlign="space-between center" (click)="$event.stopPropagation()" (click)="toggle()">
           <img src="../../../assets/image/sharp-keyboard_backspace-24px.svg" />
         </div>
         <div fxFlexOffset="6">Pick date & time</div>
@@ -62,13 +42,7 @@
 
   <div fxLayout="row" fxLayoutAlign="space-around center">
     <mat-form-field class="example-full-width">
-      <input
-        matInput
-        [min]="todaydate"
-        [matDatepicker]="picker"
-        placeholder="Choose a date"
-        [(ngModel)]="checker"
-      />
+      <input matInput [min]="todaydate" [matDatepicker]="picker" placeholder="Choose a date" [(ngModel)]="checker" />
       <mat-datepicker-toggle matSuffix [for]="picker">
         <mat-icon matDatepickerToggleIcon>keyboard_arrow_down</mat-icon>
       </mat-datepicker-toggle>
@@ -76,11 +50,7 @@
     </mat-form-field>
   </div>
 
-  <div
-    fxLayout="row"
-    fxLayoutAlign="space-around center"
-    (click)="$event.stopPropagation()"
-  >
+  <div fxLayout="row" fxLayoutAlign="space-around center" (click)="$event.stopPropagation()">
     <mat-form-field>
       <mat-label>
         Pick time
@@ -101,16 +71,9 @@
   <div fxLayout="row">
     <div fxLayout="row"></div>
     <div>
-      <button
-        fxLayout="column"
-        fxLayoutAlign="end end"
-        (click)="saveReminder( )"
-        mat-menu-item
-      >
+      <button fxLayout="column" fxLayoutAlign="end end" (click)="saveReminder( )" mat-menu-item>
         Save
       </button>
     </div>
   </div>
 </div>
-
-

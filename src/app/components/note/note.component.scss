@@ -1,48 +1,48 @@
 app-displaynote {
-    flex-wrap: wrap;
+  flex-wrap: wrap;
 }
-.pinned{
-    margin-left: 16%;
-    opacity: 0.6
-    // margin-right: auto
+.pinned {
+  margin-left: 16%;
+  opacity: 0.6;
+  // margin-right: auto
 }
-.others{
-    margin-left: 16%;
-    opacity: 0.6
-    // margin-right: auto
+.others {
+  margin-left: 16%;
+  opacity: 0.6;
+  // margin-right: auto
 }
 element.style {
-    visibility: visible;
-    transform: translate(0px, 252px);
+  visibility: visible;
+  transform: translate(0px, 252px);
 }
 
 .pinned1 {
-    color: #5f6368;
-    letter-spacing: .07272727em;
-    font-family: Roboto,Arial,sans-serif;
-    font-size: .6875rem;
-    font-weight: 500;
-    line-height: 1rem;
-    text-transform: uppercase;
-    margin: 32px 32px 8px;
-    // position: absolute;
+  color: #5f6368;
+  letter-spacing: 0.07272727em;
+  font-family: Roboto, Arial, sans-serif;
+  font-size: 0.6875rem;
+  font-weight: 500;
+  line-height: 1rem;
+  text-transform: uppercase;
+  margin: 32px 32px 8px;
+  // position: absolute;
 }
 
 .unpinned1 {
-    color: #5f6368;
-    letter-spacing: .07272727em;
-    font-family: Roboto,Arial,sans-serif;
-    font-size: .6875rem;
-    font-weight: 500;
-    line-height: 1rem;
-    text-transform: uppercase;
-    margin: 32px 32px 8px;
-    // position: absolute;
+  color: #5f6368;
+  letter-spacing: 0.07272727em;
+  font-family: Roboto, Arial, sans-serif;
+  font-size: 0.6875rem;
+  font-weight: 500;
+  line-height: 1rem;
+  text-transform: uppercase;
+  margin: 32px 32px 8px;
+  // position: absolute;
 }
-.close{
-    margin-left: 15%
-} 
+.close {
+  margin-left: 15%;
+}
 
-.open{
-    margin-left: 4%;
+.open {
+  margin-left: 4%;
 }

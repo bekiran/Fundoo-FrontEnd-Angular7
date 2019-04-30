@@ -1,143 +1,119 @@
 <html>
-  <!-- remaind me button -->
-  <div fxLayoutAlign="space-between end" fxLayout="row" fxFlex="60" >
-    <button
-      id="Remaind"
-      matTooltip="Remind me"
-      mat-icon-button
-      [matMenuTriggerFor]="remindme"
-    >
-      <mat-icon>
-        <img src="../../../assets/image/outline-notification_important-24px.svg"
-      /></mat-icon>
-    </button>
+<!-- remaind me button -->
+<div fxLayoutAlign="space-between end" fxLayout="row" fxFlex="60">
+  <button id="Remaind" matTooltip="Remind me" mat-icon-button [matMenuTriggerFor]="remindme">
+    <mat-icon>
+      <img src="../../../assets/image/outline-notification_important-24px.svg" /></mat-icon>
+  </button>
 
-    <mat-menu #remindme="matMenu" class="matmenu">
-      <div class="remaindMenu">
-          <app-reminder [card]='card'></app-reminder>
-      </div>
-    </mat-menu>
+  <mat-menu #remindme="matMenu" class="matmenu">
+    <div class="remaindMenu">
+      <app-reminder [card]='card'></app-reminder>
+    </div>
+  </mat-menu>
 
-    <!-- Collaborator icon -->
-    <button id="coll" mat-icon-button matTooltip="Collaborator" (click)="openCollaborators()">
-      <img id="img" src="../../../assets/image/outline-person_add-24px.svg" />
-    </button>
+  <!-- Collaborator icon -->
+  <button id="coll" mat-icon-button matTooltip="Collaborator" (click)="openCollaborators()">
+    <img id="img" src="../../../assets/image/outline-person_add-24px.svg" />
+  </button>
 
-    <!-- color button -->
-    <button
-    id="col"
-      mat-icon-button
-      matTooltip="Change color"
-      [matMenuTriggerFor]="colorlist"
-    >
-      <img id="img" src="../../../assets/image/outline-color_lens-24px.svg" />
-    </button>
+  <!-- color button -->
+  <button id="col" mat-icon-button matTooltip="Change color" [matMenuTriggerFor]="colorlist">
+    <img id="img" src="../../../assets/image/outline-color_lens-24px.svg" />
+  </button>
 
-    <mat-menu #colorlist="matMenu" [overlapTrigger]="false">
-      <ng-template matMenuContent>
-        <div class="buttons">
-          <div
-            fxLayout="row"
-            fxLayoutGap="10px"
-            style="margin-top: 3px"
-            *ngFor="let colors of colorArray"
-          >
-            <div *ngFor="let color of colors">
-              <button
-                class="colors"
-                [ngStyle]="{ 'background-color': color.color }"
-                (click)="colorsEdit(color.color,card)"
-                matTooltip="{{ color.name }}"
-                mat-mini-fab
-              ></button>
-            </div>
+  <mat-menu #colorlist="matMenu" [overlapTrigger]="false">
+    <ng-template matMenuContent>
+      <div class="buttons">
+        <div fxLayout="row" fxLayoutGap="10px" style="margin-top: 3px" *ngFor="let colors of colorArray">
+          <div *ngFor="let color of colors">
+            <button class="colors" [ngStyle]="{ 'background-color': color.color }"
+              (click)="colorsEdit(color.color,card)" matTooltip="{{ color.name }}" mat-mini-fab></button>
           </div>
         </div>
-      </ng-template>
-    </mat-menu> 
+      </div>
+    </ng-template>
+  </mat-menu>
 
-    <!-- add image button -->
-    <div>
-      <!-- <input type="file" > -->
+  <!-- add image button -->
+  <div>
+    <!-- <input type="file" > -->
     <button id="img" mat-icon-button matTooltip="Add image">
       <img id="img" (change)="onFileSelected($event)" src="../../../assets/image/outline-image-24px.svg" />
     </button>
   </div>
 
-    <!-- archive button -->
-    <div>
-      <button id="arc" *ngIf="more !='archive'" mat-icon-button matTooltip="Archive" >
-        <img
-          src="../../../assets/image/outline-archive-24px.svg"
-          (click)="doArchive(card)" (click)='openSnackBar1()'
-        />
-      </button>
-      <button id="unarc"  *ngIf="more == 'archive'" mat-icon-button matTooltip="unarchive" >
-        <img
-          src="../../../assets/image/outline-unarchive-24px.svg" (click)="doUnArchive(card)" (click)='openSnackBar2()'
-        />
-      </button>
-    </div>
-
-    <!-- more menu button -->
-    <button id="menu"  mat-icon-button [matMenuTriggerFor]="menu" colour="basic" matTooltip="more">
-      <img id="img" src="../../../assets/image/outline-more_vert-24px.svg" />
+  <!-- archive button -->
+  <div>
+    <button id="arc" *ngIf="more !='archive'" mat-icon-button matTooltip="Archive">
+      <img src="../../../assets/image/outline-archive-24px.svg" (click)="doArchive(card)" (click)='openSnackBar1()' />
     </button>
-    <mat-menu #menu="matMenu">
-      <div *ngIf="type=='note'">
-        <button mat-menu-item [matMenuTriggerFor]='labelmenu' (click)="$event.stopPropagation()">add label</button>
-        <button mat-menu-item >show tick boxes</button></div>
-        
-      <div *ngIf="type!='note'">
-        <button mat-menu-item (click)="deleteNote(card)" (click)='openSnackBar3()'>Delete Note</button>
-        <button mat-menu-item [matMenuTriggerFor]='labelmenu' (click)="$event.stopPropagation()" >add label</button>
-        <div *ngIf='flag4==true'>
-          <button mat-menu-item (click)='checklist(card)' (click)='HideTick()'>show tick boxes</button>
-        </div>
-        <div *ngIf='flag4==false'>
-          <button mat-menu-item (click)='checklist(card)'>Hide tick boxes</button>
-        </div>
-        <button mat-menu-item>copy to google docs</button>
-      </div>
-    </mat-menu> 
-
-
-    <mat-menu #labelmenu=matMenu>
-      <div fxLayout='column' (click)="$event.stopPropagation()">
-        <div>Label note</div>
-        <div fxLayout="row"> 
-          <div>
-            <input (click)="doSomething($event)" matInput [(ngModel)]="label" placeholder="Enter label name" (click)="reverseFlag()">
-          </div>
-          <div >
-              <img src="../../../assets/image/searchicon.svg" alt="">
-            </div>
-        </div>
-
-
-        <div *ngFor="let array of labelsList">
-
-          <div *ngIf="flag1 == true">
-            <div fxLayout="row">
-              <mat-checkbox (click)="$event.stopPropagation()" (click)='saveLabeltoNote(card,array)'>
-                {{array.label}}
-              </mat-checkbox>
-            </div>
-          </div>
-
-          <div *ngIf="flag1 == false">
-              <div fxLayout="row">
-                <mat-checkbox (click)="$event.stopPropagation()" (click)='saveLabeltoNote(card,array)'>
-                  {{array.label}}
-                </mat-checkbox>
-              </div>
-            </div>
-
-        </div>
-
-      </div>
-    </mat-menu>
+    <button id="unarc" *ngIf="more == 'archive'" mat-icon-button matTooltip="unarchive">
+      <img src="../../../assets/image/outline-unarchive-24px.svg" (click)="doUnArchive(card)"
+        (click)='openSnackBar2()' />
+    </button>
   </div>
+
+  <!-- more menu button -->
+  <button id="menu" mat-icon-button [matMenuTriggerFor]="menu" colour="basic" matTooltip="more">
+    <img id="img" src="../../../assets/image/outline-more_vert-24px.svg" />
+  </button>
+  <mat-menu #menu="matMenu">
+    <div *ngIf="type=='note'">
+      <button mat-menu-item [matMenuTriggerFor]='labelmenu' (click)="$event.stopPropagation()">add label</button>
+      <button mat-menu-item>show tick boxes</button></div>
+
+    <div *ngIf="type!='note'">
+      <button mat-menu-item (click)="deleteNote(card)" (click)='openSnackBar3()'>Delete Note</button>
+      <button mat-menu-item [matMenuTriggerFor]='labelmenu' (click)="$event.stopPropagation()">add label</button>
+      <div *ngIf='flag4==true'>
+        <button mat-menu-item (click)='checklist(card)' (click)='HideTick()'>show tick boxes</button>
+      </div>
+      <div *ngIf='flag4==false'>
+        <button mat-menu-item (click)='checklist(card)'>Hide tick boxes</button>
+      </div>
+      <button mat-menu-item>copy to google docs</button>
+    </div>
+  </mat-menu>
+
+
+  <mat-menu #labelmenu=matMenu>
+    <div fxLayout='column' (click)="$event.stopPropagation()">
+      <div>Label note</div>
+      <div fxLayout="row">
+        <div>
+          <input (click)="doSomething($event)" matInput [(ngModel)]="label" placeholder="Enter label name"
+            (click)="reverseFlag()">
+        </div>
+        <div>
+          <img src="../../../assets/image/searchicon.svg" alt="">
+        </div>
+      </div>
+
+
+      <div *ngFor="let array of labelsList">
+
+        <div *ngIf="flag1 == true">
+          <div fxLayout="row">
+            <mat-checkbox (click)="$event.stopPropagation()" (click)='saveLabeltoNote(card,array)'>
+              {{array.label}}
+            </mat-checkbox>
+          </div>
+        </div>
+
+        <div *ngIf="flag1 == false">
+          <div fxLayout="row">
+            <mat-checkbox (click)="$event.stopPropagation()" (click)='saveLabeltoNote(card,array)'>
+              {{array.label}}
+            </mat-checkbox>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </mat-menu>
+</div>
 
 
 

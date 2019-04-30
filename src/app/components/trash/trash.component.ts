@@ -9,26 +9,29 @@ import { from } from "rxjs";
   styleUrls: ["./trash.component.scss"]
 })
 export class TrashComponent implements OnInit {
-  constructor(private noteService: NoteServiceService, public http: HttpService) {}
+  constructor(
+    private noteService: NoteServiceService,
+    public http: HttpService
+  ) { }
 
-  more='trash';
-  trash='trash'
+  more = "trash";
+  trash = "trash";
   deletedcards = [];
   card = [];
   cards = [];
 
-  wrap:string="wrap";
-  direction
-  view
-  layout
+  wrap: string = "wrap";
+  direction;
+  view;
+  layout;
 
   ngOnInit() {
     this.deleteNote();
-    this.noteService.getView().subscribe((res:any)=>{
+    this.noteService.getView().subscribe((res: any) => {
       // debugger
-        this.view = res;
-        this.direction = this.view.data;
-        this.layout = this.direction + " " + this.wrap;
+      this.view = res;
+      this.direction = this.view.data;
+      this.layout = this.direction + " " + this.wrap;
     });
   }
 
