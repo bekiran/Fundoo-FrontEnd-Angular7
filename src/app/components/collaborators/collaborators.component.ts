@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { NoteServiceService} from '../../service/noteService/note-service.service'
+import { from } from 'rxjs';
 
 @Component({
   selector: 'app-collaborators',
@@ -13,7 +15,7 @@ export class CollaboratorsComponent implements OnInit {
   img = localStorage.getItem('image')
   flag = true
 
-  constructor() { 
+  constructor( private noteService: NoteServiceService) { 
     this.email = localStorage.getItem('email');
     this.username = localStorage.getItem('name');
     // this.image = localStorage.getItem('image')
@@ -22,8 +24,22 @@ export class CollaboratorsComponent implements OnInit {
   ngOnInit() {
   }
 
-  reverseFlag(){
-    this.flag=!this.flag
+  // reverseFlag(){
+  //   this.flag=!this.flag
+  // }
+
+  saveCollaborators(name){
+    try {
+      this.noteService.saveCollaboratorsToNote({
+        name: name
+      }).subscribe(co=>{
+
+      })
+    } catch (error) {
+      console.log("Error in adding name(user) to note");
+      
+    }
+
   }
 
 }

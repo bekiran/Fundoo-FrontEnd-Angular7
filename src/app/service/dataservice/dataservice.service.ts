@@ -13,6 +13,8 @@ import { BehaviorSubject, Subject } from 'rxjs'
   providedIn: 'root'
 })
 export class DataserviceService {
+  private labelMsg=new Subject<string>();
+  getLabel = this.labelMsg.asObservable();
 
   private messageSource = new BehaviorSubject('');
   currentMessage = this.messageSource.asObservable();
@@ -24,6 +26,10 @@ export class DataserviceService {
     console.log(message);
 
     this.messageSource.next(message)
+  }
+
+  sendLable(message:string){
+    this.labelMsg.next(message);
   }
 
 }

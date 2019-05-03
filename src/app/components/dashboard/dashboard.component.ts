@@ -202,4 +202,8 @@ export class DashboardComponent implements OnInit, OnDestroy {
       console.log("error at getting labels");
     }
   }
+
+  sendLable(lable){
+    this.data.sendLable(lable)
+  }
 }

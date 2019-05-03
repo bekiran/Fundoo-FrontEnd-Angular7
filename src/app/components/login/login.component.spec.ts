@@ -28,19 +28,7 @@ import { A11yModule } from "@angular/cdk/a11y";
 import { TextFieldModule } from "@angular/cdk/text-field";
 import { PortalModule } from "@angular/cdk/portal";
 import { CdkStepperModule } from "@angular/cdk/stepper";
-import { TakeNoteComponent } from '../take-note/take-note.component';
-import { IconlistComponent } from '../iconlist/iconlist.component';
-import { DisplaynoteComponent } from '../displaynote/displaynote.component';
-import { UpdatenoteComponent } from '../updatenote/updatenote.component';
-import { ArchiveComponent } from '../archive/archive.component';
-import { TrashComponent } from '../trash/trash.component';
-import { RemindersComponent } from '../reminders/reminders.component';
-import { NoteDialogComponent } from '../note-dialog/note-dialog.component';
-import { ReminderComponent } from '../reminder/reminder.component';
-import { SearchPipe } from '../../pipe/search/search.pipe';
-import { LabelPipe } from '../../pipe/label/label.pipe';
-import { SearchComponent } from '../search/search.component';
-import { ImagecropperComponent } from '../imagecropper/imagecropper.component';
+import { TakeNoteComponent } from "../take-note/take-note.component";
 
 
 describe("LoginComponent", () => {
@@ -55,7 +43,8 @@ describe("LoginComponent", () => {
     MatButtonModule,
     MatFormFieldModule,
     BrowserAnimationsModule,
-    FormsModule, ReactiveFormsModule,
+    FormsModule,
+    ReactiveFormsModule,
     MatSelectModule,
     FlexLayoutModule,
     HttpClientModule,
@@ -72,7 +61,8 @@ describe("LoginComponent", () => {
     A11yModule,
     TextFieldModule,
     PortalModule,
-    CdkStepperModule
+    CdkStepperModule,
+    TakeNoteComponent
   ];
 
   beforeEach(async(() => {

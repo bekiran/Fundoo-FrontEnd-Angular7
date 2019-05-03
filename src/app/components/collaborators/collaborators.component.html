@@ -7,6 +7,7 @@
 
   <!-- *************************************** Owner information ************************************* -->
 
+  <br>
   <div fxLayout="row">
     <div fxFlex="10">
       <button mat-mini-fab [ngStyle]="{'background-image':'url(' +img+ ')','background-size':'cover'}" colour="basic"
@@ -28,37 +29,40 @@
   <!-- ************************************ To share Notes with other user *********************************** -->
 
   <br>
+
+
   <div fxLayout="row">
+
     <div fxFlex="10">
-      <button mat-mini-fab fxLayout="row" fxLayoutAlign="end center">
+      <button mat-mini-fab fxLayout="row" style="background-color:bisque" fxLayoutAlign="end center">
       </button>
     </div>
-    <div fxFlex='85'>
-      <div fxLayout="row"><input [(ngModel)]="name" matInput placeholder="Person or email to share with"
-          autocomplete="off" maxlength="45">
+
+    <div fxFlex='90' fxLayout="row">
+      <input [(ngModel)]="name" matInput placeholder="Person or email to share with" autocomplete="off" maxlength="45">
 
 
-        <div *ngIf="flage==true">
-          <button mat-icon-button (click)="reverseFlag()"><img src="../../../assets/image/corrrect.svg" alt=""></button>
-        </div>
-        <div *ngIf="flag==false">
-          <button mat-icon-button (click)="reverseFlag()"><img src="../../../assets/image/close.svg " alt=""></button>
-        </div>
-      </div>
-      <!-- <div> <input [(ngModel)]="label" matInput placeholder="Email ID" autocomplete="off" maxlength="30" ></div> -->
+      <button mat-icon-button *ngIf="flag==true" (click)="saveCollaborators()">
+        <img src="../../../assets/image/corrrect.svg">
+      </button>
+
+      <!-- <button mat-icon-button *ngIf="flag==false" (click)="reverseFlag()">
+        <img src="../../../assets/image/close.svg">
+      </button> -->
+
     </div>
+
 
   </div>
 
   <br>
   <mat-divider></mat-divider>
+  <br>
 
   <div class="button-background">
-
-    <div class="button" fxLayout="row">
-      <button mat-button [mat-dialog-close]>Cancel</button>
-      <button mat-button (click)="saveUser()">Save</button>
-
+    <div class="button" fxLayout="row"  fxLayoutGap="5%">
+      <button mat-button [mat-dialog-close] fxLayoutGap="5%">Cancel</button>
+      <button mat-button (click)="saveUser()" fxLayoutGap="5%">Save</button>
     </div>
   </div>
 

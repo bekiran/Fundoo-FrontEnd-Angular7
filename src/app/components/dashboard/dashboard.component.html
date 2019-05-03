@@ -142,7 +142,7 @@
 
           <!-- <div id="para">LABELS</div> -->
           <div *ngFor='let array of labelsList'>
-            <mat-list-item role="listitem" id="lable">
+            <mat-list-item role="listitem" id="lable" (click)="sendLable()">
               <mat-icon id="edit">label_outline</mat-icon>
               {{array.label}}
             </mat-list-item>

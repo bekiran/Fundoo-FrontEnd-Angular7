@@ -79,6 +79,15 @@
       </mat-chip-list>
     </div>
 
+
+    <!-- Collaborators -->
+
+    <!-- <div>
+      <button mat-mini-fab style="background-color: sandybrown ">
+
+      </button>
+    </div> -->
+
     <!-- more menu icon button -->
 
     <div fxFlex="100" *ngIf="more == 'trash'" fxLayoutAlign="start center">
@@ -103,58 +112,3 @@
   </mat-card>
 </div>
 
-
-
-
-
-
-
-
-
-
-<!-- <div [ngClass]="sidenave">
-
-    <div [ngClass]="grid" fxLayout="row" fxLayoutAlign="space-around center" >
-
-        <mat-card class="matcard"  *ngFor='let array of cards' [style.backgroundColor]="array.color">
-
-            <div fxLayout='row' fxLayoutAlign="space-between center" >
-                <div class="title" (click)="openDialog(array)">
-                    {{array.title}}
-                </div>
-                <div>
-                    <button *ngIf="array.pinned" matTooltip="Unpin note" mat-icon-button color="basic" (click)=doUnPinned(array)>
-                        <img src="../../../assets/unpinbar.svg">
-                    </button>
-                    <button *ngIf="!array.pinned" matTooltip="Pin note"  mat-icon-button color="basic" (click)=doPinned(array)>
-                        <img  src="../../../assets/pinbar.svg">
-                    </button>
-              
-                </div>
-            </div>
-            <div (click)="openDialog(array)">
-                {{array.description}}
-
-            </div>
-
-
-            <div fxFlex="100" *ngIf="trash=='trash'" fxLayoutAlign="start center">
-                <button mat-icon-button [matMenuTriggerFor]="menu" colour="basic" matTooltip="more">
-                    <img id="img" src="../../../assets/more.svg" />
-                </button>
-                <mat-menu #menu="matMenu">
-                    <button mat-menu-item (click)="deleteForever(array)">
-                        Delete forever
-                    </button>
-                    <button mat-menu-item (click)="restore(array)">Restore</button>
-                </mat-menu>
-            </div>
-
-            <div *ngIf="trash!='trash'">
-                <app-iconlist class="icon" fxFlex="50" fxFlex.xs="90" [card]="array" [more]="archived"
-                    (archivedCard)="archive($event)" (trashCard)="trashcard($event)"
-                    (unarchiveCard)="unarchived($event)"></app-iconlist>
-            </div>
-        </mat-card>
-    </div>
-</div> -->

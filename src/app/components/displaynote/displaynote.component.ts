@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, Output, EventEmitter } from "@angular/core";
+import { Component, OnInit, Input, Output, EventEmitter, OnChanges } from "@angular/core";
 import { getLocaleFirstDayOfWeek } from "@angular/common";
 import { HttpService } from "../../service/http/http.service";
 import { MatCardSmImage } from "@angular/material";
@@ -31,7 +31,7 @@ export interface DialogData {
   templateUrl: "./displaynote.component.html",
   styleUrls: ["./displaynote.component.scss"]
 })
-export class DisplaynoteComponent implements OnInit {
+export class DisplaynoteComponent implements OnInit,OnChanges {
   /********************************
    *to get input from other components
    *********************************/
@@ -73,9 +73,21 @@ export class DisplaynoteComponent implements OnInit {
     public dialog: MatDialog,
     private noteService: NoteServiceService,
     private snackBar: MatSnackBar
-  ) {}
+  ) {
+    console.log('constructor run');
+    
+  }
 
-  ngOnInit() {}
+  ngOnChanges() {
+console.log('change run');
+
+  }
+
+  ngOnInit() {
+    console.log('init run');
+    
+  }
+
 
   colorsEdit(color) {
     console.log("Came to emmiter", color);
@@ -255,8 +267,8 @@ export class DisplaynoteComponent implements OnInit {
       .subscribe(
         data => {
           console.log("data in", data);
-          let ind = this.cards.indexOf(l);
-          l.reminder.splice(ind, 1);
+          let ind = card['label'].indexOf(l);
+          card['label'].splice(ind, 1);
           //   let ind = l.indexOf(l)
           //  l.splice(ind, 1);
         },

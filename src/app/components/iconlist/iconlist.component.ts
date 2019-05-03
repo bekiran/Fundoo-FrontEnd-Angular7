@@ -239,14 +239,15 @@ export class IconlistComponent implements OnInit {
           pull: false
         })
         .subscribe(data => {
-          card = card["noteLabels"].push(label);
+          card["label"].push(label.label);
           console.log("dkjsf==>", card);
 
           console.log("data in save labels", data);
         });
-    } else {
-      this.emitLabelToNote.emit(label);
-    }
+      }
+    // } else {
+    //   this.emitLabelToNote.emit(label);
+    // }
   }
 
   openCollaborators() {
