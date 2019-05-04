@@ -42,7 +42,7 @@ export class NoteComponent implements OnInit {
   getCards() {
     this.http.getHttp("getNotes").subscribe(data => {
       console.log(
-        "wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwww",
+        "get cards data==>",
         data
       );
       console.log("data in notes=====>", data["data"]);

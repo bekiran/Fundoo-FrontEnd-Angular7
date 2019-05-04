@@ -77,6 +77,8 @@
   </mat-menu>
 
 
+  <!-- add labels -->
+
   <mat-menu #labelmenu=matMenu>
     <div fxLayout='column' (click)="$event.stopPropagation()">
       <div>Label note</div>
@@ -91,7 +93,7 @@
       </div>
 
 
-      <div *ngFor="let array of labelsList">
+      <div *ngFor="let array of labelsList | label:label">
 
         <div *ngIf="flag1 == true">
           <div fxLayout="row">

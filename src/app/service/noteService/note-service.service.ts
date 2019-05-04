@@ -82,7 +82,7 @@ export class NoteServiceService {
    return this.http.postJSON('saveCollaborator', body)
  }
 
- getNotesOfLabel(label){
-  return this.http.postJSON('getNotes'+label,"")
-}
+//  getNotesOfLabel(label){
+//   return this.http.postJSON('getNotes'+label,"")
+// }
 }

@@ -9,6 +9,7 @@ import { NoteServiceService } from "../../service/noteService/note-service.servi
 import { Message } from "@angular/compiler/src/i18n/i18n_ast";
 import { MockResourceLoader } from "@angular/compiler/testing";
 import { MatSnackBar } from "@angular/material";
+import { CdkDragDrop, moveItemInArray } from '@angular/cdk/drag-drop';
 export interface DialogData {
   labelsList: any;
   array: [];
@@ -31,7 +32,7 @@ export interface DialogData {
   templateUrl: "./displaynote.component.html",
   styleUrls: ["./displaynote.component.scss"]
 })
-export class DisplaynoteComponent implements OnInit,OnChanges {
+export class DisplaynoteComponent implements OnInit, OnChanges {
   /********************************
    *to get input from other components
    *********************************/
@@ -75,17 +76,17 @@ export class DisplaynoteComponent implements OnInit,OnChanges {
     private snackBar: MatSnackBar
   ) {
     console.log('constructor run');
-    
+
   }
 
   ngOnChanges() {
-console.log('change run');
+    console.log('change run');
 
   }
 
   ngOnInit() {
     console.log('init run');
-    
+
   }
 
 
@@ -114,8 +115,8 @@ console.log('change run');
     });
 
     dialogRef.afterClosed().subscribe(result => {
-      console.log(result["array"], "from dialog box");
-      console.log("===========================", result["array"].trash);
+      // console.log(result["array"], "from dialog box");
+      // console.log("===========================", result["array"].trash);
 
       if (
         archie != result["array"].archive ||
@@ -276,5 +277,10 @@ console.log('change run');
           console.log(err);
         }
       );
+  }
+
+
+  drop(event: CdkDragDrop<string[]>) {
+    moveItemInArray(this.cards, event.previousIndex, event.currentIndex);
   }
 }

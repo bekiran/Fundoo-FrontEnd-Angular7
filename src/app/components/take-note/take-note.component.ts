@@ -106,7 +106,7 @@ export class TakeNoteComponent implements OnInit {
     this.isPined = set;
   }
   getReminder($event) {
-    if (this.reminder != undefined) {
+    if (this.reminder[0] != undefined) {
       this.reminder = [];
       this.reminder.push($event);
     } else {

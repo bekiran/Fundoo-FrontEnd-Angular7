@@ -24,9 +24,6 @@ export class CollaboratorsComponent implements OnInit {
   ngOnInit() {
   }
 
-  // reverseFlag(){
-  //   this.flag=!this.flag
-  // }
 
   saveCollaborators(name){
     try {
@@ -39,7 +36,15 @@ export class CollaboratorsComponent implements OnInit {
       console.log("Error in adding name(user) to note");
       
     }
+  }
 
+  removeCollaborators(){
+    // try {
+      
+    // } catch (error) {
+    //   console.log("error on removing collaborator");
+      
+    // }
   }
 
 }

@@ -1,6 +1,6 @@
-<div *ngFor="let array of cards | search: Search" fxLayout="row wrap" fxLayoutAlign="start center" fxLayout.xs="column">
+<div *ngFor="let array of cards | search: Search" fxLayout="row wrap" fxLayoutAlign="start center" fxLayout.xs="column" >
   <mat-card [style.backgroundColor]="array.color" fxFlex.xs="100" fxLayout="column" class="matcard" fxFlex="45"
-    fxFlexOffset.xl="10">
+    fxFlexOffset.xl="10" cdkDropList (cdkDropListDropped)="drop($event)">
     <div fxFlex="55" fxFlexOffset.xl="20" fxFlex.xs="97" fxLayout="row" fxLayoutAlign="start center">
       <div fxLayout="column" fxFlex="100">
         <div fxLayout="row" fxLayoutAlign="space-between start" fxFlex="100">
@@ -81,6 +81,8 @@
 
 
     <!-- Collaborators -->
+
+    
 
     <!-- <div>
       <button mat-mini-fab style="background-color: sandybrown ">
