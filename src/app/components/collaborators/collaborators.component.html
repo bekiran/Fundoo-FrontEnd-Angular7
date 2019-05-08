@@ -28,7 +28,7 @@
 
   <!-- ************************************ To display users collaborated to notes *********************************** -->
   <br>
-  <div fxLayout="row">
+  <div *ngFor="let item of collabList" fxLayout="row">
     <div fxFlex='10'>
       <button mat-mini-fab style="background-color:bisque" fxLayoutAlign="center center">
         <img src="../../../assets/image/colo.svg">
@@ -36,52 +36,18 @@
     </div>
     <div fxLayout="column" fxFlex='85'>
       <div>
-        user name
+        {{item.collabUserID}}
       </div>
-      <div>
+      <!-- <div>
         email
-      </div>
+      </div> -->
 
     </div>
     <button mat-icon-button (click)="removeCollaborators()"><img src="../../../assets/image/close.svg" alt=""></button>
 
   </div>
 
-  <!-- <div  *ngFor='let array of data.card.collaborators' fxLayout='row'>
-      <div fxFlex='10'>
-          <button mat-mini-fab>
-              <img src='../../../assets/images/addnote.svg'>
-            </button>
-      </div>
-      <div fxLayout='column' fxFlex='85'>
-       <div> {{array.firstName}} {{array.lastName}}</div>
-          <div>{{array.email}}</div>
-        </div>
-        <img src='../../../assets/images/wrong_mark.svg' (click)='removeColaborator(data.card.id,array)'>
-    </div><br>
-   -->
-
-
-  <!-- <div fxLayout='row'>
-      <div fxFlex='10'>
-        <button mat-mini-fab>
-          <img src='../../../assets/images/addnote.svg'>
-        </button>
-      </div>
-      <div fxFlex='85' fxLayout='row'>
-        <input matInput [(ngModel)]='colaborator' (click)='revFlag()' (keyup)='searchForList(colaborator)' placeholder="enter email here"
-          [matMenuTriggerFor]='menu'>
   
-        <img *ngIf='flag==false' src='../../../assets/images/right_mark.svg' (click)='addColaborator(data.card.id)'>
-      </div>
-    </div>
-    <mat-menu #menu="matMenu">
-      <div *ngFor='let array of userList'>
-        <div (click)='details(array)' (keydown)='enter($event,data.card.id)' >{{array.email}}</div>
-      </div>
-    </mat-menu>
-    <br><br><br> -->
-
 
   <br>
   <div fxLayout="row">
@@ -94,10 +60,10 @@
     </div>
 
     <div fxFlex='90' fxLayout="row">
-      <input [(ngModel)]="name" matInput placeholder="Person or email to share with" autocomplete="off" maxlength="45">
+      <input [(ngModel)]="collabadd" matInput placeholder="Person or email to share with" autocomplete="off" maxlength="45">
 
 
-      <button mat-icon-button *ngIf="flag==true" (click)="saveCollaborators()">
+      <button mat-icon-button (click)="saveCollaborators(collabadd)">
         <img src="../../../assets/image/corrrect.svg">
       </button>
 

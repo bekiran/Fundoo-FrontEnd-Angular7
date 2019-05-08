@@ -1,6 +1,8 @@
-import { Component, OnInit } from '@angular/core';
-import { NoteServiceService} from '../../service/noteService/note-service.service'
+import { Component, OnInit, Inject, Input } from '@angular/core';
+import { NoteServiceService } from '../../service/noteService/note-service.service'
+import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 import { from } from 'rxjs';
+import { DialogData } from '../iconlist/iconlist.component'
 
 @Component({
   selector: 'app-collaborators',
@@ -9,42 +11,91 @@ import { from } from 'rxjs';
 })
 export class CollaboratorsComponent implements OnInit {
 
-  email:any;
-  username:string
-  image:any
+
+  email: any;
+  username: string
+  image: any
+
   img = localStorage.getItem('image')
   flag = true
+  collabList: any;
+  card: any
 
-  constructor( private noteService: NoteServiceService) { 
+  constructor(private noteService: NoteServiceService, public dialogRef: MatDialogRef<CollaboratorsComponent>,
+    @Inject(MAT_DIALOG_DATA) public data: DialogData) {
+    console.log("jdhsigh", this.card = data['card']);
+
     this.email = localStorage.getItem('email');
     this.username = localStorage.getItem('name');
     // this.image = localStorage.getItem('image')
+
+
   }
 
   ngOnInit() {
+    this.getCollab()
   }
 
 
-  saveCollaborators(name){
+  saveCollaborators(collabUserID) {
     try {
-      this.noteService.saveCollaboratorsToNote({
-        name: name
-      }).subscribe(co=>{
-
-      })
+      if (this.card != undefined) {
+        console.log("hjasdgh==>", this.card);
+        this.noteService.saveCollaboratorsToNote({
+          userID: localStorage.getItem('userid'),
+          noteID: this.card._id,
+          collabUserID: collabUserID
+        }).subscribe(data => {
+          console.log("data in collab=>", data);
+          this.collabList = data["data"];
+          this.collabList = this.collabList.reverse()
+        })
+      }
     } catch (error) {
       console.log("Error in adding name(user) to note");
-      
     }
   }
 
-  removeCollaborators(){
-    // try {
-      
-    // } catch (error) {
-    //   console.log("error on removing collaborator");
-      
-    // }
+
+  getCollab() {
+    var userid = localStorage.getItem("userid");
+    this.noteService.getCollaborators().subscribe(data => {
+      console.log("get Collab ===>", data);
+      this.collabList = data["data"]
+      this.collabList = this.collabList.reverse();
+    })
   }
+
+  removeCollaborators(item){
+    this.noteService.removeCollab({
+      collabUserID:item.collabUserID
+    }) .subscribe(data=>{
+      let ind = this.collabList.indexOf(item);
+      this.collabList.splice(ind, 1)
+    })
+
+  }
+  /**
+   *   deleteLabel(array) {
+    try {
+      console.log("hasgbjh", array._id);
+      this.noteService
+        .deleteLabel({
+          labelID: array._id
+        })
+        .subscribe(data => {
+          console.log("when deleted ===>");
+
+          let ind = this.labelsList.indexOf(array);
+          this.labelsList.splice(ind, 1);
+        });
+    } catch (error) {
+      console.log("error at label delete");
+    }
+  }
+   */
+
+  
+
 
 }

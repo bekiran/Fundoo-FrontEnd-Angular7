@@ -5,6 +5,9 @@ import { MatSnackBar, MatDialog } from "@angular/material";
 import { LabelseditComponent } from "../labelsedit/labelsedit.component";
 import { from } from "rxjs";
 import { CollaboratorsComponent } from "../collaborators/collaborators.component";
+export interface DialogData {
+  card:any
+}
 
 @Component({
   selector: "app-iconlist",
@@ -250,12 +253,13 @@ export class IconlistComponent implements OnInit {
     // }
   }
 
-  openCollaborators() {
+  openCollaborators(card) {
     {
       try {
+
         const dialogRef = this.dialog.open(CollaboratorsComponent, {
           width: "500px",
-          data: {}
+          data: {card}
         });
       } catch (error) {
         console.log("error occured");

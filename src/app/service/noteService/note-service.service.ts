@@ -81,8 +81,12 @@ export class NoteServiceService {
  saveCollaboratorsToNote(body){
    return this.http.postJSON('saveCollaborator', body)
  }
+ getCollaborators(){
+  return this.http.getHttpLabel('getCollaborator')
+ }
+ removeCollab(data){
+   return this.http.postJSON('deleteCollaborator',data)
+ }
 
-//  getNotesOfLabel(label){
-//   return this.http.postJSON('getNotes'+label,"")
-// }
+
 }
