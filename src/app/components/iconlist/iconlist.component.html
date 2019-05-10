@@ -66,13 +66,13 @@
     <div *ngIf="type!='note'">
       <button mat-menu-item (click)="deleteNote(card)" (click)='openSnackBar3()'>Delete Note</button>
       <button mat-menu-item [matMenuTriggerFor]='labelmenu' (click)="$event.stopPropagation()">add label</button>
-      <div *ngIf='flag4==true'>
+      <!-- <div *ngIf='flag4==true'>
         <button mat-menu-item (click)='checklist(card)' (click)='HideTick()'>show tick boxes</button>
       </div>
       <div *ngIf='flag4==false'>
         <button mat-menu-item (click)='checklist(card)'>Hide tick boxes</button>
       </div>
-      <button mat-menu-item>copy to google docs</button>
+      <button mat-menu-item>copy to google docs</button> -->
     </div>
   </mat-menu>
 

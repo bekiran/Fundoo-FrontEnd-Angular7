@@ -254,6 +254,8 @@ export class IconlistComponent implements OnInit {
   }
 
   openCollaborators(card) {
+    console.log(card);
+    
     {
       try {
 

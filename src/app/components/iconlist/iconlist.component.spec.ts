@@ -1,6 +1,10 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { IconlistComponent } from './iconlist.component';
+import { MatMenuModule} from '@angular/material/menu';
+import { MatIconModule } from "@angular/material";
+
+
 
 describe('IconlistComponent', () => {
   let component: IconlistComponent;
@@ -8,7 +12,8 @@ describe('IconlistComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ IconlistComponent ]
+      declarations: [ IconlistComponent ],
+      imports:[MatMenuModule,MatIconModule]
     })
     .compileComponents();
   }));

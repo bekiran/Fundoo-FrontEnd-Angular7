@@ -28,39 +28,41 @@
 
   <!-- ************************************ To display users collaborated to notes *********************************** -->
   <br>
-  <div *ngFor="let item of collabList" fxLayout="row">
+  <div *ngFor="let item of card.collab" fxLayout="row">
     <div fxFlex='10'>
-      <button mat-mini-fab style="background-color:bisque" fxLayoutAlign="center center">
-        <img src="../../../assets/image/colo.svg">
+      <button mat-mini-fab style="background-color:bisque" fxLayoutAlign="center center" class="collablist">
+        <!-- <img src="../../../assets/image/collab.jpg"> -->
       </button>
     </div>
     <div fxLayout="column" fxFlex='85'>
       <div>
-        {{item.collabUserID}}
+        {{item}}
       </div>
       <!-- <div>
         email
       </div> -->
 
     </div>
-    <button mat-icon-button (click)="removeCollaborators()"><img src="../../../assets/image/close.svg" alt=""></button>
+    <button mat-icon-button (click)="removeCollaborators(item,card)"><img src="../../../assets/image/close.svg"
+        alt=""></button>
 
   </div>
 
-  
+
 
   <br>
   <div fxLayout="row">
 
     <div fxFlex="10">
-      <button mat-mini-fab fxLayout="row" style="background-color:bisque" fxLayoutAlign="center center">
+      <button mat-mini-fab fxLayout="row" style="background-color:bisque" fxLayoutAlign="center center" fxcFlex="80">
         <img class="coloimg" src="../../../assets/image/colo.svg">
 
       </button>
     </div>
 
     <div fxFlex='90' fxLayout="row">
-      <input [(ngModel)]="collabadd" matInput placeholder="Person or email to share with" autocomplete="off" maxlength="45">
+      <input [(ngModel)]="collabadd" matInput placeholder="Person or email to share with" autocomplete="off"
+        maxlength="45">
 
 
       <button mat-icon-button (click)="saveCollaborators(collabadd)">
@@ -80,10 +82,10 @@
   <mat-divider></mat-divider>
   <br>
 
-  <div class="button-background">
-    <div class="button" fxLayout="row" fxLayoutGap="5%">
+  <div class="button-background" fxFlex="100">
+    <div class="button" fxLayout="row" fxLayoutGap="5%" fxFlex="80">
       <button mat-button [mat-dialog-close] fxLayoutGap="5%">Cancel</button>
-      <button mat-button (click)="saveUser()" fxLayoutGap="5%">Save</button>
+      <button mat-button [mat-dialog-close] (click)="saveUser()"  (click)="saveCollaborators(collabadd)" fxLayoutGap="5%">Save</button>
     </div>
   </div>
 

@@ -1,6 +1,10 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { DisplaynoteComponent } from './displaynote.component';
+import {Pipe} from "@angular/core";
+import { MatIconModule } from "@angular/material"
+import { from } from 'rxjs';
+
 
 describe('DisplaynoteComponent', () => {
   let component: DisplaynoteComponent;
@@ -8,7 +12,8 @@ describe('DisplaynoteComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ DisplaynoteComponent ]
+      declarations: [ DisplaynoteComponent ],
+      imports:[Pipe, MatIconModule]
     })
     .compileComponents();
   }));

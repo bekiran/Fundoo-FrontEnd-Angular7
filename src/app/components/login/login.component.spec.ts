@@ -2,12 +2,7 @@ import { async, ComponentFixture, TestBed,inject } from "@angular/core/testing";
 import { LoginComponent } from "./login.component";
 import { BrowserModule } from "@angular/platform-browser";
 import { NgModule } from "@angular/core";
-import {
-  MatCardModule,
-  MatInputModule,
-  MatIconModule,
-  MatButtonModule
-} from "@angular/material";
+import {MatInputModule,MatIconModule,MatButtonModule} from "@angular/material";
 import { MatFormFieldModule } from "@angular/material/form-field";
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
@@ -29,6 +24,7 @@ import { TextFieldModule } from "@angular/cdk/text-field";
 import { PortalModule } from "@angular/cdk/portal";
 import { CdkStepperModule } from "@angular/cdk/stepper";
 import { TakeNoteComponent } from "../take-note/take-note.component";
+import {MatCardModule} from '@angular/material/card';
 
 
 describe("LoginComponent", () => {

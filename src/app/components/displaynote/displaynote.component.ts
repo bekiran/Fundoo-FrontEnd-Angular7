@@ -6,8 +6,6 @@ import { forEach } from "@angular/router/src/utils/collection";
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from "@angular/material";
 import { UpdatenoteComponent } from "../updatenote/updatenote.component";
 import { NoteServiceService } from "../../service/noteService/note-service.service";
-import { Message } from "@angular/compiler/src/i18n/i18n_ast";
-import { MockResourceLoader } from "@angular/compiler/testing";
 import { MatSnackBar } from "@angular/material";
 import { CdkDragDrop, moveItemInArray } from '@angular/cdk/drag-drop';
 export interface DialogData {
@@ -20,13 +18,7 @@ export interface DialogData {
   labelname: string;
 }
 
-// export interface DialogData {
-//   model: any;
-//   array: [];
-//   cond: any;
-//   flag1: true;
-//   show: false;
-// }
+
 @Component({
   selector: "app-displaynote",
   templateUrl: "./displaynote.component.html",
@@ -280,7 +272,7 @@ export class DisplaynoteComponent implements OnInit, OnChanges {
   }
 
 
-  drop(event: CdkDragDrop<string[]>) {
+  drop(event: CdkDragDrop<any[]>) {
     moveItemInArray(this.cards, event.previousIndex, event.currentIndex);
   }
 }

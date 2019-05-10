@@ -49,6 +49,8 @@ export class CollaboratorsComponent implements OnInit {
           console.log("data in collab=>", data);
           this.collabList = data["data"];
           this.collabList = this.collabList.reverse()
+          this.collabList.splice(0, 0, data["data"]);
+          this.card = "";
         })
       }
     } catch (error) {
@@ -66,12 +68,14 @@ export class CollaboratorsComponent implements OnInit {
     })
   }
 
-  removeCollaborators(item){
+  removeCollaborators(item,card){
     this.noteService.removeCollab({
-      collabUserID:item.collabUserID
+      collabUserID:item,
+      noteID:card._id
     }) .subscribe(data=>{
-      let ind = this.collabList.indexOf(item);
-      this.collabList.splice(ind, 1)
+      console.log(data);
+      let ind = this.card.collab.indexOf(item);
+      this.card.collab.splice(ind, 1)
     })
 
   }

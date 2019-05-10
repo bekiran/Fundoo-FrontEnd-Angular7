@@ -2,6 +2,7 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { ImagecropperComponent } from './imagecropper.component';
 
+
 describe('ImagecropperComponent', () => {
   let component: ImagecropperComponent;
   let fixture: ComponentFixture<ImagecropperComponent>;

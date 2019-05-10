@@ -1,9 +1,11 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { MatCardModule, MatInputModule, MatIconModule, MatButtonModule } from '@angular/material';
+
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { LoginComponent } from './components/login/login.component';
+
+import { MatCardModule, MatInputModule, MatIconModule, MatButtonModule } from '@angular/material';
 import { RegisterComponent } from './components/register/register.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { ResetpasswordComponent } from './components/resetpassword/resetpassword.component';
@@ -45,6 +47,8 @@ import { MessagingService } from './shared/messaging.service';
 import { environment } from '../environments/environment';
 import { AsyncPipe } from '../../node_modules/@angular/common';
 import { CollaboratorsComponent } from './components/collaborators/collaborators.component';
+import {DragDropModule} from '@angular/cdk/drag-drop';
+// import {AngularFireModule} from 'angularFire2';
 
 @NgModule({
   declarations: [
@@ -75,6 +79,7 @@ import { CollaboratorsComponent } from './components/collaborators/collaborators
 
   ],
   imports: [
+    DragDropModule,
     BrowserModule,
     AppRoutingModule,
     MatCardModule,

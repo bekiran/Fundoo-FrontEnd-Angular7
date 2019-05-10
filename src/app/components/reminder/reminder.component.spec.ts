@@ -1,6 +1,8 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { MatDatepickerModule } from "@angular/material"
 
 import { ReminderComponent } from './reminder.component';
+import { FormsModule } from '@angular/forms';
 
 describe('ReminderComponent', () => {
   let component: ReminderComponent;
@@ -8,7 +10,8 @@ describe('ReminderComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ ReminderComponent ]
+      declarations: [ ReminderComponent ],
+      imports:[MatDatepickerModule,FormsModule]
     })
     .compileComponents();
   }));

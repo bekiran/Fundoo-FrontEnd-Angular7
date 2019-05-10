@@ -1,6 +1,8 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { ForgotpasswordComponent } from './forgotpassword.component';
+import { MatCardModule} from '@angular/material';
+import { MatFormFieldModule } from '@angular/material/form-field';
 
 describe('ForgotpasswordComponent', () => {
   let component: ForgotpasswordComponent;
@@ -8,7 +10,8 @@ describe('ForgotpasswordComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ ForgotpasswordComponent ]
+      declarations: [ ForgotpasswordComponent,MatFormFieldModule ],
+      imports:[MatCardModule]
     })
     .compileComponents();
   }));
